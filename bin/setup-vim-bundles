@@ -1,0 +1,23 @@
+#!/bin/sh
+
+cd ~/.vim/bundle
+
+git clone https://github.com/vim-scripts/jade.vim.git
+git clone https://github.com/pbrisbin/html-template-syntax.git
+git clone https://github.com/cometpeak/Syntax-for-Fasta.git
+git clone https://github.com/tpope/vim-dispatch.git
+git clone https://github.com/vim-scripts/Superior-Haskell-Interaction-Mode-SHIM.git
+git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/vim-scripts/VimClojure.git
+git clone https://github.com/vim-scripts/Io-programming-language-syntax.git
+git clone https://github.com/adinapoli/vim-markmultiple.git
+git clone https://github.com/tpope/vim-markdown.git
+git clone https://github.com/mhinz/vim-startify.git
+git clone https://github.com/rainux/vim-vala.git
+git clone https://github.com/metalelf0/vimt0d0.git
+git clone https://github.com/juvenn/mustache.vim.git
+git clone https://github.com/jvoorhis/coq.vim.git
+git clone https://github.com/spolu/dwm.vim.git
+git clone https://github.com/jnwhiteh/vim-golang.git
+git clone https://github.com/timcharper/textile.vim.git
+git clone https://github.com/davidzchen/vim-neatstatus.git

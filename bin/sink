@@ -1,0 +1,136 @@
+#!/bin/bash
+#
+# NAME
+# 	sink - a stupidly simple sync tool.
+#
+# SYNOPSIS
+#	sink <command> [<args>]
+#
+# OPTIONS
+#	track USER@HOST:PATH
+#	    Initialize current directory to track directory PATH on the remote 
+#	    HOST. The arguent for track will be fed directory into the rsync
+# 	    command, so the trailing slash is required to sync the contents
+#	    of the directory. This command merely initializes the current
+#	    directory and does not contact the remote host.
+#
+#	pull
+#	    Pull the contents of the remote directory into the current local
+#	    directory.
+#
+#	push
+#	    Push the contents of the current local directory to the remote
+#	    directory.
+#
+# 	info
+#	    Print info about the remote directory we're tracking
+#
+#	help
+#	    Print help
+#
+#	version
+#	    Print version
+#
+# DESCRIPTION
+# 	Partially inspired by git, sink does one thing: synchronize the 
+#	current directory with some remote directory using rsync -avz.
+#	This tool was quickly written out of frustration of the lack of git
+#	on a certain HPC cluster. What makes sink not a watered-down git
+#	is that it can track any arbitrary directory without the remote
+#	directory being aware
+#
+
+SINK_VERSION='0.1'
+
+err() {
+	echo "$@" 1>&2
+}
+
+usage() {
+	err "Usage: sink <command> [<args>]"
+	err ""
+	err "Commands:"
+	err "    track USER@HOST:PATH"
+	err "        Initialize current directory to track directory PATH on the remote "
+	err "        HOST. The arguent for track will be fed directory into the rsync"
+	err "        command, so the trailing slash is required to sync the contents"
+	err "        of the directory. This command merely initializes the current"
+	err "        directory and does not contact the remote host."
+	err ""
+	err "    pull"
+	err "        Pull the contents of the remote directory into the current local"
+	err "        directory."
+	err ""
+	err "    push"
+	err "        Push the contents of the current local directory to the remote"
+	err "        directory."
+	err ""
+	err "    info"
+	err "        Print info about the remote directory we're tracking"
+	err ""
+	err "    help"
+	err "	    Print help"
+	err ""
+	err "   version"
+	err "       Pint version"
+}
+
+not_initialized() {
+	err "Current directory not initialized."
+	err "Run sink track REMOTE to initialize."
+}
+	
+
+cur_dir=`pwd`
+
+case "$1" in
+	track)
+		if [ $# -ne 2 ]; then
+			usage
+			exit 1
+		fi
+
+		echo $2 > $cur_dir/.sink
+		echo "Initialize sink in current directory to track $2."
+		;;
+
+	push)
+		if [ ! -e $cur_dir/.sink ]; then
+			not_initialized
+			exit 2
+		fi
+
+		remote=`cat $cur_dir/.sink`
+		echo "Pushing to $remote ..."
+		rsync -avz --delete ./ $remote
+		;;
+	pull)
+		if [ ! -e $cur_dir/.sink ]; then
+			not_initialized
+			exit 2
+		fi
+
+		remote=`cat $cur_dir/.sink`
+		echo "Pulling from $remote ..."
+		rsync -avz --delete $remote ./	
+		;;
+	info)
+		if [ ! -e $cur_dir/.sink ]; then
+			not_initialized
+			exit 2
+		fi
+
+		remote=`cat $cur_dir/.sink`
+		echo "Tracking $remote"
+		;;
+	help)
+		usage
+		;;
+	version)
+		echo "sink version $SINK_VERSION"
+		;;
+	*)
+		err "Invalid command $1"
+		usage
+		;;
+esac

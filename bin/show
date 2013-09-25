@@ -1,0 +1,28 @@
+#!/bin/bash
+# this will be important later:
+imgvwr="$(locate w3m-img)"
+if [ -z "$1" ]; then
+	echo "must specify a filename."
+	exit 1
+elif [ -z "$(which w3m)" ]; then
+	echo "Error: w3m must be installed."
+	exit 1
+elif  [ "$(expr index '$imgvwr' '/usr/share/doc/w3m-img')" == "0" ]; then
+	# remember the imgvwr from before?
+	echo "Error: w3m-img must be installed."
+	exit 1
+fi
+S1="$1"
+# if a relative path has been given,
+# add the currrent directory to it
+if [ ! "${1:0:1}" == "/" ]; then
+	S1="$(pwd)/$1"
+fi
+# for aesthetics only, so we
+# can display the filename
+S2="$(basename $S1)"
+# creates the temporary HTML document so we can view the image
+echo "<html><head><title>$S2</title></head><body>&nbsp;<img src='$S1' alt='$S2'><br>&nbsp;</body></html>" > /tmp/xerimgvwr.html
+w3m /tmp/xerimgvwr.html
+# tidy up time
+rm /tmp/xerimgvwr.html

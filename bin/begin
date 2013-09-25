@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo ""
+echo -e "`fortune ~/.dzc/fortunes/one`"
+echo ""
