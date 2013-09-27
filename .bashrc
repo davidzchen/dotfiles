@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+if [ -f ~/lib/paths.sh ]; then
+    . ~/lib/paths.sh
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -86,37 +90,16 @@ alias l='ls -CF'
 # VIM as pager
 alias va="vim -u ~/.vimrc.more"
 
-# Colored man pages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+if [ -f ~/lib/man-colors.sh ]; then
+    . ~/lib/man-colors.sh
+fi
 
-# Formatting constants
-export BOLD=`tput bold`
-export UNDERLINE_ON=`tput smul`
-export UNDERLINE_OFF=`tput rmul`
-export TEXT_BLACK=`tput setaf 0`
-export TEXT_RED=`tput setaf 1`
-export TEXT_GREEN=`tput setaf 2`
-export TEXT_YELLOW=`tput setaf 3`
-export TEXT_BLUE=`tput setaf 4`
-export TEXT_MAGENTA=`tput setaf 5`
-export TEXT_CYAN=`tput setaf 6`
-export TEXT_WHITE=`tput setaf 7`
-export BACKGROUND_BLACK=`tput setab 0`
-export BACKGROUND_RED=`tput setab 1`
-export BACKGROUND_GREEN=`tput setab 2`
-export BACKGROUND_YELLOW=`tput setab 3`
-export BACKGROUND_BLUE=`tput setab 4`
-export BACKGROUND_MAGENTA=`tput setab 5`
-export BACKGROUND_CYAN=`tput setab 6`
-export BACKGROUND_WHITE=`tput setab 7`
-export RESET_FORMATTING=`tput sgr0`
+# Color value constants.
+if [ -f ~/lib/colors.sh ]; then
+    . ~/lib/colors.sh
+fi
 
+# Colored maven output.
 if [ -f ~/lib/mvn-color.sh ]; then
     . ~/lib/mvn-color.sh
 fi
@@ -141,8 +124,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f ~/.bashrc.local ]; then
-    . ~/.bashrc.local
+if [ -f ~/.bashrc_local ]; then
+    . ~/.bashrc_local
 fi
 
 ~/bin/begin

@@ -39,45 +39,17 @@ alias va="vim -u ~/.vimrc.more"
 # Set editor and path
 export EDITOR=vi
 
-export PATH=/opt/bin:/opt/local/bin:/home/dzc/.cabal/bin:/home/dzc/bin:/home/dzc/local/bin:$PATH
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/opt/lib
-export LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/opt/lib
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/local/include:/opt/include
-
 # Disable correction
 unsetopt correctall
 
-# Colored man pages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+# Additional path stuff.
+source ~/lib/paths.sh
 
-# Formatting constants
-export BOLD=`tput bold`
-export UNDERLINE_ON=`tput smul`
-export UNDERLINE_OFF=`tput rmul`
-export TEXT_BLACK=`tput setaf 0`
-export TEXT_RED=`tput setaf 1`
-export TEXT_GREEN=`tput setaf 2`
-export TEXT_YELLOW=`tput setaf 3`
-export TEXT_BLUE=`tput setaf 4`
-export TEXT_MAGENTA=`tput setaf 5`
-export TEXT_CYAN=`tput setaf 6`
-export TEXT_WHITE=`tput setaf 7`
-export BACKGROUND_BLACK=`tput setab 0`
-export BACKGROUND_RED=`tput setab 1`
-export BACKGROUND_GREEN=`tput setab 2`
-export BACKGROUND_YELLOW=`tput setab 3`
-export BACKGROUND_BLUE=`tput setab 4`
-export BACKGROUND_MAGENTA=`tput setab 5`
-export BACKGROUND_CYAN=`tput setab 6`
-export BACKGROUND_WHITE=`tput setab 7`
-export RESET_FORMATTING=`tput sgr0`
+# Set less variables to provide colored man pages.
+source ~/lib/man-colors.sh
+
+# Color value constants
+source ~/lib/colors.sh
  
 # colored maven output
 source ~/lib/mvn-color.sh
