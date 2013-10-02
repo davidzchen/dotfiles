@@ -33,6 +33,8 @@ plugins=(git mercurial github gnu-utils history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
+source ~/.zshrc_local
+
 # Use vim as a pager
 alias va="vim -u ~/.vimrc.more"
 

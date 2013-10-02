@@ -21,3 +21,7 @@ git clone https://github.com/spolu/dwm.vim.git
 git clone https://github.com/jnwhiteh/vim-golang.git
 git clone https://github.com/timcharper/textile.vim.git
 git clone https://github.com/davidzchen/vim-neatstatus.git
+git clone https://github.com/ksauzz/thrift.vim.git
+git clone https://github.com/uarun/vim-protobuf.git
+git clone https://github.com/davidzchen/avro-vim.git
+git clone https://github.com/davidzchen/pig.vim.git
