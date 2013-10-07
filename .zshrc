@@ -31,9 +31,13 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git mercurial github gnu-utils history-substring-search)
 
-source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ]; then
+  source $ZSH/oh-my-zsh.sh
+fi
 
-source ~/.zshrc_local
+if [ -f ~/.zshrc_local ]; then
+  source ~/.zshrc_local
+fi
 
 # Use vim as a pager
 alias va="vim -u ~/.vimrc.more"
@@ -45,18 +49,28 @@ export EDITOR=vi
 unsetopt correctall
 
 # Additional path stuff.
-source ~/lib/paths.sh
+if [ -f ~/lib/paths.sh ]; then
+  source ~/lib/paths.sh
+fi
 
 # Set less variables to provide colored man pages.
-source ~/lib/man-colors.sh
+if [ -f ~/lib/man-colors.sh ]; then
+  source ~/lib/man-colors.sh
+fi
 
 # Color value constants
-source ~/lib/colors.sh
+if [ -f ~/lib/colors.sh ]; then
+  source ~/lib/colors.sh
+fi
  
 # colored maven output
-source ~/lib/mvn-color.sh
+if [ -f ~/lib/mvn-color.sh ]; then
+  source ~/lib/mvn-color.sh
+fi
 
 # zsh live syntax coloring
-source ~/lib/live-command-coloring.zsh
+if [ -f ~/lib/live-command-coloring.zsh ]; then
+  source ~/lib/live-command-coloring.zsh
+fi
 
 ~/bin/begin
