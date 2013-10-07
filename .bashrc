@@ -80,7 +80,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ls='ls -GFh'
+alias ls='ls -GFh --color'
 
 # some more ls aliases
 alias ll='ls -alF'

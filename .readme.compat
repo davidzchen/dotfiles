@@ -1,0 +1,7 @@
+This branch of dotfiles was created to be compatible with older versions of
+vim and bash which do not support colorcolumn and requires ls --color in
+addition to ls -G.
+
+This branch will be merged back into master when I come up with a way to
+cleanly detect these differences using conditions in the original
+dotfiles.

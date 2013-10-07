@@ -51,8 +51,8 @@ highlight LineNr ctermfg=darkcyan
 " Display a line in column 80 to show when to line break
 "
 
-set colorcolumn=80
-highlight ColorColumn ctermbg=53
+"set colorcolumn=80
+"highlight ColorColumn ctermbg=53
 
 " ------------------------------------------------------------ Multiple windows
 
