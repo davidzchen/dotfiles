@@ -1,0 +1,30 @@
+ps1='% '    # default prompt
+tab='   '   # a tab character
+fn cd {
+  builtin cd $1 &&
+  switch($#*) {
+  case 0
+    dir=$home
+    prompt=($ps1 $tab)
+  case *
+    switch($1) {
+    case /*
+      dir=$1
+      prompt=(`{basename `{pwd}}^$ps1 $tab)
+    case */* ..*
+      dir=()
+      prompt=(`{basename `{pwd}}^$ps1 $tab)
+    case *
+      dir=()
+      prompt=($1^$ps1 $tab)
+    }
+  }
+}
+
+fn pwd {
+  if (~ $#dir 0)
+    dir=‘{/bin/pwd}
+  echo $dir
+}
+
+prompt=(`{basename `{pwd}}^$ps1 $tab)
