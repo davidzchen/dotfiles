@@ -48,11 +48,15 @@ syntax on
 highlight LineNr ctermfg=darkcyan
 
 "
-" Display a line in column 80 to show when to line break
+" Display a line in column 80 to show when to line break. Note that this is
+" not available before Vim 7.3. Also, note that Vim 7.3 follows a different
+" version scheme (703, not 730).
 "
 
-set colorcolumn=80
-highlight ColorColumn ctermbg=53
+if v:version >= 703
+  set colorcolumn=80
+  highlight ColorColumn ctermbg=53
+endif
 
 " ------------------------------------------------------------ Multiple windows
 
