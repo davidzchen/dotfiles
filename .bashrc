@@ -29,7 +29,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-LESSPIPE_BIN=`which lesspipe`
+LESSPIPE_BIN=`which lesspipe 2> /dev/null`
 [ -x "$LESSPIPE_BIN" ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -42,7 +42,7 @@ esac
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
 
-TPUT_BIN=`which tput`
+TPUT_BIN=`which tput 2> /dev/null`
 if [ -n "$force_color_prompt" ]; then
     if [ -x "$TPUT_BIN" ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -71,7 +71,7 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-DIRCOLORS_BIN=`which dircolors`
+DIRCOLORS_BIN=`which dircolors 2> /dev/null`
 if [ -x "$DIRCOLORS_BIN" ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
