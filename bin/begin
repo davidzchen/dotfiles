@@ -1,11 +1,14 @@
 #!/bin/bash
 
-if [ -x /usr/bin/fortune ]; then
+FORTUNE_BIN=`which fortune`
+COWSAY_BIN=`which cowsay`
+
+if [ -x "$FORTUNE_BIN" ]; then
   if [ -f ~/.dzc/fortunes/one ]; then
     echo ""
     echo -e "`fortune ~/.dzc/fortunes/one`"
     echo ""
-  elif [ -x /usr/bin/cowsay ]; then
+  elif [ -x "$COWSAY_BIN" ]; then
     fortune | cowsay
   fi
 fi
