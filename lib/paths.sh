@@ -11,14 +11,17 @@ export LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/opt/lib:$HOME/local/lib
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/local/include:/opt/include:$HOME/local/include
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/include:/opt/include:$HOME/local/include
 
-if [ -d $HOME/Projects/hadoop/bin ]; then
-  export PATH="$HOME/Projects/hadoop/bin:$PATH"
+if [ -d $HOME/Projects/hadoop ]; then
+  export HADOOP_HOME="$HOME/Projects/hadoop"
+  export PATH="$HADOOP_HOME/bin:$PATH"
 fi
 
-if [ -d $HOME/Projects/pig/bin ]; then
-  export PATH="$HOME/Projects/pig/bin:$PATH"
+if [ -d $HOME/Projects/pig ]; then
+  export PIG_HOME="$HOME/Projects/pig"
+  export PATH="$PIG_HOME/bin:$PATH"
 fi
 
-if [ -d $HOME/Projects/hive/bin ]; then
-  export PATH="$HOME/Projects/hive/bin:$PATH"
+if [ -d $HOME/Projects/hive ]; then
+  export HIVE_HOME="$HOME/Projects/hive/build/dist"
+  export PATH="$HIVE_HOME/bin:$PATH"
 fi
