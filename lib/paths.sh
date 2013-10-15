@@ -25,3 +25,8 @@ if [ -d $HOME/Projects/hive ]; then
   export HIVE_HOME="$HOME/Projects/hive/build/dist"
   export PATH="$HIVE_HOME/bin:$PATH"
 fi
+
+if [ -d $HIVE_HOME/hcatalog ]; then
+  export PATH="$HIVE_HOME/hcatalog/bin:$PATH"
+  export PATH="$HIVE_HOME/hcatalog/sbin:$PATH"
+fi
