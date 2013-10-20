@@ -1,0 +1,45 @@
+#!/bin/sh
+
+DEST_DIR=$HOME
+BACK_DIR=$DEST_DIR/.dotfiles.bak
+CURR_DIR=`pwd`
+
+installdot() {
+  local install=$CURR_DIR/$1
+  echo "Install $install"
+
+  if [ ! -e $BACK_DIR ]; then
+    echo "$BACK_DIR does not exist!"
+    return
+  fi
+
+  if [ -e $BACK_DIR/$1 ]; then
+    if [ ! -L $DEST_DIR/$1 ]; then
+      echo "Warning: $1 exists in $BACK_DIR but is not a symlink in $DEST_DIR."
+    fi
+    return
+  fi
+
+  if [ -e $DEST_DIR/$1 ]; then
+    mv $DEST_DIR/$1 $BACK_DIR
+  fi
+
+  ln -s $install $DEST_DIR/$1
+}
+
+if [ ! -d $BACK_DIR ]; then
+  mkdir -p $BACK_DIR
+fi
+
+installdot .Xresources
+installdot .bashrc
+installdot .inputrc
+installdot .rcrc
+installdot .tmux.conf
+installdot .vim
+installdot .vimrc
+installdot .vimrc.more
+installdot .zshrc
+installdot bin
+installdot etc
+installdot lib

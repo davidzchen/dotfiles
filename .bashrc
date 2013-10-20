@@ -83,7 +83,7 @@ if [ -x "$DIRCOLORS_BIN" ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ls='ls -GFh --color'
+alias ls='ls -GFh'
 
 # some more ls aliases
 alias ll='ls -alF'
