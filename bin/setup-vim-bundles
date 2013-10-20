@@ -1,10 +1,11 @@
 #!/bin/sh
 
-cd ~/.vim/bundle
+mkdir -p $HOME/.vim/bundle
+cd $HOME/.vim/bundle
 
 git clone https://github.com/vim-scripts/jade.vim.git
 git clone https://github.com/pbrisbin/html-template-syntax.git
-git clone https://github.com/cometpeak/Syntax-for-Fasta.git
+git clone https://github.com/davidzchen/Syntax-for-Fasta.git
 git clone https://github.com/tpope/vim-dispatch.git
 git clone https://github.com/vim-scripts/Superior-Haskell-Interaction-Mode-SHIM.git
 git clone https://github.com/tpope/vim-fugitive.git
@@ -25,5 +26,5 @@ git clone https://github.com/ksauzz/thrift.vim.git
 git clone https://github.com/uarun/vim-protobuf.git
 git clone https://github.com/davidzchen/avro-vim.git
 git clone https://github.com/davidzchen/pig.vim.git
-git clone https://github.com/slj/gundo.vim.git
+git clone https://github.com/sjl/gundo.vim.git
 git clone https://github.com/davidzchen/rc.vim.git
