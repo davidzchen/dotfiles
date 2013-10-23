@@ -68,6 +68,11 @@ if [ -f ~/lib/mvn-color.sh ]; then
   source ~/lib/mvn-color.sh
 fi
 
+# colored ant output
+if [ -f ~/lib/ant-color.sh ]; then
+  source ~/lib/ant-color.sh
+fi
+
 # zsh live syntax coloring
 if [ -f ~/lib/live-command-coloring.zsh ]; then
   source ~/lib/live-command-coloring.zsh
