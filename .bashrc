@@ -108,8 +108,8 @@ if [ -f ~/lib/mvn-color.sh ]; then
 fi
 
 # Colored ant output.
-if [ -f ~/lib/ant-color.sh ]; then
-    . ~/lib/ant-color.sh
+if [ -f ~/lib/ant-colors.sh ]; then
+    . ~/lib/ant-colors.sh
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
