@@ -2,7 +2,7 @@
 
 PLUGIN_VERSION=2.2
 
-rm -rf hdfs
+rm -rf jobtypes
 cp ~/Projects/azkaban-plugins/dist/jobtype/packages/azkaban-jobtype-$PLUGIN_VERSION.tar.gz .
 tar zxvf azkaban-jobtype-$PLUGIN_VERSION.tar.gz
 mv azkaban-jobtype-$PLUGIN_VERSION jobtypes
