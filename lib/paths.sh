@@ -30,3 +30,8 @@ if [ -d $HIVE_HOME/hcatalog ]; then
   export PATH="$HIVE_HOME/hcatalog/bin:$PATH"
   export PATH="$HIVE_HOME/hcatalog/sbin:$PATH"
 fi
+
+if [ -d $HOME/Projects/azkaban2 ]; then
+  export AZKABAN_HOME="$HOME/Projects/azkaban2"
+  export PATH="$AZKABAN_HOME/bin:$PATH"
+fi
