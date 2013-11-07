@@ -47,6 +47,8 @@ syntax on
 
 highlight LineNr ctermfg=darkcyan
 
+set backspace=indent,eol,start
+
 "
 " Display a line in column 80 to show when to line break. Note that this is
 " not available before Vim 7.3. Also, note that Vim 7.3 follows a different
