@@ -83,14 +83,14 @@ case $COMMAND in
     STARTSTOP=$2
     case $STARTSTOP in
       start)
-        cd $SERVER_HOME && sh -c ./bin/azkaban-$COMMAND-start.sh
+        cd $SERVER_HOME && bash ./bin/azkaban-$COMMAND-start.sh
         ;;
       stop)
-        cd $SERVER_HOME && sh -c ./bin/azkaban-$COMMAND-shutdown.sh
+        cd $SERVER_HOME && bash ./bin/azkaban-$COMMAND-shutdown.sh
         ;;
       restart)
-        cd $SERVER_HOME && sh -c ./bin/azkaban-$COMMAND-shutdown.sh
-        cd $SERVER_HOME && sh -c ./bin/azkaban-$COMMAND-start.sh
+        cd $SERVER_HOME && bash ./bin/azkaban-$COMMAND-shutdown.sh
+        cd $SERVER_HOME && bash ./bin/azkaban-$COMMAND-start.sh
         ;;
       *)
         echo "Usage: azkaban $COMMAND start|stop|restart"

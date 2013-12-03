@@ -7,4 +7,4 @@ cp ~/Projects/azkaban-plugins/dist/pigvisualizer/packages/azkaban-pigvisualizer-
 tar zxvf azkaban-pigvisualizer-$PLUGIN_VERSION.tar.gz
 mv azkaban-pigvisualizer-$PLUGIN_VERSION pigvisualizer
 rm azkaban-pigvisualizer-$PLUGIN_VERSION.tar.gz
-cp ./pigvisualizer/web/js/azkaban.jobvisualizer.view.js ../../web/js/
+#cp ./pigvisualizer/web/js/azkaban.jobvisualizer.view.js ../../web/js/
