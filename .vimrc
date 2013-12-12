@@ -39,7 +39,7 @@ syntax on
 
 set background=light
 
-" colorscheme jellybeans
+colorscheme hybrid
 
 "
 " Change color of line numbes

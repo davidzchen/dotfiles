@@ -1,53 +1,89 @@
-! ------------------------------------------------------------------- Scrollbar
 
-!URxvt.scrollstyle: xterm
-URxvt.scrollBar: false
+! -----------------------------
+! XFT SETTINGS
+! -----------------------------
 
-URxvt.termName: xterm
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:        96
+Xft.hinting:    1
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
 
-! ------------------------------------------------------- foreground/background
-URxvt*foreground: #83888d
-URxvt*background: #0d131a
 
-! ---------------------------------------------------------------------- colors
+! -----------------------------
+! URXVT OPTIONS
+! -----------------------------
 
-!black dark/light
-URxvt*color0:  #0d131a
-URxvt*color8:  #0d131a
+URxvt*borderless:         true
+! URxvt*internalBorder:     15
+URxvt*cursorBlink:        false
+URxvt*jumpScroll:         true
+URxvt*scrollBar:          false
+URxvt*scrollTryOutput:    false
+URxvt*scrollTtyKeypress:  true
+URxvt*urgentOnBell:       true
+URxvt*visualBell:         false
 
-! red dark/light
-URxvt*color1:  #9f3147
-URxvt*color9:  #ae313b
-! #993333/#cc3333
 
-! green dark/light
-URxvt*color2:  #417439
-URxvt*color10: #4ba65a
-! #336633/#339966
+! -----------------------------
+! FONTS
+! -----------------------------
 
-! yellow dark/light
-URxvt*color3:  #7f6f36
-URxvt*color11: #948f56
+! TAMZEN
+! URxvt.font:            -misc-tamzen-medium-r-*--15-*-*-*-*-*-*-*
+! URxvt.boldFont:        -misc-tamzen-bold-r-*--15-*-*-*-*-*-*-*
+! URxvt.italicFont:      -misc-tamzen-medium-r-*--15-*-*-*-*-*-*-*
+! URxvt.boldItalicFont:  -misc-tamzen-bold-r-*--15-*-*-*-*-*-*-*
 
-! blue dark/light
-URxvt*color4:  #1c678c
-URxvt*color12: #3995b7
-! #336699/#3399cc
+! DINA
+! URxvt.font:            -windows-dina-medium-r-*--16-*-*-*-*-*-*-*
+! URxvt.boldFont:        -windows-dina-bold-r-*--16-*-*-*-*-*-*-*
+! URxvt.italicFont:      -windows-dina-medium-i-*--16-*-*-*-*-*-*-*
+! URxvt.bolditalicFont:  -windows-dina-bold-i-*--16-*-*-*-*-*-*-*
 
-! magenta dark/light
-URxvt*color5:  #45425a
-URxvt*color13: #893c5e
-! #333366/#993366
-
-! cyan dark/light
-URxvt*color6:  #337373
-URxvt*color14: #5896a2
-
-! white dark/light
-URxvt*color7:  #83888d
-URxvt*color15: #999999
-
-! ----------------------------------------------------------------------- Fonts
-
-URxvt.font: xft:Ubuntu Mono:pixelsize=12
+! MESLO
+URxvt.font: xft:Ubuntu Mono:Regular:pixelsize=12
+URxvt.boldFont: xft:Ubuntu Mono:Bold:pixelsize=12
+URxvt.italicFont: xft:Ubuntu Mono:Italic:pixelsize=12
+URxvt.boldItalicFont: xft:Ubuntu Mono:Bold:Italic:size=12
 URxvt.letterSpace: -1
+
+! PRAGMATAPRO
+! URxvt.font: xft:PragmataPro for Powerline:Regular:size=11
+! URxvt.boldFont: xft:PragmataPro for Powerline:Bold:size=11
+! URxvt.italicFont: xft:PragmataPro for Powerline:Italic:size=11
+! URxvt.boldItalicFont: xft:PragmataPro for Powerline:Bold:Italic:size=11
+
+! TERMINUS
+! URxvt.font:            -beastie-terminus14-*-*-*-*-*-*-*-*-*-*-*
+! URxvt.boldFont:        -beastie-terminus14-*-*-*-*-*-*-*-*-*-*-*
+! URxvt.italicFont:      -beastie-terminus14-*-*-*-*-*-*-*-*-*-*-*
+! URxvt.bolditalicFont:  -beastie-terminus14-*-*-*-*-*-*-*-*-*-*-*
+
+! -----------------------------
+! PERL EXTENSIONS
+! -----------------------------
+URxvt.perl-lib:        /home/dzc/lib/urxvt/perl
+URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
+
+! clipboard
+URxvt.keysym.M-c:          perl:clipboard:copy
+URxvt.keysym.M-v:          perl:clipboard:paste
+URxvt.keysym.C-M-v:        perl:clipboard:paste_escaped
+URxvt.clipboard.copycmd:   pbcopy
+URxvt.clipboard.pastecmd:  pbpaste
+
+! keyboard-select
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s:       perl:keyboard-select:search
+
+! url-select
+URxvt.keysym.M-u:            perl:url-select:select_next
+URxvt.url-select.autocopy:   true
+URxvt.url-select.button:     1
+URxvt.url-select.launcher:   /usr/bin/firefox
+URxvt.url-select.underline:  true
+
+#include "/home/dzc/share/colors/hybrid"

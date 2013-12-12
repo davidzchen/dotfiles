@@ -32,3 +32,4 @@ git clone https://github.com/davidzchen/snipmate.vim.git
 git clone https://github.com/davidzchen/jproperties.vim.git
 git clone https://github.com/lepture/vim-velocity.git
 git clone https://github.com/jimmyhchan/dustjs.vim.git
+git clone https://github.com/groenewege/vim-less.git
