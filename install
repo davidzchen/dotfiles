@@ -43,3 +43,4 @@ installdot .zshrc
 installdot bin
 installdot etc
 installdot lib
+installdot share

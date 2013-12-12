@@ -35,3 +35,8 @@ if [ -d $HOME/Projects/azkaban2 ]; then
   export AZKABAN_HOME="$HOME/Projects/azkaban2"
   export PATH="$AZKABAN_HOME/bin:$PATH"
 fi
+
+if [ -d $HOME/Apps/play ]; then
+  export PLAY_HOME="$HOME/Apps/play"
+  export PATH="$PLAY_HOME:$PATH"
+fi

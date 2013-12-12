@@ -1,0 +1,53 @@
+! ------------------------------------------------------------------- Scrollbar
+
+!URxvt.scrollstyle: xterm
+URxvt.scrollBar: false
+
+URxvt.termName: xterm
+
+! ------------------------------------------------------- foreground/background
+URxvt*foreground: #83888d
+URxvt*background: #0d131a
+
+! ---------------------------------------------------------------------- colors
+
+!black dark/light
+URxvt*color0:  #0d131a
+URxvt*color8:  #0d131a
+
+! red dark/light
+URxvt*color1:  #9f3147
+URxvt*color9:  #ae313b
+! #993333/#cc3333
+
+! green dark/light
+URxvt*color2:  #417439
+URxvt*color10: #4ba65a
+! #336633/#339966
+
+! yellow dark/light
+URxvt*color3:  #7f6f36
+URxvt*color11: #948f56
+
+! blue dark/light
+URxvt*color4:  #1c678c
+URxvt*color12: #3995b7
+! #336699/#3399cc
+
+! magenta dark/light
+URxvt*color5:  #45425a
+URxvt*color13: #893c5e
+! #333366/#993366
+
+! cyan dark/light
+URxvt*color6:  #337373
+URxvt*color14: #5896a2
+
+! white dark/light
+URxvt*color7:  #83888d
+URxvt*color15: #999999
+
+! ----------------------------------------------------------------------- Fonts
+
+URxvt.font: xft:Ubuntu Mono:pixelsize=12
+URxvt.letterSpace: -1
