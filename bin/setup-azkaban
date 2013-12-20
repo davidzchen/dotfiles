@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ -z "$AZKABAN_HOME" ]; then
+  echo "AZKABAN_HOME is not set"
+  exit 1
+fi
+
+AZKABAN_SOLO_SERVER_DIR=$AZKABAN_HOME/dist/packages/azkaban-solo-server
+
+if [ ! -d $AZKABAN_SOLO_SERVER_DIR ]; then
+  echo "Azkaban solo server has not been built"
+  exit 1
+fi
+
+cp $HOME/etc/azkaban/azkaban.properties $AZKABAN_SOLO_SERVER_DIR/conf
+pushd $AZKABAN_SOLO_SERVER_DIR/plugins
+
+$HOME/bin/grab-jobtype-plugin
+cp $HOME/etc/azkaban/jobtypes/pig/plugin.properties ./jobtypes/pig
+
+mkdir viewer
+pushd viewer
+$HOME/bin/grab-hdfs-plugin
+$HOME/bin/grab-pigvisualizer-plugin
+cp $HOME/etc/azkaban/pigvisualizer/plugin.properties ./pigvisualizer/conf
