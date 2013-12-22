@@ -40,3 +40,5 @@ if [ -d $HOME/Apps/play ]; then
   export PLAY_HOME="$HOME/Apps/play"
   export PATH="$PLAY_HOME:$PATH"
 fi
+
+export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
