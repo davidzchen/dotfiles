@@ -2,8 +2,10 @@
 
 PLUGIN_VERSION=2.1.1
 
+echo "install plugin hdfs"
+
 rm -rf hdfs
 cp ~/Projects/azkaban-plugins/dist/hdfsviewer/packages/azkaban-hdfs-viewer-$PLUGIN_VERSION.tar.gz .
-tar zxvf azkaban-hdfs-viewer-$PLUGIN_VERSION.tar.gz
+tar zxf azkaban-hdfs-viewer-$PLUGIN_VERSION.tar.gz
 mv azkaban-hdfs-viewer-$PLUGIN_VERSION hdfs
 rm azkaban-hdfs-viewer-$PLUGIN_VERSION.tar.gz

@@ -2,12 +2,14 @@
 
 PLUGIN_VERSION=2.2
 
+echo "install plugin jobtype"
+
 rm -rf jobtypes
 cp ~/Projects/azkaban-plugins/dist/jobtype/packages/azkaban-jobtype-$PLUGIN_VERSION.tar.gz .
-tar zxvf azkaban-jobtype-$PLUGIN_VERSION.tar.gz
+tar zxf azkaban-jobtype-$PLUGIN_VERSION.tar.gz
 mv azkaban-jobtype-$PLUGIN_VERSION jobtypes
 rm azkaban-jobtype-$PLUGIN_VERSION.tar.gz
-pushd jobtypes
+pushd jobtypes > /dev/null
 ln -s ./pig-0.11.0 ./pig
 cp ~/etc/azkaban/jobtypes/commonprivate.properties .
-popd
+popd > /dev/null

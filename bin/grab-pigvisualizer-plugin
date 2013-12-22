@@ -2,9 +2,10 @@
 
 PLUGIN_VERSION=1.0
 
+echo "install plugin pigvisualizer"
+
 rm -rf pigvisualizer
 cp ~/Projects/azkaban-plugins/dist/pigvisualizer/packages/azkaban-pigvisualizer-$PLUGIN_VERSION.tar.gz .
-tar zxvf azkaban-pigvisualizer-$PLUGIN_VERSION.tar.gz
+tar zxf azkaban-pigvisualizer-$PLUGIN_VERSION.tar.gz
 mv azkaban-pigvisualizer-$PLUGIN_VERSION pigvisualizer
 rm azkaban-pigvisualizer-$PLUGIN_VERSION.tar.gz
-#cp ./pigvisualizer/web/js/azkaban.jobvisualizer.view.js ../../web/js/
