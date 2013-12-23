@@ -1,0 +1,15 @@
+#!/bin/sh
+
+VERSION="1.2.11-SNAPSHOT"
+FORMAT_VERSION="2.0.0"
+
+REPOSITORY_PATH="$HOME/.m2/repository/com/twitter"
+
+cp $REPOSITORY_PATH/parquet-avro/$VERSION/parquet-avro-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-column/$VERSION/parquet-column-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-common/$VERSION/parquet-common-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-encoding/$VERSION/parquet-encoding-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-hadoop/$VERSION/parquet-hadoop-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-pig/$VERSION/parquet-pig-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-hive-bundle/$VERSION/parquet-hive-bundle-$VERSION.jar .
+cp $REPOSITORY_PATH/parquet-format/$FORMAT_VERSION/parquet-format-$FORMAT_VERSION.jar .
