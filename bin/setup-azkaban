@@ -12,14 +12,17 @@ if [ ! -d $AZKABAN_SOLO_SERVER_DIR ]; then
   exit 1
 fi
 
+echo "copy    global azkaban.properties"
 cp $HOME/etc/azkaban/azkaban.properties $AZKABAN_SOLO_SERVER_DIR/conf
-pushd $AZKABAN_SOLO_SERVER_DIR/plugins
+pushd $AZKABAN_SOLO_SERVER_DIR/plugins > /dev/null
 
-$HOME/bin/grab-jobtype-plugin
+$HOME/bin/grab-jobtype-plugin $1
+echo "copy    jobtypes plugin.properties"
 cp $HOME/etc/azkaban/jobtypes/pig/plugin.properties ./jobtypes/pig
 
-mkdir viewer
-pushd viewer
-$HOME/bin/grab-hdfs-plugin
-$HOME/bin/grab-pigvisualizer-plugin
+mkdir -p viewer
+pushd viewer > /dev/null
+$HOME/bin/grab-hdfs-plugin $1
+$HOME/bin/grab-pigvisualizer-plugin $1
+echo "copy    pigvisualizer plugin.properties"
 cp $HOME/etc/azkaban/pigvisualizer/plugin.properties ./pigvisualizer/conf
