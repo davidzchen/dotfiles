@@ -12,4 +12,8 @@
     <name>mapred.child.java.opts</name>
     <value>-Xmx1024m</value>
   </property>
+  <property>
+    <name>mapreduce.jobtracker.staging.root.dir</name>
+    <value>/user</value>
+  </property>
 </configuration>
