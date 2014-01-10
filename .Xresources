@@ -48,7 +48,7 @@ URxvt.font: xft:Ubuntu Mono:Regular:pixelsize=12
 URxvt.boldFont: xft:Ubuntu Mono:Bold:pixelsize=12
 URxvt.italicFont: xft:Ubuntu Mono:Italic:pixelsize=12
 URxvt.boldItalicFont: xft:Ubuntu Mono:Bold:Italic:size=12
-URxvt.letterSpace: -1
+!URxvt.letterSpace: -1
 
 ! PRAGMATAPRO
 ! URxvt.font: xft:PragmataPro for Powerline:Regular:size=11
