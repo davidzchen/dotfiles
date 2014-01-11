@@ -19,6 +19,7 @@ pushd $AZKABAN_SOLO_SERVER_DIR/plugins > /dev/null
 $HOME/bin/grab-jobtype-plugin $1
 echo "copy    jobtypes plugin.properties"
 cp $HOME/etc/azkaban/jobtypes/pig/plugin.properties ./jobtypes/pig
+cp $HOME/etc/azkaban/jobtypes/hadoopJava/plugin.properties ./jobtypes/hadoopJava
 
 mkdir -p viewer
 pushd viewer > /dev/null

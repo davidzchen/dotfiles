@@ -35,11 +35,9 @@ set number
 " ------------------------------------------- Syntax, highlighting and spelling
 
 filetype plugin indent on
-syntax on
+syntax enable
 
-set background=light
-
-colorscheme hybrid
+colorscheme solarized
 
 "
 " Change color of line numbes
@@ -57,7 +55,6 @@ set backspace=indent,eol,start
 
 if v:version >= 703
   set colorcolumn=80
-  highlight ColorColumn ctermbg=53
 endif
 
 " ------------------------------------------------------------ Multiple windows
