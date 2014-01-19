@@ -23,9 +23,15 @@ cp $HOME/etc/azkaban/jobtypes/hadoopJava/plugin.properties ./jobtypes/hadoopJava
 
 mkdir -p viewer
 pushd viewer > /dev/null
+
 $HOME/bin/grab-hdfs-plugin $1
 echo "copy    hdfs plugin.properties"
 cp $HOME/etc/azkaban/hdfs/plugin.properties ./hdfs/conf
+
 $HOME/bin/grab-pigvisualizer-plugin $1
 echo "copy    pigvisualizer plugin.properties"
 cp $HOME/etc/azkaban/pigvisualizer/plugin.properties ./pigvisualizer/conf
+
+$HOME/bin/grab-javaviewer-plugin $1
+echo "copy    javaviewer plugin.properties"
+cp $HOME/etc/azkaban/javaviewer/plugin.properties ./javaviewer/conf
