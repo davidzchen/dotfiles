@@ -40,3 +40,7 @@ if [ -d $HOME/Apps/play ]; then
   export PLAY_HOME="$HOME/Apps/play"
   export PATH="$PLAY_HOME:$PATH"
 fi
+
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
