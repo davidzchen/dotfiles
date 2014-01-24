@@ -29,6 +29,7 @@ fi
 if [ -d $HIVE_HOME/hcatalog ]; then
   export PATH="$HIVE_HOME/hcatalog/bin:$PATH"
   export PATH="$HIVE_HOME/hcatalog/sbin:$PATH"
+	export HCAT_HOME="$HIVE_HOME/hcatalog"
 fi
 
 if [ -d $HOME/Projects/azkaban2 ]; then
@@ -40,3 +41,7 @@ if [ -d $HOME/Apps/play ]; then
   export PLAY_HOME="$HOME/Apps/play"
   export PATH="$PLAY_HOME:$PATH"
 fi
+
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

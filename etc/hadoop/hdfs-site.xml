@@ -19,5 +19,9 @@
   <property>
     <name>dfs.data.dir</name>
     <value>/home/dchen/Data/hdfs/data</value>
-  </property>
+	</property>
+	<property>
+		<name>dfs.block.size</name>
+		<value>536870912</value>
+	</property>
 </configuration>

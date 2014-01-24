@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PLUGIN_VERSION=1.0
+
+echo "install plugin javaviewer"
+
+rm -rf javaviewer
+cp ~/Projects/azkaban-plugins/dist/javaviewer/packages/azkaban-javaviewer-$PLUGIN_VERSION.tar.gz .
+tar zxf azkaban-javaviewer-$PLUGIN_VERSION.tar.gz
+mv azkaban-javaviewer-$PLUGIN_VERSION javaviewer
+rm azkaban-javaviewer-$PLUGIN_VERSION.tar.gz
