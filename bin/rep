@@ -15,8 +15,8 @@
 
 RP_VERSION=0.0.5
 
-REPO_PATH=/home/dchen/Repos
-VIM_BUNDLE_PATH=/home/dchen/.vim/bundle
+REPO_PATH=/media/dzc/staging/repos
+VIM_BUNDLE_PATH=/home/dzc/.vim/bundle
 
 #RP_PAGER=less -R
 RP_PAGER="vim -u ~/.vimrc.more"
