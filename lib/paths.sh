@@ -11,18 +11,18 @@ export LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib:/opt/lib:$HOME
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
 
-if [ -d $HOME/Projects/hadoop ]; then
-  export HADOOP_HOME="$HOME/Projects/hadoop"
+if [ -d $HOME/Apps/hadoop ]; then
+  export HADOOP_HOME="$HOME/Apps/hadoop"
   export PATH="$HADOOP_HOME/bin:$PATH"
 fi
 
-if [ -d $HOME/Projects/pig ]; then
-  export PIG_HOME="$HOME/Projects/pig"
+if [ -d $HOME/Apps/pig ]; then
+  export PIG_HOME="$HOME/Apps/pig"
   export PATH="$PIG_HOME/bin:$PATH"
 fi
 
-if [ -d $HOME/Projects/hive ]; then
-  export HIVE_HOME="$HOME/Projects/hive/build/dist"
+if [ -d $HOME/Apps/hive ]; then
+  export HIVE_HOME="$HOME/Apps/hive"
   export PATH="$HIVE_HOME/bin:$PATH"
 fi
 
@@ -30,11 +30,6 @@ if [ -d $HIVE_HOME/hcatalog ]; then
   export PATH="$HIVE_HOME/hcatalog/bin:$PATH"
   export PATH="$HIVE_HOME/hcatalog/sbin:$PATH"
 	export HCAT_HOME="$HIVE_HOME/hcatalog"
-fi
-
-if [ -d $HOME/Projects/azkaban2 ]; then
-  export AZKABAN_HOME="$HOME/Projects/azkaban2"
-  export PATH="$AZKABAN_HOME/bin:$PATH"
 fi
 
 if [ -d $HOME/Apps/play ]; then
