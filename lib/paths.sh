@@ -32,6 +32,10 @@ if [ -d $HIVE_HOME/hcatalog ]; then
 	export HCAT_HOME="$HIVE_HOME/hcatalog"
 fi
 
+if [ -d $HOME/Projects/azkaban2 ]; then
+  export AZKABAN_HOME="$HOME/Projects/azkaban2"
+fi
+
 if [ -d $HOME/Apps/play ]; then
   export PLAY_HOME="$HOME/Apps/play"
   export PATH="$PLAY_HOME:$PATH"
