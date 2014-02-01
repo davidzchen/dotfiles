@@ -15,8 +15,7 @@
 " ------------------------------------------------------------------- Important
 
 set nocompatible
-
-call pathogen#infect()
+execute pathogen#infect()
 
 " --------------------------------------- Moving around, searching and patterns
 
@@ -34,8 +33,8 @@ set number
 
 " ------------------------------------------- Syntax, highlighting and spelling
 
+syntax on
 filetype plugin indent on
-syntax enable
 
 set background=dark
 colorscheme solarized
@@ -88,11 +87,6 @@ set showmatch
 
 " ---------------------------------------------------------- Tabs and indenting
 
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-"set expandtab
-set autoindent
 
 " --------------------------------------------------------------------- Folding
 
@@ -119,3 +113,4 @@ highlight clear SignColumn
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
