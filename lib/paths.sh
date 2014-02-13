@@ -14,7 +14,7 @@ export C_INCLUDE_PATH=$C_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
 
 if $HADOOP2; then
-  export HADOOP_INSTALL="$HOME/Apps/hadoop2"
+  export HADOOP_INSTALL="$HOME/Apps/hadoop"
   export PATH=$PATH:$HADOOP_INSTALL/bin
   export PATH=$PATH:$HADOOP_INSTALL/sbin
   export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
@@ -22,8 +22,8 @@ if $HADOOP2; then
   export HADOOP_HDFS_HOME=$HADOOP_INSTALL
   export YARN_HOME=$HADOOP_INSTALL
 else
-  if [ -d $HOME/Apps/hadoop ]; then
-    export HADOOP_HOME="$HOME/Apps/hadoop"
+  if [ -d $HOME/Apps/hadoop1 ]; then
+    export HADOOP_HOME="$HOME/Apps/hadoop1"
     export PATH="$HADOOP_HOME/bin:$PATH"
   fi
 fi
