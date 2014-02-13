@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLUGIN_VERSION=2.1.1
+PLUGIN_VERSION=2.5.0-rc2
 
 echo "install plugin hdfs"
 
