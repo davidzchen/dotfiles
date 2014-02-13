@@ -1,5 +1,7 @@
 #!/bin/sh
 
+HADOOP2=false
+
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
 if [ -d $HOME/.cabal/bin ]; then
@@ -11,9 +13,19 @@ export LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib:/opt/lib:$HOME
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
 
-if [ -d $HOME/Apps/hadoop ]; then
-  export HADOOP_HOME="$HOME/Apps/hadoop"
-  export PATH="$HADOOP_HOME/bin:$PATH"
+if $HADOOP2; then
+  export HADOOP_INSTALL="$HOME/Apps/hadoop2"
+  export PATH=$PATH:$HADOOP_INSTALL/bin
+  export PATH=$PATH:$HADOOP_INSTALL/sbin
+  export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+  export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+  export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+  export YARN_HOME=$HADOOP_INSTALL
+else
+  if [ -d $HOME/Apps/hadoop ]; then
+    export HADOOP_HOME="$HOME/Apps/hadoop"
+    export PATH="$HADOOP_HOME/bin:$PATH"
+  fi
 fi
 
 if [ -d $HOME/Apps/pig ]; then

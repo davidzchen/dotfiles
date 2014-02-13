@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PLUGIN_VERSION=2.2
+PLUGIN_VERSION=2.5.0-rc2
 
 echo "install plugin jobtype"
 
