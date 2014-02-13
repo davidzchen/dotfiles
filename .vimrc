@@ -37,6 +37,10 @@ syntax on
 filetype plugin indent on
 
 colorscheme solarized
+set background=dark
+
+hi IndentGuidesOdd ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
 
 "
 " Change color of line numbes
