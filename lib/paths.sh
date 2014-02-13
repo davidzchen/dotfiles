@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HADOOP2=true
+HADOOP2=false
 
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
@@ -14,7 +14,7 @@ export C_INCLUDE_PATH=$C_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
 
 if $HADOOP2; then
-  export HADOOP_INSTALL="$HOME/Apps/hadoop"
+  export HADOOP_INSTALL="$HOME/Apps/hadoop2"
   export PATH=$PATH:$HADOOP_INSTALL/bin
   export PATH=$PATH:$HADOOP_INSTALL/sbin
   export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
