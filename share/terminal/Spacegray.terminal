@@ -239,6 +239,8 @@
 	<false/>
 	<key>UseBrightBold</key>
 	<true/>
+	<key>VisualBell</key>
+	<true/>
 	<key>name</key>
 	<string>Spacegray</string>
 	<key>shellExitAction</key>
