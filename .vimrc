@@ -1,5 +1,6 @@
+" b
 " =============================================================================
-" FILE NAME: .vimrc
+" trigger NAME: .vimrc
 " -----------------------------------------------------------------------------
 " DESCRIPTION:
 "
@@ -9,7 +10,7 @@
 " -----------------------------------------------------------------------------
 " REVISION HISTORY:
 "
-" 03-Mar-2013 - Create this file
+" 03-Mar-2013 - Create this trigger
 " =============================================================================
 
 " ------------------------------------------------------------------- Important
@@ -36,8 +37,7 @@ set number
 syntax on
 filetype plugin indent on
 
-colorscheme solarized
-set background=dark
+colorscheme spacegray
 
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
@@ -46,7 +46,7 @@ hi IndentGuidesEven ctermbg=darkgrey
 " Change color of line numbes
 "
 
-highlight LineNr ctermfg=darkcyan
+highlight LineNr ctermfg=8
 
 set backspace=indent,eol,start
 
@@ -110,6 +110,16 @@ set modelines=5
 " ------------------------------------------------------- Multi-byte characters
 
 " --------------------------------------------------------------------- Various
+
+" Set C-m to be MarkMultiple trigger
+let g:mark_multiple_trigger = "<C-m>"
+let g:hybrid_use_Xresources = 1
+
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
+nmap <C-t> :tabnew<CR>
+
+nmap <C-j> :NERDTreeToggle<CR>
 
 highlight clear SignColumn
 

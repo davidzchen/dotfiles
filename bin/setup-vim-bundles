@@ -13,12 +13,10 @@ git clone https://github.com/vim-scripts/VimClojure.git
 git clone https://github.com/vim-scripts/Io-programming-language-syntax.git
 git clone https://github.com/adinapoli/vim-markmultiple.git
 git clone https://github.com/tpope/vim-markdown.git
-git clone https://github.com/mhinz/vim-startify.git
 git clone https://github.com/rainux/vim-vala.git
 git clone https://github.com/metalelf0/vimt0d0.git
 git clone https://github.com/juvenn/mustache.vim.git
 git clone https://github.com/jvoorhis/coq.vim.git
-git clone https://github.com/spolu/dwm.vim.git
 git clone https://github.com/jnwhiteh/vim-golang.git
 git clone https://github.com/timcharper/textile.vim.git
 git clone https://github.com/davidzchen/vim-neatstatus.git
@@ -40,3 +38,8 @@ git clone https://github.com/derekwyatt/vim-scala.git
 git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/ntpeters/vim-better-whitespace.git
 git clone https://github.com/nathanaelkane/vim-indent-guides.git
+git clone https://github.com/scrooloose/nerdtree.git
+git clone https://github.com/Shougo/neocomplete.vim.git
+git clone https://github.com/kchmck/vim-coffee-script.git
+git clone https://github.com/tfnico/vim-gradle.git
+git clone https://github.com/vim-scripts/groovy.vim
