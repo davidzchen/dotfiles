@@ -36,6 +36,7 @@ set number
 syntax on
 filetype plugin indent on
 
+let g:hybrid_use_Xresources = 1
 colorscheme spacegray
 
 hi IndentGuidesOdd ctermbg=black
@@ -112,7 +113,6 @@ set modelines=5
 
 " Set C-m to be MarkMultiple trigger
 let g:mark_multiple_trigger = "<C-m>"
-let g:hybrid_use_Xresources = 1
 
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
