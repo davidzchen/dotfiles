@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HADOOP2=true
+HADOOP2=false
 
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
@@ -22,8 +22,8 @@ if $HADOOP2; then
   export HADOOP_HDFS_HOME=$HADOOP_INSTALL
   export YARN_HOME=$HADOOP_INSTALL
 else
-  if [ -d $HOME/Apps/hadoop ]; then
-    export HADOOP_HOME="$HOME/Apps/hadoop"
+  if [ -d $HOME/Apps/hadoop1 ]; then
+    export HADOOP_HOME="$HOME/Apps/hadoop1"
     export PATH="$HADOOP_HOME/bin:$PATH"
   fi
 fi

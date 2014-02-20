@@ -30,3 +30,4 @@ cp $HOME/etc/azkaban/hdfs/plugin.properties ./hdfs/conf
 
 $HOME/bin/grab-pigvisualizer-plugin $1
 $HOME/bin/grab-javaviewer-plugin $1
+$HOME/bin/grab-jobsummary-plugin $1

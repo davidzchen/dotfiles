@@ -36,14 +36,17 @@ set number
 syntax on
 filetype plugin indent on
 
-set background=dark
-colorscheme solarized
+let g:hybrid_use_Xresources = 1
+colorscheme spacegray
+
+hi IndentGuidesOdd ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
 
 "
 " Change color of line numbes
 "
 
-highlight LineNr ctermfg=darkcyan
+highlight LineNr ctermfg=8
 
 set backspace=indent,eol,start
 
@@ -107,6 +110,15 @@ set modelines=5
 " ------------------------------------------------------- Multi-byte characters
 
 " --------------------------------------------------------------------- Various
+
+" Set C-m to be MarkMultiple trigger
+let g:mark_multiple_trigger = "<C-m>"
+
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
+nmap <C-t> :tabnew<CR>
+
+nmap <C-j> :NERDTreeToggle<CR>
 
 highlight clear SignColumn
 

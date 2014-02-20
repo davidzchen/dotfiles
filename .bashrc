@@ -33,6 +33,7 @@ LESSPIPE_BIN=`which lesspipe 2> /dev/null`
 [ -x "$LESSPIPE_BIN" ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set a fancy prompt (non-color, unless we know we "want" color)
+export TERM="xterm-256color"
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
