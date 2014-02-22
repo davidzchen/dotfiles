@@ -33,6 +33,7 @@ fi
 
 installdot .Xresources
 installdot .bashrc
+installdot .gdbinit
 installdot .inputrc
 installdot .rcrc
 installdot .tmux.conf
