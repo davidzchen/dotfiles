@@ -19,7 +19,6 @@ git clone https://github.com/juvenn/mustache.vim.git
 git clone https://github.com/jvoorhis/coq.vim.git
 git clone https://github.com/jnwhiteh/vim-golang.git
 git clone https://github.com/timcharper/textile.vim.git
-git clone https://github.com/davidzchen/vim-neatstatus.git
 git clone https://github.com/ksauzz/thrift.vim.git
 git clone https://github.com/uarun/vim-protobuf.git
 git clone https://github.com/davidzchen/avro-vim.git
@@ -43,3 +42,4 @@ git clone https://github.com/Shougo/neocomplete.vim.git
 git clone https://github.com/kchmck/vim-coffee-script.git
 git clone https://github.com/edkolev/tmuxline.vim
 git clone https://github.com/itchyny/lightline.vim
+git clone https://github.com/dag/vim-fish.git

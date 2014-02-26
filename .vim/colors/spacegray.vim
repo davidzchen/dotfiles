@@ -103,17 +103,17 @@ else
     let s:blue       = "12"   " LightBlue
     let s:purple     = "13"   " LightMagenta
   else
-    let s:foreground = "250"
-    let s:selection  = "237"
-    let s:line       = "235"
+    let s:foreground = "15"
+    let s:selection  = "8"
+    let s:line       = "0"
     let s:comment    = "243"
-    let s:red        = "167"
-    let s:orange     = "173"
-    let s:yellow     = "221"
-    let s:green      = "143"
-    let s:aqua       = "109"
-    let s:blue       = "110"
-    let s:purple     = "139"
+    let s:red        = "9"
+    let s:orange     = "3"
+    let s:yellow     = "11"
+    let s:green      = "10"
+    let s:aqua       = "14"
+    let s:blue       = "12"
+    let s:purple     = "13"
   endif
 endif
 
@@ -274,7 +274,7 @@ exe "hi! WarningMsg"    .s:fg_red         .s:bg_none        .s:fmt_none
 "		WildMenu"
 
 " Use Xresources for background colour
-if has('gui_running') || g:hybrid_use_Xresources != 1
+if has('gui_running')
   exe "hi! Normal"        .s:fg_foreground  .s:bg_background  .s:fmt_none
 else
   exe "hi! Normal"        .s:fg_foreground  .s:bg_none        .s:fmt_none

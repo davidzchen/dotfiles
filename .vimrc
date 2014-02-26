@@ -15,6 +15,10 @@
 " ------------------------------------------------------------------- Important
 
 set nocompatible
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
 execute pathogen#infect()
 
 " --------------------------------------- Moving around, searching and patterns
@@ -36,7 +40,7 @@ set number
 syntax on
 filetype plugin indent on
 
-let g:hybrid_use_Xresources = 1
+"let g:hybrid_use_Xresources = 1
 colorscheme spacegray
 
 hi IndentGuidesOdd ctermbg=black
