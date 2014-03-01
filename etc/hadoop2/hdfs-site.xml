@@ -23,10 +23,10 @@
   </property>
   <property>
     <name>dfs.namenode.name.dir</name>
-    <value>/media/dzc/staging/hdfs/name</value>
+    <value>/staging/data/hdfs2/name</value>
   </property>
   <property>
     <name>dfs.datanode.data.dir</name>
-    <value>/media/dzc/staging/hdfs/data</value>
+    <value>/staging/data/hdfs2/data</value>
   </property>
 </configuration>

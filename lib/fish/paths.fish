@@ -14,7 +14,7 @@ set -x CPLUS_INCLUDE_PATH $CPLUS_INCLUDE_PATH /usr/local/include /opt/include $H
 
 # Hadoop and friends.
 if [ "$HADOOP2" = "true" ]
-	set -x HADOOP_INSTALL $HOME/Apps/hadoop
+	set -x HADOOP_INSTALL /staging/apps/hadoop2
 	set -x PATH $PATH $HADOOP_INSTALL/bin
 	set -x PATH $PATH $HADOOP_INSTALL/sbin
 	set -x HADOOP_MAPRED_HOME $HADOOP_INSTALL
@@ -22,19 +22,19 @@ if [ "$HADOOP2" = "true" ]
 	set -x HADOOP_HDFS_HOME $HADOOP_INSTALL
 	set -x YARN_HOME $HADOOP_INSTALL
 else
-	if [ -d $HOME/Apps/hadoop1 ]
-		set -x HADOOP_HOME $HOME/Apps/hadoop1
+	if [ -d /staging/apps/hadoop ]
+		set -x HADOOP_HOME /staging/apps/hadoop
 		set -x PATH $PATH $HADOOP_HOME/bin
 	end
 end
 
-if [ -d $HOME/Apps/pig ]
-	set -x PIG_HOME $HOME/Apps/pig
+if [ -d /staging/apps/pig ]
+	set -x PIG_HOME /staging/apps/pig
 	set -x PATH $PATH $PIG_HOME/bin
 end
 
-if [ -d $HOME/Apps/hive ]
- 	set -x HIVE_HOME $HOME/Apps/hive
+if [ -d /staging/apps/hive ]
+ 	set -x HIVE_HOME /staging/apps/hive
  	set -x PATH $PATH $HIVE_HOME/bin
 end
 
@@ -50,8 +50,8 @@ if [ -d $HOME/Projects/azkaban2 ]
 end
 
 # Play framework.
-if [ -d $HOME/Apps/play ]
- 	set -x PLAY_HOME $HOME/Apps/play
+if [ -d /staging/apps/play ]
+ 	set -x PLAY_HOME /staging/apps/play
  	set -x PATH $PATH $PLAY_HOME
 end
 
