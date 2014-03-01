@@ -1,17 +1,17 @@
 function grep
-	grep --color $argv
+	command grep --color $argv
 end
 
 function egrep
-	grep --color $argv
+	command grep --color $argv
 end
 
 function fgrep
-	grep --color $argv
+	command grep --color $argv
 end
 
 function va
-	vim -u ~/.vimrc.more
+	command vim -u ~/.vimrc.more $argv
 end
 
 function fish_greeting
