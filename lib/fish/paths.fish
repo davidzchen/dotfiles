@@ -1,4 +1,4 @@
-set HADOOP2 false
+set HADOOP2 true
 
 set -x PATH $PATH /opt/bin /opt/local/bin $HOME/bin $HOME/local/bin
 
@@ -42,6 +42,11 @@ if [ -d $HIVE_HOME/hcatalog ]
  	set -x PATH $PATH $HIVE_HOME/hcatalog/bin
  	set -x PATH $PATH $HIVE_HOME/hcatalog/sbin
 	set -x HCAT_HOME $HIVE_HOME/hcatalog
+end
+
+if [ -d /staging/apps/tajo ]
+	set -x TAJO_HOME /staging/apps/tajo
+	set -x PATH $PATH $TAJO_HOME/bin
 end
 
 # Azkaban

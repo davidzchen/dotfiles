@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HADOOP2=false
+HADOOP2=true
 
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
@@ -42,6 +42,11 @@ if [ -d $HIVE_HOME/hcatalog ]; then
   export PATH="$HIVE_HOME/hcatalog/bin:$PATH"
   export PATH="$HIVE_HOME/hcatalog/sbin:$PATH"
 	export HCAT_HOME="$HIVE_HOME/hcatalog"
+fi
+
+if [ -d /staging/apps/tajo ]; then
+  export TAJO_HOME="/staging/apps/tajo"
+  export PATH="$TAJO_HOME/bin:$PATH"
 fi
 
 if [ -d $HOME/Projects/azkaban2 ]; then

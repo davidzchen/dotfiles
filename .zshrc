@@ -49,33 +49,33 @@ export EDITOR=vi
 unsetopt correctall
 
 # Additional path stuff.
-if [ -f ~/lib/paths.sh ]; then
-  source ~/lib/paths.sh
+if [ -f ~/lib/sh/paths.sh ]; then
+  source ~/lib/sh/paths.sh
 fi
 
 # Set less variables to provide colored man pages.
-if [ -f ~/lib/man-colors.sh ]; then
-  source ~/lib/man-colors.sh
+if [ -f ~/lib/sh/man-colors.sh ]; then
+  source ~/lib/sh/man-colors.sh
 fi
 
 # Color value constants
-if [ -f ~/lib/colors.sh ]; then
-  source ~/lib/colors.sh
+if [ -f ~/lib/sh/colors.sh ]; then
+  source ~/lib/sh/colors.sh
 fi
  
 # colored maven output
-if [ -f ~/lib/mvn-color.sh ]; then
-  source ~/lib/mvn-color.sh
+if [ -f ~/lib/sh/mvn-color.sh ]; then
+  source ~/lib/sh/mvn-color.sh
 fi
 
 # colored ant output
-if [ -f ~/lib/ant-colors.sh ]; then
-  source ~/lib/ant-colors.sh
+if [ -f ~/lib/sh/ant-colors.sh ]; then
+  source ~/lib/sh/ant-colors.sh
 fi
 
 # zsh live syntax coloring
-if [ -f ~/lib/live-command-coloring.zsh ]; then
-  source ~/lib/live-command-coloring.zsh
+if [ -f ~/lib/zsh/live-command-coloring.zsh ]; then
+  source ~/lib/zsh/live-command-coloring.zsh
 fi
 
 ~/bin/begin

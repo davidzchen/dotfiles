@@ -5,8 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-if [ -f ~/lib/paths.sh ]; then
-    . ~/lib/paths.sh
+if [ -f ~/lib/sh/paths.sh ]; then
+    . ~/lib/sh/paths.sh
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -94,23 +94,23 @@ alias l='ls -CF'
 # VIM as pager
 alias va="vim -u ~/.vimrc.more"
 
-if [ -f ~/lib/man-colors.sh ]; then
-    . ~/lib/man-colors.sh
+if [ -f ~/lib/sh/man-colors.sh ]; then
+    . ~/lib/sh/man-colors.sh
 fi
 
 # Color value constants.
-if [ -f ~/lib/colors.sh ]; then
-    . ~/lib/colors.sh
+if [ -f ~/lib/sh/colors.sh ]; then
+    . ~/lib/sh/colors.sh
 fi
 
 # Colored maven output.
-if [ -f ~/lib/mvn-color.sh ]; then
-    . ~/lib/mvn-color.sh
+if [ -f ~/lib/sh/mvn-color.sh ]; then
+    . ~/lib/sh/mvn-color.sh
 fi
 
 # Colored ant output.
-if [ -f ~/lib/ant-colors.sh ]; then
-    . ~/lib/ant-colors.sh
+if [ -f ~/lib/sh/ant-colors.sh ]; then
+    . ~/lib/sh/ant-colors.sh
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
