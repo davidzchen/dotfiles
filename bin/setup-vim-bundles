@@ -38,7 +38,6 @@ git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/ntpeters/vim-better-whitespace.git
 git clone https://github.com/nathanaelkane/vim-indent-guides.git
 git clone https://github.com/scrooloose/nerdtree.git
-git clone https://github.com/Shougo/neocomplete.vim.git
 git clone https://github.com/kchmck/vim-coffee-script.git
 git clone https://github.com/edkolev/tmuxline.vim
 git clone https://github.com/itchyny/lightline.vim
