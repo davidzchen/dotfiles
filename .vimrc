@@ -123,12 +123,6 @@ nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
-" ijkl key mappings
-map i <Up>
-map j <Left>
-map k <Down>
-noremap h i
-
 highlight clear SignColumn
 
 if filereadable(glob("~/.vimrc.local"))
