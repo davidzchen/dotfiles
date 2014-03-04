@@ -118,11 +118,16 @@ set modelines=5
 " Set C-m to be MarkMultiple trigger
 let g:mark_multiple_trigger = "<C-m>"
 
+" Key mappings for tabs.
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
-nmap <C-j> :NERDTreeToggle<CR>
+" ijkl key mappings
+map i <Up>
+map j <Left>
+map k <Down>
+noremap h i
 
 highlight clear SignColumn
 
