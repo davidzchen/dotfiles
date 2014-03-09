@@ -42,3 +42,4 @@ git clone https://github.com/edkolev/tmuxline.vim
 git clone https://github.com/itchyny/lightline.vim
 git clone https://github.com/dag/vim-fish.git
 git clone https://github.com/kien/ctrlp.vim
+git clone https://github.com/sellerie/vim-gradle.git
