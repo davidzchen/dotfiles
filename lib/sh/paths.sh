@@ -2,6 +2,12 @@
 
 HADOOP2=true
 
+if [ -x /usr/local/bin/brew ]; then
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
 if [ -d $HOME/.cabal/bin ]; then
