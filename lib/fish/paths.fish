@@ -6,7 +6,7 @@ if [ -x /usr/local/bin/brew ]
 	set -x PATH $PATH /usr/local/opt/gnu-getopt/bin
 end
 set -x PATH $PATH /opt/bin /opt/local/bin $HOME/bin $HOME/local/bin
-set -x PATH $PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+set -x PATH $PATH /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
 
 # Cabal
 if [ -d $HOME/.cabal/bin ]
