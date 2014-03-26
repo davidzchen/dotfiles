@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HADOOP2=true
+HADOOP2=false
 
 if [ -x /usr/local/bin/brew ]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -48,6 +48,14 @@ if [ -d $HIVE_HOME/hcatalog ]; then
   export PATH="$HIVE_HOME/hcatalog/bin:$PATH"
   export PATH="$HIVE_HOME/hcatalog/sbin:$PATH"
 	export HCAT_HOME="$HIVE_HOME/hcatalog"
+
+  PIG_JARS=$HCAT_HOME/share/hcatalog/hcatalog-core*.jar
+  PIG_JARS=$PIG_JARS:$HCAT_HOME/share/hcatalog/hcatalog-pig-adapter*.jar
+  PIG_JARS=$PIG_JARS:$HIVE_HOME/lib/hive-metastore-*.jar:$HIVE_HOME/lib/libthrift-*.jar
+  PIG_JARS=$PIG_JARS:$HIVE_HOME/lib/hive-exec-*.jar:$HIVE_HOME/lib/libfb303-*.jar
+  PIG_JARS=$PIG_JARS:$HIVE_HOME/lib/jdo-api-*.jar:$HIVE_HOME/lib/slf4j-api-*.jar
+  export PIG_OPTS=-Dhive.metastore.uris=thrift://localhost:9083
+  alias pig="pig -Dpig.additional.jars=$PIG_JARS"
 fi
 
 if [ -d /staging/apps/tajo ]; then
