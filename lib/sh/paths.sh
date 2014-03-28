@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HADOOP2=false
+HADOOP2=true
 
 if [ -x /usr/local/bin/brew ]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
