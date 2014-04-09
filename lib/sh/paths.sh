@@ -74,6 +74,10 @@ if [ -d /staging/apps/play ]; then
   export PATH="$PLAY_HOME:$PATH"
 fi
 
+if [ -d /staging/apps/depot_tools ]; then
+  export PATH="/staging/apps/depot_tools:$PATH"
+fi
+
 export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
 
 export GOROOT=/usr/local/go

@@ -68,6 +68,11 @@ if [ -d /staging/apps/play ]
  	set -x PATH $PATH $PLAY_HOME
 end
 
+# Google Depot Tools
+if [ -d /staging/apps/depot_tools ]
+	set -x PATH $PATH /staging/apps/depot_tools
+end
+
 # On Mac OS X, this option prevents Java from popping up Dock icons whenever it
 # executes a program.
 set -x JAVA_TOOL_OPTIONS '-Djava.awt.headless=true'
