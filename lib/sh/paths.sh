@@ -76,6 +76,10 @@ if [ -d /staging/apps/depot_tools ]; then
   export PATH="/staging/apps/depot_tools:$PATH"
 fi
 
+if [ -d /usr/local/texlive/2013/bin/universal-darwin ]; then
+  export PATH="/usr/local/texlive/2013/bin/universal-darwin:$PATH"
+fi
+
 export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
 
 export GOROOT=/usr/local/go

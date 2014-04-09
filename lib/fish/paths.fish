@@ -71,6 +71,10 @@ if [ -d /staging/apps/depot_tools ]
 	set -x PATH $PATH /staging/apps/depot_tools
 end
 
+if [ -d /usr/local/texlive/2013/bin/universal-darwin ]
+	set -x PATH $PATH /usr/local/texlive/2013/bin/universal-darwin
+end
+
 # On Mac OS X, this option prevents Java from popping up Dock icons whenever it
 # executes a program.
 set -x JAVA_TOOL_OPTIONS '-Djava.awt.headless=true'
