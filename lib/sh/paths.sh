@@ -10,6 +10,8 @@ fi
 
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
+export JAVA_HOME=`/usr/libexec/java_home`
+
 if [ -d $HOME/.cabal/bin ]; then
   export PATH="$HOME/.cabal/bin:$PATH"
 fi

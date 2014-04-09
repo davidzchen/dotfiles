@@ -13,6 +13,8 @@ if [ -d $HOME/.cabal/bin ]
 	set -x PATH $PATH $HOME/.cabal/bin
 end
 
+set -x JAVA_HOME (/usr/libexec/java_home)
+
 set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib
 set -x LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib
 set -x C_INCLUDE_PATH $C_INCLUDE_PATH /usr/local/include /opt/include $HOME/local/include
