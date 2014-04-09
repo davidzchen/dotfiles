@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HADOOP2=false
+HADOOP2=true
 
 if [ -x /usr/local/bin/brew ]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -9,6 +9,8 @@ if [ -x /usr/local/bin/brew ]; then
 fi
 
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
+
+export JAVA_HOME=`/usr/libexec/java_home`
 
 if [ -d $HOME/.cabal/bin ]; then
   export PATH="$HOME/.cabal/bin:$PATH"
