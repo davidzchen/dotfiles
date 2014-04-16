@@ -13,7 +13,12 @@ if [ -d $HOME/.cabal/bin ]
 	set -x PATH $PATH $HOME/.cabal/bin
 end
 
-set -x JAVA_HOME (/usr/libexec/java_home)
+if [ -x /usr/libexec/java_home ]
+  set -x JAVA_HOME (/usr/libexec/java_home)
+else
+  # Assume Linux.
+  set -x JAVA_HOME /usr/lib/jvm/java-7-oracle
+end
 
 set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib
 set -x LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib

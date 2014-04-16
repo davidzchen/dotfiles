@@ -10,7 +10,12 @@ fi
 
 export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
 
-export JAVA_HOME=`/usr/libexec/java_home`
+if [ -x /usr/libexec/java_home ]; then
+  export JAVA_HOME=`/usr/libexec/java_home`
+else
+  # Assume Linux.
+  export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+fi
 
 if [ -d $HOME/.cabal/bin ]; then
   export PATH="$HOME/.cabal/bin:$PATH"
