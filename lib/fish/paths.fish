@@ -22,8 +22,8 @@ end
 
 set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib
 set -x LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib
-set -x C_INCLUDE_PATH $C_INCLUDE_PATH /usr/local/include /opt/include $HOME/local/include
-set -x CPLUS_INCLUDE_PATH $CPLUS_INCLUDE_PATH /usr/local/include /opt/include $HOME/local/include
+set -x C_INCLUDE_PATH /opt/include /opt/local/include $HOME/local/include
+set -x CPLUS_INCLUDE_PATH /opt/include /opt/local/include $HOME/local/include
 
 # Hadoop and friends.
 if [ "$HADOOP2" = "true" ]

@@ -23,8 +23,8 @@ fi
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib:/opt/lib:$HOME/local/lib
 export LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib:/opt/lib:$HOME/local/lib
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/include:/usr/include:/usr/local/include:/opt/include:$HOME/local/include
+export C_INCLUDE_PATH=/opt/include:/opt/local/include:$HOME/local/include
+export CPLUS_INCLUDE_PATH=/opt/include:/opt/local/include:$HOME/local/include
 
 if $HADOOP2; then
   export HADOOP_INSTALL="/staging/apps/hadoop2"
