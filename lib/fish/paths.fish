@@ -1,4 +1,4 @@
-set HADOOP2 true
+set HADOOP2 false
 
 set -x PATH
 if [ -x /usr/local/bin/brew ]
@@ -14,10 +14,10 @@ if [ -d $HOME/.cabal/bin ]
 end
 
 if [ -x /usr/libexec/java_home ]
-  set -x JAVA_HOME (/usr/libexec/java_home)
+	set -x JAVA_HOME (/usr/libexec/java_home)
 else
-  # Assume Linux.
-  set -x JAVA_HOME /usr/lib/jvm/java-7-oracle
+	# Assume Linux.
+	set -x JAVA_HOME /usr/lib/jvm/java-7-oracle
 end
 
 set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH /usr/local/lib /opt/lib $HOME/local/lib

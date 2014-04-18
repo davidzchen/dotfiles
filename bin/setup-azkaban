@@ -5,7 +5,7 @@ if [ -z "$AZKABAN_HOME" ]; then
   exit 1
 fi
 
-AZKABAN_SOLO_SERVER_DIR=$AZKABAN_HOME/dist/packages/azkaban-solo-server
+AZKABAN_SOLO_SERVER_DIR=$AZKABAN_HOME/build/package/azkaban-solo-server
 
 if [ ! -d $AZKABAN_SOLO_SERVER_DIR ]; then
   echo "Azkaban solo server has not been built"
