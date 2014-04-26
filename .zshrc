@@ -62,7 +62,7 @@ fi
 if [ -f ~/lib/sh/colors.sh ]; then
   source ~/lib/sh/colors.sh
 fi
- 
+
 # colored maven output
 if [ -f ~/lib/sh/mvn-color.sh ]; then
   source ~/lib/sh/mvn-color.sh
@@ -76,6 +76,10 @@ fi
 # zsh live syntax coloring
 if [ -f ~/lib/zsh/live-command-coloring.zsh ]; then
   source ~/lib/zsh/live-command-coloring.zsh
+fi
+
+if [ -s ~/lib/base16-shell/base16-ocean.dark.sh ]; then
+  . ~/lib/base16-shell/base16-ocean.dark.sh
 fi
 
 ~/bin/begin

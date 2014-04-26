@@ -32,6 +32,8 @@ set ignorecase
 
 " ------------------------------------------------------------- Displaying text
 
+set background=dark
+
 set scrolloff=3
 set number
 
@@ -41,7 +43,8 @@ syntax on
 filetype plugin indent on
 
 "let g:hybrid_use_Xresources = 1
-colorscheme spacegray
+let base16colorspace=256
+colorscheme base16-ocean
 
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey

@@ -133,6 +133,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -s ~/lib/base16-shell/base16-ocean.dark.sh ]; then
+  . ~/lib/base16-shell/base16-ocean.dark.sh
+fi
+
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
