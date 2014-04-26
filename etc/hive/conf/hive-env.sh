@@ -45,7 +45,7 @@
 
 
 # Set HADOOP_HOME to point to a specific hadoop install directory
-HADOOP_HOME=$HOME/Apps/hadoop1
+HADOOP_HOME=/staging/apps/hadoop
 
 # Hive Configuration Directory can be controlled by:
 # export HIVE_CONF_DIR=

@@ -55,6 +55,17 @@ if [ -d $HIVE_HOME/hcatalog ]
  	set -x PATH $PATH $HIVE_HOME/hcatalog/bin
  	set -x PATH $PATH $HIVE_HOME/hcatalog/sbin
 	set -x HCAT_HOME $HIVE_HOME/hcatalog
+
+	set PIG_JARS "$HCAT_HOME/share/hcatalog/hcatalog-core*.jar"
+	set PIG_JARS "$PIG_JARS:$HCAT_HOME/share/hcatalog/hcatalog-pig-adapter*.jar"
+	set PIG_JARS "$PIG_JARS:$HIVE_HOME/lib/hive-metastore-*.jar:$HIVE_HOME/lib/libthrift-*.jar"
+	set PIG_JARS "$PIG_JARS:$HIVE_HOME/lib/hive-exec-*.jar:$HIVE_HOME/lib/libfb303-*.jar"
+	set PIG_JARS "$PIG_JARS:$HIVE_HOME/lib/jdo-api-*.jar:$HIVE_HOME/lib/slf4j-api-*.jar"
+	set -x PIG_OPTS -Dhive.metastore.uris=thrift://localhost:9083
+	function pig
+		echo $PIG_JARS
+	       	command pig -Dpig.additional.jars=$PIG_JARS $argv
+	end
 end
 
 if [ -d /staging/apps/tajo ]
