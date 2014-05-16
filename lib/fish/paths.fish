@@ -1,4 +1,5 @@
 set HADOOP2 false
+set HIVE13 true
 
 set -x PATH
 if [ -x /usr/local/bin/brew ]
@@ -56,8 +57,13 @@ if [ -d $HIVE_HOME/hcatalog ]
  	set -x PATH $PATH $HIVE_HOME/hcatalog/sbin
 	set -x HCAT_HOME $HIVE_HOME/hcatalog
 
-	set PIG_JARS "$HCAT_HOME/share/hcatalog/hcatalog-core*.jar"
-	set PIG_JARS "$PIG_JARS:$HCAT_HOME/share/hcatalog/hcatalog-pig-adapter*.jar"
+	if [ "$HIVE13" = "true" ]
+		set PIG_JARS "$HCAT_HOME/share/hcatalog/hive-hcatalog-core*.jar"
+		set PIG_JARS "$PIG_JARS:$HCAT_HOME/share/hcatalog/hive-hcatalog-pig-adapter*.jar"
+	else
+		set PIG_JARS "$HCAT_HOME/share/hcatalog/hcatalog-core*.jar"
+		set PIG_JARS "$PIG_JARS:$HCAT_HOME/share/hcatalog/hcatalog-pig-adapter*.jar"
+	end
 	set PIG_JARS "$PIG_JARS:$HIVE_HOME/lib/hive-metastore-*.jar:$HIVE_HOME/lib/libthrift-*.jar"
 	set PIG_JARS "$PIG_JARS:$HIVE_HOME/lib/hive-exec-*.jar:$HIVE_HOME/lib/libfb303-*.jar"
 	set PIG_JARS "$PIG_JARS:$HIVE_HOME/lib/jdo-api-*.jar:$HIVE_HOME/lib/slf4j-api-*.jar"

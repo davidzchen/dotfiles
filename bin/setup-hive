@@ -1,0 +1,30 @@
+#!/bin/bash
+
+HIVE_VERSION=0.14.0-SNAPSHOT
+HIVE_PACKAGE=apache-hive-$HIVE_VERSION-bin
+HIVE_DIST=$HIVE_PACKAGE.tar.gz
+
+DEST=/staging/apps
+
+set -e
+set -o pipefail
+
+# Extract Hive archive.
+cp $HOME/Projects/hive/packaging/target/$HIVE_DIST /tmp
+cd /tmp
+tar zxf $HIVE_DIST
+
+# Add MySQL connector and Hive conf.
+cp $DEST/hive/lib/mysql* ./$HIVE_PACKAGE/lib
+cp $DEST/hive/lib/slf4j* ./$HIVE_PACKAGE/lib
+cp $HOME/etc/hive/conf/* ./$HIVE_PACKAGE/conf
+
+# Install hive to destination.
+rm -rf $DEST/hive
+rm -rf $DEST/$HIVE_PACKAGE
+mv /tmp/$HIVE_PACKAGE $DEST
+rm /tmp/$HIVE_DIST
+cd $DEST
+
+# Create symlinks
+ln -s ./$HIVE_PACKAGE ./hive
