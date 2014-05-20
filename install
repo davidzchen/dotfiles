@@ -31,12 +31,16 @@ if [ ! -d $BACK_DIR ]; then
   mkdir -p $BACK_DIR
 fi
 
-cd lib && git clone https://github.com/chriskempson/base16-shell.git base16-shell
+cd lib
+git clone https://github.com/chriskempson/base16-shell.git base16-shell
+cd ..
 
-cd share && git clone https://github.com/chriskempson/base16-gnome-terminal.git
-cd share && git clone https://github.com/chriskempson/base16-xresources.git
-cd share && git clone https://github.com/chriskempson/base16-textmate.git
-cd share && git clone https://github.com/chriskempson/base16-iterm2.git
+cd share
+git clone https://github.com/chriskempson/base16-gnome-terminal.git
+git clone https://github.com/chriskempson/base16-xresources.git
+git clone https://github.com/chriskempson/base16-textmate.git
+git clone https://github.com/chriskempson/base16-iterm2.git
+cd ..
 
 installdot .Xresources
 installdot .bashrc
