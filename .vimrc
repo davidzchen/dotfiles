@@ -77,6 +77,11 @@ set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 " -------------------------------------------------------------------- Terminal
 
 set t_Co=256
+let g:airline_powerline_fonts = 1
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set termencoding=utf-8
+
 set ttyfast
 
 " ------------------------------------------------------------- Using the mouse

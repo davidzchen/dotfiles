@@ -40,6 +40,7 @@ git clone https://github.com/chriskempson/base16-gnome-terminal.git
 git clone https://github.com/chriskempson/base16-xresources.git
 git clone https://github.com/chriskempson/base16-textmate.git
 git clone https://github.com/chriskempson/base16-iterm2.git
+git clone https://github.com/Lokaltog/powerline-fonts.git
 cd ..
 
 installdot .Xresources
