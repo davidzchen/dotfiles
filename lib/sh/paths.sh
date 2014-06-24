@@ -70,8 +70,8 @@ if [ -d /staging/apps/tajo ]; then
   export PATH="$TAJO_HOME/bin:$PATH"
 fi
 
-if [ -d $HOME/Projects/azkaban2 ]; then
-  export AZKABAN_HOME="$HOME/Projects/azkaban2"
+if [ -d /staging/apps/azkaban ]; then
+  export AZKABAN_HOME="/staging/apps/azkaban"
 fi
 
 if [ -d /staging/apps/play ]; then
