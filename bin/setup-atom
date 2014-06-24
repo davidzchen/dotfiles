@@ -1,0 +1,7 @@
+#!/bin/bash
+
+apm install \
+  spacegray-light-ui \
+  spacegray-dark-ui \
+  base16-ocean-dark \
+  base16-ocean-light-syntax
