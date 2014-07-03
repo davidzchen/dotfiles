@@ -1,33 +1,156 @@
 #!/bin/bash
 
-if [ -z "$AZKABAN_HOME" ]; then
-  echo "AZKABAN_HOME is not set"
-  exit 1
-fi
+set -e
+set -o pipefail
 
-AZKABAN_SOLO_SERVER_DIR=$AZKABAN_HOME/build/package/azkaban-solo-server
+readonly AZKABAN_VERSION=2.6.0-SNAPSHOT
+readonly AZKABAN_PACKAGE=azkaban-solo-server-$AZKABAN_VERSION
+readonly AZKABAN_DIST=$AZKABAN_PACKAGE.tar.gz
 
-if [ ! -d $AZKABAN_SOLO_SERVER_DIR ]; then
-  echo "Azkaban solo server has not been built"
-  exit 1
-fi
+readonly AZKABAN_REPO=$HOME/Projects/azkaban
+readonly AZKABAN_PLUGINS_REPO=$HOME/Projects/azkaban-plugins
 
-echo "copy    global azkaban.properties"
-cp $HOME/etc/azkaban/azkaban.properties $AZKABAN_SOLO_SERVER_DIR/conf
-pushd $AZKABAN_SOLO_SERVER_DIR/plugins > /dev/null
+readonly AZKABAN_DEST=/staging/apps
+readonly AZKABAN_HOME=$AZKABAN_DEST/azkaban
 
-$HOME/bin/grab-jobtype-plugin $1
-echo "copy    jobtypes plugin.properties"
-cp $HOME/etc/azkaban/jobtypes/pig/plugin.properties ./jobtypes/pig
-cp $HOME/etc/azkaban/jobtypes/hadoopJava/plugin.properties ./jobtypes/hadoopJava
+readonly TMP=/tmp
 
-mkdir -p viewer
-pushd viewer > /dev/null
+setup_azkaban() {
+  local build=$AZKABAN_REPO/build/distributions
 
-$HOME/bin/grab-hdfs-plugin $1
-echo "copy    hdfs plugin.properties"
-cp $HOME/etc/azkaban/hdfs/plugin.properties ./hdfs/conf
+  # Extract Azkaban archive.
+  cp $build/$AZKABAN_DIST $TMP
+  cd $TMP
+  tar zxf $AZKABAN_DIST
 
-$HOME/bin/grab-pigvisualizer-plugin $1
-$HOME/bin/grab-javaviewer-plugin $1
-$HOME/bin/grab-jobsummary-plugin $1
+  # Copy configuration files.
+  echo "setup   azkaban core"
+  cp $HOME/etc/azkaban/azkaban.properties $TMP/$AZKABAN_PACKAGE/conf
+  mkdir $TMP/$AZKABAN_PACKAGE/plugins/viewer
+
+  # Install Azkaban to destination.
+  echo "install azkaban core"
+  rm -rf $AZKABAN_DEST/azkaban
+  rm -rf $AZKABAN_DEST/$AZKABAN_PACKAGE
+  mv $TMP/$AZKABAN_PACKAGE $AZKABAN_DEST
+  rm $TMP/$AZKABAN_DIST
+  cd $AZKABAN_DEST
+
+  # Create symlinks
+  ln -s $AZKABAN_DEST/$AZKABAN_PACKAGE $AZKABAN_DEST/azkaban
+}
+
+setup_jobtypes() {
+  local build=$AZKABAN_PLUGINS_REPO/dist/jobtype/packages
+  local plugin_version=2.5.0-rc3
+  local plugin_package=azkaban-jobtype-$plugin_version
+  local plugin_dist=$plugin_package.tar.gz
+
+  cp $build/$plugin_dist $TMP
+  cd $TMP
+  tar zxf $plugin_dist
+
+  echo "setup   plugin jobtype"
+  cp $HOME/etc/azkaban/jobtypes/common.properties $TMP/$plugin_package
+  cp $HOME/etc/azkaban/jobtypes/commonprivate.properties $TMP/$plugin_package
+  cp $HOME/etc/azkaban/jobtypes/pig/plugin.properties $TMP/$plugin_package/pig
+  cp $HOME/etc/azkaban/jobtypes/hadoopJava/plugin.properties $TMP/$plugin_package/hadoopJava
+
+  echo "install plugin jobtype"
+  rm -rf $AZKABAN_HOME/plugins/jobtype
+  mv $TMP/$plugin_package $AZKABAN_HOME/plugins/jobtype
+  #ln -s $AZKABAN_HOME/plugins/jobtype/pig-0.11.0 $AZKABAN_HOME/plugins/jobtype/pig
+
+  rm $TMP/$plugin_dist
+}
+
+setup_hdfs_viewer_plugin() {
+  local build=$AZKABAN_PLUGINS_REPO/dist/hdfsviewer/packages
+  local plugin_version=2.5.0-rc3
+  local plugin_package=azkaban-hdfs-viewer-$plugin_version
+  local plugin_dist=$plugin_package.tar.gz
+
+  cp $build/$plugin_dist $TMP
+  cd $TMP
+  tar zxf $plugin_dist
+
+  echo "setup   plugin hdfsviewer"
+  cp $HOME/etc/azkaban/hdfs/plugin.properties $TMP/$plugin_package/conf
+
+  echo "install plugin hdfsviewer"
+  rm -rf $AZKABAN_HOME/plugins/viewer/hdfs
+  mv $TMP/$plugin_package $AZKABAN_HOME/plugins/viewer/hdfs
+
+  rm $TMP/$plugin_dist
+}
+
+setup_pig_visualizer_plugin() {
+  local build=$AZKABAN_PLUGINS_REPO/dist/pigvisualizer/packages
+  local plugin_version=2.5.0-rc3
+  local plugin_package=azkaban-pigvisualizer-$plugin_version
+  local plugin_dist=$plugin_package.tar.gz
+
+  cp $build/$plugin_dist $TMP
+  cd $TMP
+  tar zxf $plugin_dist
+
+  echo "setup   plugin pigvisualizer"
+  cp $HOME/etc/azkaban/pigvisualizer/plugin.properties $TMP/$plugin_package/conf
+
+  echo "install plugin pigvisualizer"
+  rm -rf $AZKABAN_HOME/plugins/viewer/pigvisualizer
+  mv $TMP/$plugin_package $AZKABAN_HOME/plugins/viewer/pigvisualizer
+
+  rm $TMP/$plugin_dist
+}
+
+setup_java_viewer_plugin() {
+  local build=$AZKABAN_PLUGINS_REPO/dist/javaviewer/packages
+  local plugin_version=2.5.0-rc3
+  local plugin_package=azkaban-javaviewer-$plugin_version
+  local plugin_dist=$plugin_package.tar.gz
+
+  cp $build/$plugin_dist $TMP
+  cd $TMP
+  tar zxf $plugin_dist
+
+  echo "setup   plugin javaviewer"
+  cp $HOME/etc/azkaban/javaviewer/plugin.properties $TMP/$plugin_package/conf
+
+  echo "install plugin javaviewer"
+  rm -rf $AZKABAN_HOME/plugins/viewer/javaviewer
+  mv $TMP/$plugin_package $AZKABAN_HOME/plugins/viewer/javaviewer
+
+  rm $TMP/$plugin_dist
+}
+
+setup_job_summary_plugin() {
+  local build=$AZKABAN_PLUGINS_REPO/dist/jobsummary/packages
+  local plugin_version=2.5.0-rc3
+  local plugin_package=azkaban-jobsummary-$plugin_version
+  local plugin_dist=$plugin_package.tar.gz
+
+  cp $build/$plugin_dist $TMP
+  cd $TMP
+  tar zxf $plugin_dist
+
+  echo "setup   plugin jobsummary"
+
+  echo "install plugin jobsummary"
+  rm -rf $AZKABAN_HOME/plugins/viewer/jobsummary
+  mv $TMP/$plugin_package $AZKABAN_HOME/plugins/viewer/jobsummary
+
+  rm $TMP/$plugin_dist
+}
+
+main() {
+  setup_azkaban
+
+  setup_jobtypes
+  setup_hdfs_viewer_plugin
+  setup_pig_visualizer_plugin
+  setup_java_viewer_plugin
+  setup_job_summary_plugin
+}
+
+main

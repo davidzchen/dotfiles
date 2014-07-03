@@ -48,13 +48,13 @@ if [ -d /staging/apps/pig ]
 end
 
 if [ -d /staging/apps/hive ]
- 	set -x HIVE_HOME /staging/apps/hive
- 	set -x PATH $PATH $HIVE_HOME/bin
+	set -x HIVE_HOME /staging/apps/hive
+	set -x PATH $PATH $HIVE_HOME/bin
 end
 
 if [ -d $HIVE_HOME/hcatalog ]
- 	set -x PATH $PATH $HIVE_HOME/hcatalog/bin
- 	set -x PATH $PATH $HIVE_HOME/hcatalog/sbin
+	set -x PATH $PATH $HIVE_HOME/hcatalog/bin
+	set -x PATH $PATH $HIVE_HOME/hcatalog/sbin
 	set -x HCAT_HOME $HIVE_HOME/hcatalog
 
 	if [ "$HIVE13" = "true" ]
@@ -70,7 +70,7 @@ if [ -d $HIVE_HOME/hcatalog ]
 	set -x PIG_OPTS -Dhive.metastore.uris=thrift://localhost:9083
 	function pig
 		echo $PIG_JARS
-	       	command pig -Dpig.additional.jars=$PIG_JARS $argv
+		command pig -Dpig.additional.jars=$PIG_JARS $argv
 	end
 end
 
@@ -80,14 +80,14 @@ if [ -d /staging/apps/tajo ]
 end
 
 # Azkaban
-if [ -d $HOME/Projects/azkaban2 ]
- 	set -x AZKABAN_HOME $HOME/Projects/azkaban2
+if [ -d /staging/apps/azkaban ]
+	set -x AZKABAN_HOME /staging/apps/azkaban
 end
 
 # Play framework.
 if [ -d /staging/apps/play ]
- 	set -x PLAY_HOME /staging/apps/play
- 	set -x PATH $PATH $PLAY_HOME
+	set -x PLAY_HOME /staging/apps/play
+	set -x PATH $PATH $PLAY_HOME
 end
 
 # Google Depot Tools
