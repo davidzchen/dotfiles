@@ -26,6 +26,13 @@ export LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/usr/local/lib:/opt/lib:$HOME
 export C_INCLUDE_PATH=/opt/include:/opt/local/include:$HOME/local/include
 export CPLUS_INCLUDE_PATH=/opt/include:/opt/local/include:$HOME/local/include
 
+case $(uname -s) in
+  "Linux")
+    export PATH=$HOME/.linuxbrew/bin:$PATH
+    export LD_LIBRARY_PATH=$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH
+    ;;
+esac
+
 if $HADOOP2; then
   export HADOOP_INSTALL="/staging/apps/hadoop2"
   export PATH=$PATH:$HADOOP_INSTALL/bin
