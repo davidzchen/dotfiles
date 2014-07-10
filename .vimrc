@@ -131,6 +131,8 @@ nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
+map <C-n> :NERDTreeToggle<CR>
+
 highlight clear SignColumn
 
 if filereadable(glob("~/.vimrc.local"))
