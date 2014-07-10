@@ -1,214 +1,201 @@
 #!/bin/bash
-#
-#
-# Revision history:
-#   0.0.1 Basic
-#   0.0.2 Added rp find
-#   0.0.3 Added hint for rp search to point to rp find
-#   0.0.4 Colorized output
-#   0.0.5 Added rp info to display info about a given repository.
-#         Added rp ls to list all repositories. Added rp version to
-#         print version. Added bzr support.
-#   0.0.6 Added pathogen directory syncing.
-#   0.0.7 Allow rp info to display readme in current directory.
-#   0.0.8 Add darcs support
 
-RP_VERSION=0.0.5
+set -e
+set -o pipefail
 
-REPO_PATH=/media/dzc/staging/repos
-VIM_BUNDLE_PATH=/home/dzc/.vim/bundle
-
-#RP_PAGER=less -R
-RP_PAGER="vim -u ~/.vimrc.more"
+readonly REPO_PATH=$HOME/repos
+readonly VIM_BUNDLE_PATH=$HOME/.vim/bundle
+readonly RP_PAGER="vim -u ~/.vimrc.more"
 
 err() {
-    echo -e "\e[01;31m$@\e[00m" 1>&2;
+  echo -e "\033[01;31m$@\033[00m" 1>&2;
 }
 
 version() {
-    echo "rp $RP_VERSION - the simple repositories manager."
+  echo "rep - the simple repositories manager."
 }
 
 usage() {
-    err "rp $RP_VERSION"
-    err "Usage: rp OPTION [args]"
-    err ""
-    err "    Where OPTION may be:"
-    err ""
-    err "        all             Pull/update all repositories."
-    err ""
-    err "        sync [REPO]     Detect repository type and update/sync. If"
-    err "                        REPO argument is set, then only sync the"
-    err "                        repository REPO in REPO_PATH."
-    err ""
-    err "        find REPO       Finds all repositories containing REPO."
-    err ""
-    err "        info [REPO]     Displays readme for REPO if found. If no"
-    err "                        argument is given, then it attempts to "
-    err "                        display the readme in the current directory."
-    err ""
-    err "        ls              Lists all repositories."
-    err ""
-    err "        SCM REPO        Clones repository REPO using SCM."
-    err ""
-    err "        help            Displays this usage info."
-    err ""
-    err "        version         Displays version."
-    err ""
+  err "Usage: rp OPTION [args]"
+  err ""
+  err "  Where OPTION may be:"
+  err ""
+  err "    all       Pull/update all repositories."
+  err ""
+  err "    sync [REPO]   Detect repository type and update/sync. If"
+  err "            REPO argument is set, then only sync the"
+  err "            repository REPO in REPO_PATH."
+  err ""
+  err "    find REPO     Finds all repositories containing REPO."
+  err ""
+  err "    info [REPO]   Displays readme for REPO if found. If no"
+  err "            argument is given, then it attempts to "
+  err "            display the readme in the current directory."
+  err ""
+  err "    ls        Lists all repositories."
+  err ""
+  err "    SCM REPO    Clones repository REPO using SCM."
+  err ""
+  err "    help      Displays this usage info."
+  err ""
+  err "    version     Displays version."
+  err ""
 }
 
 syncrepo() {
-    CURRENT_DIR=`pwd`
-    echo -e "\e[01;35m$CURRENT_DIR\e[00m"
+  local current_dir=`pwd`
+  echo -e "\033[01;35m$current_dir\033[00m"
 
-    if [ -d $CURRENT_DIR/.git ]; then
-        git pull
-    elif [ -d $CURRENT_DIR/.svn ]; then
-        svn up
-    elif [ -d $CURRENT_DIR/.hg ]; then
-        hg pull && hg update
-    elif [ -d $CURRENT_DIR/.bzr ]; then
-        bzr update
-    elif [ -d $CURRENT_DIR/_darcs ]; then
-        darcs pull
-    else
-        err "Current directory is not a valid repository"
-    fi
-    echo ""
+  if [ -d $current_dir/.git ]; then
+    git pull
+  elif [ -d $current_dir/.svn ]; then
+    svn up
+  elif [ -d $current_dir/.hg ]; then
+    hg pull && hg update
+  elif [ -d $current_dir/.bzr ]; then
+    bzr update
+  elif [ -d $current_dir/_darcs ]; then
+    darcs pull
+  else
+    err "Current directory is not a valid repository"
+  fi
+  echo ""
 }
 
 syncall() {
-   for dir in $(find $1 -maxdepth 1 -type d); do
-       if [ $dir = $1 ]; then
-           continue
-       fi
+  for dir in $(find $1 -maxdepth 1 -type d); do
+    if [ $dir = $1 ]; then
+      continue
+    fi
 
-       cd $dir && syncrepo
-   done
+    cd $dir && syncrepo
+  done
 }
 
 
 showinfo() {
-    README_FILE=`find . -iname "readme*" | head -n 1`
-    $RP_PAGER $README_FILE
+  local readme_file=`find . -iname "readme*" | head -n 1`
+  $RP_PAGER $readme_file
 }
 
-if [ ! -d $REPO_PATH ]; then
+main() {
+  if [ ! -d $REPO_PATH ]; then
     err "$REPO_PATH does not exist."
     exit 1
-fi
+  fi
 
-if [ ! -d $VIM_BUNDLE_PATH ]; then
+  if [ ! -d $VIM_BUNDLE_PATH ]; then
     err "$VIM_BUNDLE_PATH does not exist."
     exit 1
-fi
+  fi
 
-case "$1" in
+  case "$1" in
     all)
-        syncall $REPO_PATH
-        ;;
+      syncall $REPO_PATH
+      ;;
 
     vim)
-        syncall $VIM_BUNDLE_PATH
-        ;;
+      syncall $VIM_BUNDLE_PATH
+      ;;
 
     sync)
-        if [ $# -ne 2 ]; then
-            syncrepo
-        else
-            cd $REPO_PATH/$2 && syncrepo
-        fi
-        ;;
+      if [ $# -ne 2 ]; then
+        syncrepo
+      else
+        cd $REPO_PATH/$2 && syncrepo
+      fi
+      ;;
 
     find)
-        ls $REPO_PATH | grep $2
-        ;;
+      ls $REPO_PATH | grep $2
+      ;;
 
     info)
-        if [ $# -eq 1 ]; then
-            showinfo
-            exit 0
-        fi
+      if [ $# -eq 1 ]; then
+        showinfo
+        exit 0
+      fi
 
-        if [ ! -d $REPO_PATH/$2 ]; then
-            err "Repository $2 not found."
-            exit 2
-        fi
+      if [ ! -d $REPO_PATH/$2 ]; then
+        err "Repository $2 not found."
+        exit 2
+      fi
 
-        cd $REPO_PATH/$2 && showinfo
-        ;;
+      cd $REPO_PATH/$2 && showinfo
+      ;;
 
     ls)
-        ls $REPO_PATH
-        ;;
+      ls $REPO_PATH
+      ;;
 
     git)
-        if [ $# -ne 2 ]; then
-            usage
-            exit 2
-        fi
+      if [ $# -ne 2 ]; then
+        usage
+        exit 2
+      fi
 
-        cd $REPO_PATH
-        git clone $2
-        ;;
+      cd $REPO_PATH
+      git clone $2
+      ;;
 
     hg)
-        if [ $# -ne 2 ]; then
-            usage
-            exit 2
-        fi
+      if [ $# -ne 2 ]; then
+        usage
+        exit 2
+      fi
 
-        cd $REPO_PATH
-        hg clone $2
-        ;;
+      cd $REPO_PATH
+      hg clone $2
+      ;;
 
     svn)
-        if [ $# -ne 2 ]; then
-            usage
-            exit 2
-        fi
+      if [ $# -ne 2 ]; then
+        usage
+        exit 2
+      fi
 
-        cd $REPO_PATH
-        svn co $2
-        ;;
+      cd $REPO_PATH
+      svn co $2
+      ;;
 
     bzr)
-        if [ $# -ne 2 ]; then
-            usage
-            exit 2
-        fi
+      if [ $# -ne 2 ]; then
+        usage
+        exit 2
+      fi
 
-        cd $REPO_PATH
-        bzr branch $2
-        ;;
+      cd $REPO_PATH
+      bzr branch $2
+      ;;
 
     darcs)
-        if [ $# -ne 2 ]; then
-            usage
-            exit 2
-        fi
+      if [ $# -ne 2 ]; then
+        usage
+        exit 2
+      fi
 
-        cd $REPO_PATH
-        darcs get $2
-        ;;
+      cd $REPO_PATH
+      darcs get $2
+      ;;
 
     help)
-        usage
-        ;;
+      usage
+      ;;
 
     search)
-        err "Did you mean:"
-        err "    rp find"
-        ;;
+      err "Did you mean:"
+      err "  rp find"
+      ;;
 
     version)
-        version
-        ;;
+      version
+      ;;
 
     *)
-        err "Invalid option: $1"
-        usage
-        ;;
-esac
+      err "Invalid option: $1"
+      usage
+      ;;
+  esac
+}
 
-
+main
