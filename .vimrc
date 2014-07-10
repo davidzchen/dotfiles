@@ -126,6 +126,16 @@ set modelines=5
 " Set C-m to be MarkMultiple trigger
 let g:mark_multiple_trigger = "<C-m>"
 
+" Tmuxline custom preset
+let g:tmuxline_preset = {
+  \'a':    '#S',
+  \'b':    '#W',
+  \'win':  '#I #W',
+  \'cwin': '#I #W',
+  \'x':    ['%Y-%m-%d', '%H:%M'],
+  \'y':    '#(battery Charging; battery Discharging)',
+  \'z':    '#h'}
+
 " Key mappings for tabs.
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
