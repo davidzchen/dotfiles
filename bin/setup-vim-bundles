@@ -50,3 +50,4 @@ git clone https://github.com/chriskempson/base16-vim.git
 git clone https://github.com/tpope/vim-haml.git
 git clone https://github.com/blinks/vim-antlr.git
 git clone https://github.com/cespare/vim-toml.git
+git clone https://github.com/edkolev/promptline.vim.git

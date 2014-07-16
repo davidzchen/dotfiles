@@ -15,16 +15,17 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-. $HOME/lib/sh/aliases.sh
-. $HOME/lib/sh/paths.sh
-. $HOME/lib/sh/ant-colors.sh
-. $HOME/lib/sh/man-colors.sh
+source $HOME/lib/sh/aliases.sh
+source $HOME/lib/sh/paths.sh
+source $HOME/lib/sh/ant-colors.sh
+source $HOME/lib/sh/man-colors.sh
 
 case $TERM in
   screen-256color|xterm|xterm-256color)
-    . $HOME/lib/sh/colors.sh
-    . $HOME/lib/sh/mvn-color.sh
-    . $HOME/lib/base16-shell/base16-ocean.dark.sh
+    source $HOME/lib/sh/colors.sh
+    source $HOME/lib/sh/mvn-color.sh
+    source $HOME/lib/base16-shell/base16-ocean.dark.sh
+    source $HOME/lib/promptline/airline.sh
     ;;
 esac
 
@@ -32,11 +33,11 @@ esac
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
 
 if [ -f $HOME/.bashrc_local ]; then
-    . $HOME/.bashrc_local
+    source $HOME/.bashrc_local
 fi
 
 $HOME/bin/begin
