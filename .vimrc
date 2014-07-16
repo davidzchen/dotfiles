@@ -142,6 +142,7 @@ nmap <C-l> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 highlight clear SignColumn
 

@@ -3,18 +3,16 @@
 mkdir -p $HOME/.vim/bundle
 cd $HOME/.vim/bundle
 
+# Language support plugins.
+
 git clone https://github.com/vim-scripts/jade.vim.git
 git clone https://github.com/pbrisbin/html-template-syntax.git
 git clone https://github.com/davidzchen/Syntax-for-Fasta.git
-git clone https://github.com/tpope/vim-dispatch.git
 git clone https://github.com/vim-scripts/Superior-Haskell-Interaction-Mode-SHIM.git
-git clone https://github.com/tpope/vim-fugitive.git
-git clone https://github.com/vim-scripts/VimClojure.git
-git clone https://github.com/vim-scripts/Io-programming-language-syntax.git
-git clone https://github.com/adinapoli/vim-markmultiple.git
 git clone https://github.com/tpope/vim-markdown.git
 git clone https://github.com/rainux/vim-vala.git
-git clone https://github.com/metalelf0/vimt0d0.git
+git clone https://github.com/vim-scripts/VimClojure.git
+git clone https://github.com/vim-scripts/Io-programming-language-syntax.git
 git clone https://github.com/juvenn/mustache.vim.git
 git clone https://github.com/jvoorhis/coq.vim.git
 git clone https://github.com/jnwhiteh/vim-golang.git
@@ -23,9 +21,7 @@ git clone https://github.com/ksauzz/thrift.vim.git
 git clone https://github.com/uarun/vim-protobuf.git
 git clone https://github.com/davidzchen/avro-vim.git
 git clone https://github.com/davidzchen/pig.vim.git
-git clone https://github.com/sjl/gundo.vim.git
 git clone https://github.com/davidzchen/rc.vim.git
-git clone https://github.com/davidzchen/snipmate.vim.git
 git clone https://github.com/davidzchen/jproperties.vim.git
 git clone https://github.com/lepture/vim-velocity.git
 git clone https://github.com/jimmyhchan/dustjs.vim.git
@@ -34,20 +30,42 @@ git clone https://github.com/derekwyatt/vim-sbt.git
 git clone https://github.com/gre/play2vim.git
 git clone https://github.com/othree/html5.vim.git
 git clone https://github.com/derekwyatt/vim-scala.git
-git clone https://github.com/altercation/vim-colors-solarized.git
-git clone https://github.com/ntpeters/vim-better-whitespace.git
-git clone https://github.com/nathanaelkane/vim-indent-guides.git
 git clone https://github.com/kchmck/vim-coffee-script.git
-git clone https://github.com/edkolev/tmuxline.vim
-git clone https://github.com/bling/vim-airline.git
-git clone https://github.com/dag/vim-fish.git
-git clone https://github.com/kien/ctrlp.vim
 git clone https://github.com/sellerie/vim-gradle.git
 git clone https://github.com/pantsbuild/vim-pants.git
 git clone https://github.com/wting/rust.vim.git
 git clone https://github.com/b4winckler/vim-objc.git
-git clone https://github.com/chriskempson/base16-vim.git
 git clone https://github.com/tpope/vim-haml.git
 git clone https://github.com/blinks/vim-antlr.git
 git clone https://github.com/cespare/vim-toml.git
+
+# Color schemes
+
+git clone https://github.com/altercation/vim-colors-solarized.git
+git clone https://github.com/chriskempson/base16-vim.git
+
+# Misc
+
+git clone https://github.com/metalelf0/vimt0d0.git
+
+# Tools
+
+git clone https://github.com/tpope/vim-dispatch.git
+git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/adinapoli/vim-markmultiple.git
+git clone https://github.com/davidzchen/snipmate.vim.git
+git clone https://github.com/sjl/gundo.vim.git
+git clone https://github.com/ntpeters/vim-better-whitespace.git
+git clone https://github.com/nathanaelkane/vim-indent-guides.git
+git clone https://github.com/edkolev/tmuxline.vim
+git clone https://github.com/bling/vim-airline.git
+git clone https://github.com/dag/vim-fish.git
+git clone https://github.com/kien/ctrlp.vim
 git clone https://github.com/edkolev/promptline.vim.git
+
+# Commenting out syntastic until I figure out how to make Java work.
+#git clone https://github.com/scrooloose/syntastic.git
+
+# On OS X, Exuberant CTags must be installed:
+# brew install ctags-exuberant
+git clone https://github.com/majutsushi/tagbar.git
