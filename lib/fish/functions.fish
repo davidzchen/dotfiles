@@ -3,11 +3,11 @@ function grep
 end
 
 function egrep
-	command grep --color $argv
+	command egrep --color $argv
 end
 
 function fgrep
-	command grep --color $argv
+	command fgrep --color $argv
 end
 
 function va
