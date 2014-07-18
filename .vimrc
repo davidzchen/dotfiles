@@ -67,6 +67,8 @@ if v:version >= 703
   set colorcolumn=80
 endif
 
+set cursorline
+
 " ------------------------------------------------------------ Multiple windows
 
 set laststatus=2
