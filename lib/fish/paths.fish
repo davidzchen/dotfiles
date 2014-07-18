@@ -34,7 +34,7 @@ end
 
 # Hadoop and friends.
 if [ "$HADOOP2" = "true" ]
-	set -x HADOOP_INSTALL /staging/apps/hadoop2
+	set -x HADOOP_INSTALL $HOME/staging/apps/hadoop2
 	set -x PATH $PATH $HADOOP_INSTALL/bin
 	set -x PATH $PATH $HADOOP_INSTALL/sbin
 	set -x HADOOP_MAPRED_HOME $HADOOP_INSTALL
@@ -42,19 +42,19 @@ if [ "$HADOOP2" = "true" ]
 	set -x HADOOP_HDFS_HOME $HADOOP_INSTALL
 	set -x YARN_HOME $HADOOP_INSTALL
 else
-	if [ -d /staging/apps/hadoop ]
-		set -x HADOOP_HOME /staging/apps/hadoop
+	if [ -d $HOME/staging/apps/hadoop ]
+		set -x HADOOP_HOME $HOME/staging/apps/hadoop
 		set -x PATH $PATH $HADOOP_HOME/bin
 	end
 end
 
-if [ -d /staging/apps/pig ]
-	set -x PIG_HOME /staging/apps/pig
+if [ -d $HOME/staging/apps/pig ]
+	set -x PIG_HOME $HOME/staging/apps/pig
 	set -x PATH $PATH $PIG_HOME/bin
 end
 
-if [ -d /staging/apps/hive ]
-	set -x HIVE_HOME /staging/apps/hive
+if [ -d $HOME/staging/apps/hive ]
+	set -x HIVE_HOME $HOME/staging/apps/hive
 	set -x PATH $PATH $HIVE_HOME/bin
 end
 
@@ -80,25 +80,25 @@ if [ -d $HIVE_HOME/hcatalog ]
 	end
 end
 
-if [ -d /staging/apps/tajo ]
-	set -x TAJO_HOME /staging/apps/tajo
+if [ -d $HOME/staging/apps/tajo ]
+	set -x TAJO_HOME $HOME/staging/apps/tajo
 	set -x PATH $PATH $TAJO_HOME/bin
 end
 
 # Azkaban
-if [ -d /staging/apps/azkaban ]
-	set -x AZKABAN_HOME /staging/apps/azkaban
+if [ -d $HOME/staging/apps/azkaban ]
+	set -x AZKABAN_HOME $HOME/staging/apps/azkaban
 end
 
 # Play framework.
-if [ -d /staging/apps/play ]
-	set -x PLAY_HOME /staging/apps/play
+if [ -d $HOME/staging/apps/play ]
+	set -x PLAY_HOME $HOME/staging/apps/play
 	set -x PATH $PATH $PLAY_HOME
 end
 
 # Google Depot Tools
-if [ -d /staging/apps/depot_tools ]
-	set -x PATH $PATH /staging/apps/depot_tools
+if [ -d $HOME/staging/apps/depot_tools ]
+	set -x PATH $PATH $HOME/staging/apps/depot_tools
 end
 
 if [ -d /usr/local/texlive/2013/bin/universal-darwin ]

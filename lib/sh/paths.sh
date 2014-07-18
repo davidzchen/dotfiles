@@ -34,7 +34,7 @@ case $(uname -s) in
 esac
 
 if $HADOOP2; then
-  export HADOOP_INSTALL="/staging/apps/hadoop2"
+  export HADOOP_INSTALL="$HOME/staging/apps/hadoop2"
   export PATH=$PATH:$HADOOP_INSTALL/bin
   export PATH=$PATH:$HADOOP_INSTALL/sbin
   export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
@@ -42,19 +42,19 @@ if $HADOOP2; then
   export HADOOP_HDFS_HOME=$HADOOP_INSTALL
   export YARN_HOME=$HADOOP_INSTALL
 else
-  if [ -d /staging/apps/hadoop ]; then
-    export HADOOP_HOME="/staging/apps/hadoop"
+  if [ -d $HOME/staging/apps/hadoop ]; then
+    export HADOOP_HOME="$HOME/staging/apps/hadoop"
     export PATH="$HADOOP_HOME/bin:$PATH"
   fi
 fi
 
-if [ -d /staging/apps/pig ]; then
-  export PIG_HOME="/staging/apps/pig"
+if [ -d $HOME/staging/apps/pig ]; then
+  export PIG_HOME="$HOME/staging/apps/pig"
   export PATH="$PIG_HOME/bin:$PATH"
 fi
 
-if [ -d /staging/apps/hive ]; then
-  export HIVE_HOME="/staging/apps/hive"
+if [ -d $HOME/staging/apps/hive ]; then
+  export HIVE_HOME="$HOME/staging/apps/hive"
   export PATH="$HIVE_HOME/bin:$PATH"
 fi
 
@@ -72,22 +72,22 @@ if [ -d $HIVE_HOME/hcatalog ]; then
   alias pig="pig -Dpig.additional.jars=$PIG_JARS"
 fi
 
-if [ -d /staging/apps/tajo ]; then
-  export TAJO_HOME="/staging/apps/tajo"
+if [ -d $HOME/staging/apps/tajo ]; then
+  export TAJO_HOME="$HOME/staging/apps/tajo"
   export PATH="$TAJO_HOME/bin:$PATH"
 fi
 
-if [ -d /staging/apps/azkaban ]; then
-  export AZKABAN_HOME="/staging/apps/azkaban"
+if [ -d $HOME/staging/apps/azkaban ]; then
+  export AZKABAN_HOME="$HOME/staging/apps/azkaban"
 fi
 
-if [ -d /staging/apps/play ]; then
-  export PLAY_HOME="/staging/apps/play"
+if [ -d $HOME/staging/apps/play ]; then
+  export PLAY_HOME="$HOME/staging/apps/play"
   export PATH="$PLAY_HOME:$PATH"
 fi
 
-if [ -d /staging/apps/depot_tools ]; then
-  export PATH="/staging/apps/depot_tools:$PATH"
+if [ -d $HOME/staging/apps/depot_tools ]; then
+  export PATH="$HOME/staging/apps/depot_tools:$PATH"
 fi
 
 if [ -d /usr/local/texlive/2013/bin/universal-darwin ]; then
