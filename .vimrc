@@ -123,10 +123,18 @@ set modelines=5
 " ----------------------------------------------------------- Language specific
 " ------------------------------------------------------- Multi-byte characters
 
-" --------------------------------------------------------------------- Various
+" --------------------------------------------------------------------- Plugins
+
+"
+" MarkMultiple
+"
 
 " Set C-m to be MarkMultiple trigger
 let g:mark_multiple_trigger = "<C-m>"
+
+"
+" Tmuxline
+"
 
 " Tmuxline custom preset
 let g:tmuxline_preset = {
@@ -138,17 +146,48 @@ let g:tmuxline_preset = {
   \'y':    '#(battery Charging; battery Discharging)',
   \'z':    '#h'}
 
+"
+" NERDTree
+"
+
+map <C-n> :NERDTreeToggle<CR>
+
+"
+" Tagbar
+"
+
+nmap <F8> :TagbarToggle<CR>
+
+"
+" Airline
+"
+
+let g:airline#extensions#tabline#enabled = 1
+
+"
+" Gitgutter
+"
+
+highlight clear SignColumn
+
+"
+" Syntastic
+"
+
+" Passive mode for checker by default since it is not always working correclty
+" in Java projects. Use Ctrl+w E to run the checker.
+let g:syntastic_mode_map = {
+  \'mode': 'passive',
+  \'active_filetypes': [],
+  \'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+" ------------------------------------------------------------------------ Misc
+
 " Key mappings for tabs.
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
-
-map <C-n> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
-
-let g:airline#extensions#tabline#enabled = 1
-
-highlight clear SignColumn
 
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
