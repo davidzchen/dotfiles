@@ -143,10 +143,10 @@ nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
-let g:airline#extensions#tabline#enabled = 1
-
 map <C-n> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+
+let g:airline#extensions#tabline#enabled = 1
 
 highlight clear SignColumn
 

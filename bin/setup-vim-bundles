@@ -69,3 +69,4 @@ git clone https://github.com/edkolev/promptline.vim.git
 # On OS X, Exuberant CTags must be installed:
 # brew install ctags-exuberant
 git clone https://github.com/majutsushi/tagbar.git
+git clone https://github.com/airblade/vim-gitgutter.git
