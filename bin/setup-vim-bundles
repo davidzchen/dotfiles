@@ -5,7 +5,7 @@ import subprocess
 import shutil
 import sys
 
-VIM_BUNDLE_DIR = os.getenv('HOME') + '/.vim/bundle'
+VIM_BUNDLES_DIR = os.getenv('HOME') + '/.vim/bundle'
 
 VIM_BUNDLE_REPOS = [
   'https://github.com/vim-scripts/jade.vim.git',
@@ -71,64 +71,93 @@ VIM_BUNDLE_REPOS = [
   # On OS X, Exuberant CTags must be installed:
   # brew install ctags-exuberant
   'https://github.com/majutsushi/tagbar.git',
-  'https://github.com/airblade/vim-gitgutter.git'
+  'https://github.com/airblade/vim-gitgutter.git',
 ]
 
-def get_bundle_name(url):
+class Print:
+  UPDATE = '\033[94m'
+  INSTALL = '\033[92m'
+  REMOVE = '\033[93m'
+  ENDC = '\033[0m'
+
+  INDICATOR = '==> '
+
+  @staticmethod
+  def install(message):
+    print Print.INSTALL + Print.INDICATOR + Print.ENDC + message
+
+  @staticmethod
+  def remove(message):
+    print Print.REMOVE + Print.INDICATOR + Print.ENDC + message
+
+  @staticmethod
+  def update(message):
+    print Print.UPDATE + Print.INDICATOR + Print.ENDC + message
+
+def _get_bundle_name(url):
   parts = url.split('/')
   bundle = parts[-1]
   if bundle.endswith('.git'):
     bundle = bundle[:-4]
   return bundle
 
-def create_bundle_repo_map(repos):
+def _create_bundle_repo_map(repos):
   bundle_repo_map = {}
   for repo in repos:
-    bundle_repo_map[get_bundle_name(repo)] = repo
+    bundle_repo_map[_get_bundle_name(repo)] = repo
   return bundle_repo_map
 
-def install_bundles(bundle_dir, bundles, bundle_repo_map):
+def install_bundles(bundles_dir, bundles, bundle_repo_map):
   for bundle in bundles:
-    print "Installing bundle: %s" % bundle_repo_map[bundle]
+    Print.install("Installing bundle: %s" % bundle_repo_map[bundle])
     repo = bundle_repo_map[bundle]
-    proc = subprocess.Popen(['git', 'clone', repo], cwd = bundle_dir)
+    proc = subprocess.Popen(['git', 'clone', repo], cwd = bundles_dir)
     proc.wait()
 
-def remove_bundles(bundle_dir, bundles):
+def remove_bundles(bundles_dir, bundles):
   for bundle in bundles:
-    print "Removing bundle: %s" % bundle
-    shutil.rmtree(os.path.join(bundle_dir, bundle))
+    Print.remove("Removing bundle: %s" % bundle)
+    shutil.rmtree(os.path.join(bundles_dir, bundle))
 
-def setup_vim_bundles(bundle_dir, repos):
-  bundle_repo_map = create_bundle_repo_map(repos)
+def update_bundles(bundles_dir, bundles):
+  for bundle in bundles:
+    Print.update("Updating bundle: %s" % bundle)
+    bundle_dir = os.path.join(bundles_dir, bundle)
+    proc = subprocess.Popen(['git', 'pull'], cwd = bundle_dir)
+    proc.wait()
+
+def setup_vim_bundles(bundles_dir, repos):
+  bundle_repo_map = _create_bundle_repo_map(repos)
 
   new_bundles = set(bundle_repo_map.keys())
   installed_bundles = set([ f for f
-    in os.listdir(bundle_dir)
-    if os.path.isdir(os.path.join(bundle_dir, f))
+    in os.listdir(bundles_dir)
+    if os.path.isdir(os.path.join(bundles_dir, f))
   ])
 
   common_bundles = new_bundles & installed_bundles
   bundles_to_install = new_bundles - common_bundles
   bundles_to_remove = installed_bundles - common_bundles
 
-  install_bundles(bundle_dir, bundles_to_install, bundle_repo_map)
-  remove_bundles(bundle_dir, bundles_to_remove)
+  install_bundles(bundles_dir, bundles_to_install, bundle_repo_map)
+  remove_bundles(bundles_dir, bundles_to_remove)
+  update_bundles(bundles_dir, common_bundles)
 
 def main():
-  if not os.path.isdir(VIM_BUNDLE_DIR):
-    print "%s is not a directory." % VIM_BUNDLE_DIR
+  if not os.path.isdir(VIM_BUNDLES_DIR):
+    print "%s is not a directory." % VIM_BUNDLES_DIR
     sys.exit(os.EX_DATAERR)
 
-  if not os.path.exists(VIM_BUNDLE_DIR):
+  if not os.path.exists(VIM_BUNDLES_DIR):
     try:
-      os.makedirs(VIM_BUNDLE_DIR)
+      os.makedirs(VIM_BUNDLES_DIR)
     except IOError as err:
-      print "Error creating bundle directory %s: %s" % (VIM_BUNDLE_DIR, str(err))
+      print("Error creating bundle directory %s: %s"
+          % (VIM_BUNDLES_DIR, str(err)))
       sys.exit(os.EX_IOERR)
 
   try:
-    setup_vim_bundles(VIM_BUNDLE_DIR, VIM_BUNDLE_REPOS)
+    setup_vim_bundles(VIM_BUNDLES_DIR, VIM_BUNDLE_REPOS)
   except IOError as err:
     print "Error setting up bundles: %s" % str(err)
     sys.exit(os.EX_IOERR)
