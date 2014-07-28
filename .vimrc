@@ -104,7 +104,16 @@ set ignorecase
 set background=dark
 
 set scrolloff=3
-set number
+set relativenumber
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-k> :call NumberToggle()<cr>
 
 " ------------------------------------------- Syntax, highlighting and spelling
 
