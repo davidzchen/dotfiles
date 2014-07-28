@@ -23,69 +23,70 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'vim-scripts/jade.vim.git',
-Plugin 'pbrisbin/html-template-syntax.git',
-Plugin 'davidzchen/Syntax-for-Fasta.git',
-Plugin 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM.git',
-Plugin 'tpope/vim-markdown.git',
-Plugin 'rainux/vim-vala.git',
-Plugin 'vim-scripts/VimClojure.git',
-Plugin 'vim-scripts/Io-programming-language-syntax.git',
-Plugin 'juvenn/mustache.vim.git',
-Plugin 'jvoorhis/coq.vim.git',
-Plugin 'jnwhiteh/vim-golang.git',
-Plugin 'timcharper/textile.vim.git',
-Plugin 'ksauzz/thrift.vim.git',
-Plugin 'uarun/vim-protobuf.git',
-Plugin 'davidzchen/avro-vim.git',
-Plugin 'davidzchen/pig.vim.git',
-Plugin 'davidzchen/hive.vim.git',
-Plugin 'davidzchen/rc.vim.git',
-Plugin 'davidzchen/jproperties.vim.git',
-Plugin 'lepture/vim-velocity.git',
-Plugin 'jimmyhchan/dustjs.vim.git',
-Plugin 'groenewege/vim-less.git',
-Plugin 'derekwyatt/vim-sbt.git',
-Plugin 'gre/play2vim.git',
-Plugin 'othree/html5.vim.git',
-Plugin 'derekwyatt/vim-scala.git',
-Plugin 'kchmck/vim-coffee-script.git',
-Plugin 'sellerie/vim-gradle.git',
-Plugin 'pantsbuild/vim-pants.git',
-Plugin 'wting/rust.vim.git',
-Plugin 'b4winckler/vim-objc.git',
-Plugin 'tpope/vim-haml.git',
-Plugin 'blinks/vim-antlr.git',
-Plugin 'cespare/vim-toml.git',
+" Syntaxes
+Plugin 'vim-scripts/jade.vim.git'
+Plugin 'pbrisbin/html-template-syntax.git'
+Plugin 'davidzchen/Syntax-for-Fasta.git'
+Plugin 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM.git'
+Plugin 'tpope/vim-markdown.git'
+Plugin 'rainux/vim-vala.git'
+Plugin 'vim-scripts/VimClojure.git'
+Plugin 'vim-scripts/Io-programming-language-syntax.git'
+Plugin 'juvenn/mustache.vim.git'
+Plugin 'jvoorhis/coq.vim.git'
+Plugin 'jnwhiteh/vim-golang.git'
+Plugin 'timcharper/textile.vim.git'
+Plugin 'ksauzz/thrift.vim.git'
+Plugin 'uarun/vim-protobuf.git'
+Plugin 'davidzchen/avro-vim.git'
+Plugin 'davidzchen/pig.vim.git'
+Plugin 'davidzchen/hive.vim.git'
+Plugin 'davidzchen/rc.vim.git'
+Plugin 'davidzchen/jproperties.vim.git'
+Plugin 'lepture/vim-velocity.git'
+Plugin 'jimmyhchan/dustjs.vim.git'
+Plugin 'groenewege/vim-less.git'
+Plugin 'derekwyatt/vim-sbt.git'
+Plugin 'gre/play2vim.git'
+Plugin 'othree/html5.vim.git'
+Plugin 'derekwyatt/vim-scala.git'
+Plugin 'kchmck/vim-coffee-script.git'
+Plugin 'sellerie/vim-gradle.git'
+Plugin 'pantsbuild/vim-pants.git'
+Plugin 'wting/rust.vim.git'
+Plugin 'b4winckler/vim-objc.git'
+Plugin 'tpope/vim-haml.git'
+Plugin 'blinks/vim-antlr.git'
+Plugin 'cespare/vim-toml.git'
 
 " Color schemes
-Plugin 'altercation/vim-colors-solarized.git',
-Plugin 'chriskempson/base16-vim.git',
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'chriskempson/base16-vim.git'
 
 " Misc
-Plugin 'metalelf0/vimt0d0.git',
+Plugin 'metalelf0/vimt0d0.git'
 
 " Tools
-Plugin 'tpope/vim-dispatch.git',
-Plugin 'tpope/vim-fugitive.git',
-Plugin 'adinapoli/vim-markmultiple.git',
-Plugin 'davidzchen/snipmate.vim.git',
-Plugin 'sjl/gundo.vim.git',
-Plugin 'ntpeters/vim-better-whitespace.git',
-Plugin 'nathanaelkane/vim-indent-guides.git',
-Plugin 'edkolev/tmuxline.vim.git',
-Plugin 'bling/vim-airline.git',
-Plugin 'dag/vim-fish.git',
-Plugin 'kien/ctrlp.vim',
-Plugin 'edkolev/promptline.vim.git',
-Plugin 'scrooloose/nerdtree.git',
-
-Plugin 'scrooloose/syntastic.git',
+Plugin 'tpope/vim-dispatch.git'
+Plugin 'sjl/vitality.vim.git'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'adinapoli/vim-markmultiple.git'
+Plugin 'davidzchen/snipmate.vim.git'
+Plugin 'sjl/gundo.vim.git'
+Plugin 'ntpeters/vim-better-whitespace.git'
+Plugin 'nathanaelkane/vim-indent-guides.git'
+Plugin 'edkolev/tmuxline.vim.git'
+Plugin 'bling/vim-airline.git'
+Plugin 'dag/vim-fish.git'
+Plugin 'kien/ctrlp.vim'
+Plugin 'edkolev/promptline.vim.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/syntastic.git'
 
 " On OS X, Exuberant CTags must be installed:
 " brew install ctags-exuberant
-Plugin 'majutsushi/tagbar.git',
-Plugin 'airblade/vim-gitgutter.git',
+Plugin 'majutsushi/tagbar.git'
+Plugin 'airblade/vim-gitgutter.git'
 
 call vundle#end()
 filetype plugin indent on
@@ -114,6 +115,12 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <C-k> :call NumberToggle()<cr>
+
+au FocusLost * :set number
+au FocusGained * :set relativenumber
+
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 " ------------------------------------------- Syntax, highlighting and spelling
 
