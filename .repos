@@ -1,0 +1,33 @@
+# Default repos
+repos('default',
+    repos_dir = '~/Repos',
+    pager = 'va')
+
+# Upcoming feature for specifying SCM types
+scm('git',
+    clone = 'git clone',
+    pull = 'git pull',
+    meta_dir = '.git',
+    remote = 'git config --get remote.origin.url')
+
+scm('svn',
+    clone = 'svn co',
+    pull = 'svn up',
+    meta_dir = '.svn',
+    remote = 'svn info | grep \'Repository Root\' | awk \'{print $NF}\'')
+
+scm('hg',
+    clone = 'hg clone',
+    pull = 'hg pull && hg update'
+    meta_dir = '.hg',
+    remote = 'hg paths default')
+
+scm('bzr',
+    clone = 'bzr branch',
+    pull = 'bzr update',
+    meta_dir = '.bzr')
+
+scm('darcs',
+    clone = 'darcs get',
+    pull = 'darcs pull',
+    meta_dir = '_darcs')
