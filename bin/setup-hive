@@ -4,7 +4,7 @@ HIVE_VERSION=0.14.0-SNAPSHOT
 HIVE_PACKAGE=apache-hive-$HIVE_VERSION-bin
 HIVE_DIST=$HIVE_PACKAGE.tar.gz
 
-DEST=/staging/apps
+DEST=$HOME/staging/apps
 
 set -e
 set -o pipefail

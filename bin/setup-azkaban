@@ -10,7 +10,7 @@ readonly AZKABAN_DIST=$AZKABAN_PACKAGE.tar.gz
 readonly AZKABAN_REPO=$HOME/Projects/azkaban
 readonly AZKABAN_PLUGINS_REPO=$HOME/Projects/azkaban-plugins
 
-readonly AZKABAN_DEST=/staging/apps
+readonly AZKABAN_DEST=$HOME/staging/apps
 readonly AZKABAN_HOME=$AZKABAN_DEST/azkaban
 
 readonly TMP=/tmp
