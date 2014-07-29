@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+import shutil
+
+def proc_out(command, path):
+  proc = subprocess.call(command, stdout = subprocess.PIPE, cwd = path, shell = True)
+  return proc.stdout.read().strip()
+
+def main():
+  repos = [ f for f
+    in os.listdir('.')
+    if os.path.isdir(os.path.join('.', f))
+  ]
+  repo_urls = []
+  for repo in repos:
+    remote_info = []
+    if os.path.isdir(os.path.join(repo, '.git')):
+      url = proc_out('git config --get remote.origin.url', repo)
+      remote_info = ['git', url]
+    elif os.path.isdir(os.path.join(repo, '.svn')):
+      url = proc_out('svn info | grep \'Repository Root\' | awk \'{print $NF}\'', repo)
+      remote_info = ['svn', url]
+    elif os.path.isdir(os.path.join(repo, '.hg')):
+      url = proc_out('hg paths default', repo)
+      remote_info = ['hg', url]
+    elif os.path.isdir(os.path.join(repo, '.bzr')):
+      #url = proc_out([], repo)
+      #remote_info = ['bzr', url]
+      print 'bzr not supported %s' % repo
+      continue
+    elif os.path.isdir(os.path.join(repo, '_darcs')):
+      #url = proc_out([], repo)
+      #remote_info = ['darcs', url]
+      print 'darcs not supported %s' % repo
+      continue
+    else:
+      print 'Unknown repository type for %s' % repo
+      continue
+
+    repo_urls.append(remote_info)
+
+  with open('REPOS', 'w') as fp:
+    for remote in repo_urls:
+      type = remote[0]
+      url = remote[1]
+      fp.write('%s(\'%s\')\n' % (type, url))
+
+if __name__ == '__main__':
+  main()
