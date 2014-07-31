@@ -110,6 +110,12 @@ end
 set -x JAVA_TOOL_OPTIONS '-Djava.awt.headless=true'
 
 # Set up Go.
+switch (uname -s)
+	case Linux
+    set -x GOROOT /usr/lib/go
+  case Darwin
+    set -x GOROOT /usr/local/Cellar/go/1.3/libexec
+end
 set -x GOPATH $HOME/go
 set -x PATH $PATH $GOPATH/bin
 
