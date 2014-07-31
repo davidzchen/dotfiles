@@ -96,6 +96,5 @@ fi
 
 export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
 
-export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin

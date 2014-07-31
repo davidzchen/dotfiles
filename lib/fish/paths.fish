@@ -110,7 +110,6 @@ end
 set -x JAVA_TOOL_OPTIONS '-Djava.awt.headless=true'
 
 # Set up Go.
-set -x GOROOT /usr/local/go
 set -x GOPATH $HOME/go
 set -x PATH $PATH $GOPATH/bin
 
