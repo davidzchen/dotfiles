@@ -93,7 +93,6 @@
   set ignorecase
   set scrolloff=3
   set showmatch
-  set nowrap
   set confirm
 
   set modeline
@@ -102,6 +101,21 @@
   set laststatus=2
   set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
   set foldenable
+" }
+
+" Formatting {
+  set nowrap          " Do not wrap long lines.
+  set autoindent      " Indent at the same level of the previous line
+  set shiftwidth=2    " Use indents of 2 spaces
+  set expandtab       " Tabs are spaces, not tabs
+  set tabstop=2       " An indentation every 2 columns
+  set softtabstop=2   " Let backspace delete indent
+
+  autocmd BufNewFile,BufRead .tmux_session,.repos,REPOS setf python
+  autocmd BufNewFile,BufRead *.flex setf jflex
+  autocmd BufNewFile,BufRead *.scaml setf haml
+  autocmd FileType fish compiler fish setlocal textwidth=79
+  autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
 " }
 
 " Key (re)Mappings {
