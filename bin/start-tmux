@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+
+import sys
+import os
+from shlex import split
+from subprocess import Popen, PIPE
+
+USAGE_TEXT = """
+usage: start-tmux <session-name>
+"""
+
+DEFAULT_TMUX_SESSION_NAME = 'default'
+
+class TmuxSession:
+  name = ''
+  windows = []
+  session_id = 0
+
+  def __init__(self, name, windows):
+    self.name = name
+    self.windows = windows
+
+  @staticmethod
+  def session_count():
+    proc = Popen(split('tmux list-sessions'), stdout = PIPE, stderr = PIPE)
+    out, err = proc.communicate()
+    return len(out.splitlines())
+
+  @staticmethod
+  def create(tmux_session_name):
+    tmux_sessions = {}
+    def tmux_session(name, **kwargs):
+      tmux_sessions[name] = TmuxSession(name, kwargs['windows'])
+
+    tmux_sessions_file_path = os.path.expanduser('~/.tmux_sessions')
+    if not os.path.exists(tmux_sessions_file_path):
+      print 'No .tmux_sessions file in home directory.'
+      sys.exit(0)
+
+    tmux_sessions_file = open(os.path.expanduser('~/.tmux_sessions')).read()
+    exec(tmux_sessions_file) in locals()
+    return tmux_sessions[tmux_session_name]
+
+  def new_session(self):
+    proc = Popen(split('tmux new-session -d -s %d' % self.session_id))
+    proc.wait()
+
+  def new_window(self, name, directory, window_id):
+    print ('tmux new-window -c %s -t %d:%d -n \'%s\'' %
+        (directory, self.session_id, window_id, name))
+    proc = Popen(split('tmux new-window -c %s -t %d:%d -n \'%s\'' %
+        (directory, self.session_id, window_id, name)))
+    proc.wait()
+
+  def select_window(self):
+    proc = Popen(split('tmux select-window -t %d:1' % self.session_id))
+    proc.wait()
+
+  def attach_session(self):
+    proc = Popen(split('tmux -2 attach-session -t %d' % self.session_id))
+    proc.wait()
+
+  def start(self):
+    self.session_id = TmuxSession.session_count()
+    self.new_session()
+    for i, (name, directory) in enumerate(self.windows):
+      self.new_window(name, os.path.expanduser(directory), i + 1)
+
+    self.select_window()
+    self.attach_session()
+
+def usage():
+  print USAGE_TEXT
+
+def main():
+  tmux_session_name = DEFAULT_TMUX_SESSION_NAME
+  if len(sys.argv) == 2:
+    tmux_session_name = sys.argv[1]
+
+  tmux_session = TmuxSession.create(tmux_session_name)
+  tmux_session.start()
+
+if __name__ == '__main__':
+  main()
