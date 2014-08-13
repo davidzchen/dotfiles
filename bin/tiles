@@ -21,9 +21,9 @@ from shlex import split
 from subprocess import Popen, PIPE
 
 USAGE_TEXT = """
-usage: start-tmux <session-name> [-h|--help] [-v|--verbose]
+usage: tiles <session-name> [-h|--help] [-v|--verbose]
 
-Creates tmux (terminal multiplexer) sessions defined in the ~/.tmux_sessions
+Creates tmux (terminal multiplexer) sessions defined in the ~/.tiles
 configuration file.
 
     -v --verbose
@@ -32,8 +32,8 @@ configuration file.
     -h --help
         Prints this help text.
 
-The .tmux_sessions file must be in the user's home directory. The syntax of the
-.tmux_sessions file is as follows:
+The .tiles file must be in the user's home directory. The syntax of the .tiles
+file is as follows:
 
     tmux_session(name, windows = [])
 
@@ -50,9 +50,9 @@ For example, the following configuration:
 defines a tmux session named 'work' with two windows. The session can be started
 by invoking:
 
-    $ start-tmux work
+    $ tiles work
 
-If a session in .tmux_sessions is named 'default', starting this script with no
+If a session in .tiles is named 'default', starting this script with no
 arguments starts the default session.
 """
 
@@ -85,7 +85,7 @@ class TmuxSession:
   @staticmethod
   def create(tmux_session_name, verbose):
     """
-    Reads the .tmux_sessions file in the user's home directory and returns an
+    Reads the .tiles file in the user's home directory and returns an
     instance of a TmuxSession object that will be used to start the requested
     tmux session.
     """
@@ -93,12 +93,12 @@ class TmuxSession:
     def tmux_session(name, **kwargs):
       tmux_sessions[name] = TmuxSession(name, kwargs['windows'], verbose)
 
-    tmux_sessions_file_path = os.path.expanduser('~/.tmux_sessions')
+    tmux_sessions_file_path = os.path.expanduser('~/.tiles')
     if not os.path.exists(tmux_sessions_file_path):
       print 'No .tmux_sessions file in home directory.'
       sys.exit(0)
 
-    tmux_sessions_file = open(os.path.expanduser('~/.tmux_sessions')).read()
+    tmux_sessions_file = open(os.path.expanduser('~/.tiles')).read()
     exec(tmux_sessions_file) in locals()
     return tmux_sessions[tmux_session_name]
 
