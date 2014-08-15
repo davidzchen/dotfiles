@@ -111,7 +111,7 @@
   set tabstop=2       " An indentation every 2 columns
   set softtabstop=2   " Let backspace delete indent
 
-  autocmd BufNewFile,BufRead .tmux_sessions,.repos,REPOS setf python
+  autocmd BufNewFile,BufRead .tiles,.repos,REPOS,BUILD setf python
   autocmd BufNewFile,BufRead *.flex setf jflex
   autocmd BufNewFile,BufRead *.scaml setf haml
   autocmd BufNewFile,BufRead *.gyp,*.gypi,*.json setf javascript
