@@ -46,11 +46,13 @@ cd ..
 installdot .Xresources
 installdot .bashrc
 installdot .gdbinit
+installdot .gitignore_global
 installdot .inputrc
 installdot .rcrc
 installdot .tmux.conf
 installdot .vim
 installdot .vimrc
+installdot .vimrc.bundles
 installdot .vimrc.more
 installdot .zshrc
 installdot bin

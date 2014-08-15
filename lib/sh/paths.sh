@@ -14,7 +14,7 @@ if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
 else
   # Assume Linux.
-  export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+  export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 fi
 
 if [ -d $HOME/.cabal/bin ]; then
