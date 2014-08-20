@@ -106,13 +106,11 @@
 " Formatting {
   set nowrap          " Do not wrap long lines.
 
-  if exists('filetype')
-    set autoindent      " Indent at the same level of the previous line
-    set shiftwidth=2    " Use indents of 2 spaces
-    set expandtab       " Tabs are spaces, not tabs
-    set tabstop=2       " An indentation every 2 columns
-    set softtabstop=2   " Let backspace delete indent
-  endif
+  set autoindent      " Indent at the same level of the previous line
+  set shiftwidth=2    " Use indents of 2 spaces
+  set expandtab       " Tabs are spaces, not tabs
+  set tabstop=2       " An indentation every 2 columns
+  set softtabstop=2   " Let backspace delete indent
 
   autocmd BufNewFile,BufRead .tiles,.repos,REPOS,BUILD setf python
   autocmd BufNewFile,BufRead *.flex setf jflex
@@ -120,6 +118,7 @@
   autocmd BufNewFile,BufRead *.gyp,*.gypi,*.json setf javascript
   autocmd FileType fish compiler fish setlocal textwidth=79
   autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
+  autocmd FileType go setlocal noet shiftwidth=8 tabstop=8 softtabstop=8
 " }
 
 " Key (re)Mappings {
