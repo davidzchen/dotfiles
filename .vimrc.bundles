@@ -41,7 +41,7 @@
     Plugin 'tpope/vim-haml.git'
     Plugin 'blinks/vim-antlr.git'
     Plugin 'cespare/vim-toml.git'
-    Plugin 'metalelf0/vimt0d0.git'
+    Plugin 'tomswartz07/vim-todo.git'
   " }
 
   " Color schemes {
