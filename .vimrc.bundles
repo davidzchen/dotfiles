@@ -17,7 +17,7 @@
     Plugin 'vim-scripts/Io-programming-language-syntax.git'
     Plugin 'juvenn/mustache.vim.git'
     Plugin 'jvoorhis/coq.vim.git'
-    Plugin 'jnwhiteh/vim-golang.git'
+    Plugin 'fatih/vim-go.git'
     Plugin 'timcharper/textile.vim.git'
     Plugin 'ksauzz/thrift.vim.git'
     Plugin 'uarun/vim-protobuf.git'
