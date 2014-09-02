@@ -42,6 +42,8 @@
     Plugin 'blinks/vim-antlr.git'
     Plugin 'cespare/vim-toml.git'
     Plugin 'tomswartz07/vim-todo.git'
+    Plugin 'jimenezrick/vimerl.git'
+    Plugin 'edkolev/erlang-motions.vim'
   " }
 
   " Color schemes {
