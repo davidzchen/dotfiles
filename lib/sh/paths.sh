@@ -101,7 +101,7 @@ case $(uname -s) in
     export GOROOT=/usr/lib/go
     ;;
   "Darwin")
-    export GOROOT=/usr/local/Cellar/go/1.3/libexec
+    export GOROOT=/usr/local/Cellar/go/1.3.1/libexec
     ;;
 esac
 export GOPATH=$HOME/go

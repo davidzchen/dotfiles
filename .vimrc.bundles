@@ -67,6 +67,7 @@
     Plugin 'edkolev/promptline.vim.git'
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'scrooloose/syntastic.git'
+    Plugin 'kien/rainbow_parentheses.vim'
 
     " On OS X, Exuberant CTags must be installed:
     " brew install ctags-exuberant
