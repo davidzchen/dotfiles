@@ -13,7 +13,7 @@
     Plugin 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM.git'
     Plugin 'tpope/vim-markdown.git'
     Plugin 'rainux/vim-vala.git'
-    Plugin 'vim-scripts/VimClojure.git'
+    Plugin 'guns/vim-clojure-static'
     Plugin 'vim-scripts/Io-programming-language-syntax.git'
     Plugin 'juvenn/mustache.vim.git'
     Plugin 'jvoorhis/coq.vim.git'
