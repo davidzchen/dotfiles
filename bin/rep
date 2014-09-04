@@ -284,9 +284,28 @@ def configs_init():
   exec(repos_file) in locals()
   return repo_configs
 
+REPOS_FILENAME = 'REPOS'
+
+def repos_init():
+  current_dir = '.'
+  repos_file = os.path.join(current_dir, REPOS_FILENAME)
+  while !os.path.exists(repos_file) and os.path.exists(current_dir):
+    current_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+    repos_file = os.path.join(current_dir, REPOS_FILENAME)
+
+  if !os.path.exists(repos_file):
+    print 'No REPOS file found.'
+    sys.exist(1)
+
+  repos = []
+  def repo(url, **kwargs):
+    repos.extend([url, kwargs['type']])
+  return repos
+
 def main():
   scms = scms_init()
   configs = configs_init()
+  repos = repos_init()
 
   config = None
   args = sys.argv
