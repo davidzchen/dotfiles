@@ -289,11 +289,11 @@ REPOS_FILENAME = 'REPOS'
 def repos_init():
   current_dir = '.'
   repos_file = os.path.join(current_dir, REPOS_FILENAME)
-  while !os.path.exists(repos_file) and os.path.exists(current_dir):
+  while not os.path.exists(repos_file) and os.path.exists(current_dir):
     current_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
     repos_file = os.path.join(current_dir, REPOS_FILENAME)
 
-  if !os.path.exists(repos_file):
+  if not os.path.exists(repos_file):
     print 'No REPOS file found.'
     sys.exist(1)
 
