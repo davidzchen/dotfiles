@@ -35,7 +35,6 @@
     Plugin 'derekwyatt/vim-scala.git'
     Plugin 'kchmck/vim-coffee-script.git'
     Plugin 'sellerie/vim-gradle.git'
-    Plugin 'pantsbuild/vim-pants.git'
     Plugin 'wting/rust.vim.git'
     Plugin 'b4winckler/vim-objc.git'
     Plugin 'tpope/vim-haml.git'
