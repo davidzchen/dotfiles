@@ -39,7 +39,7 @@
     Plugin 'wting/rust.vim.git'
     Plugin 'b4winckler/vim-objc.git'
     Plugin 'tpope/vim-haml.git'
-    Plugin 'blinks/vim-antlr.git'
+    Plugin 'jrozner/vim-antlr.git'
     Plugin 'cespare/vim-toml.git'
     Plugin 'tomswartz07/vim-todo.git'
     Plugin 'jimenezrick/vimerl.git'

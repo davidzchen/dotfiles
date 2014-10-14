@@ -22,4 +22,8 @@ case $TERM in
     ;;
 esac
 
+if [ -f $HOME/.zshrc_local ]; then
+    source $HOME/.zshrc_local
+fi
+
 $HOME/bin/begin

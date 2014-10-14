@@ -35,6 +35,12 @@
   endif
 " }
 
+" Use vimrc custom if exists {
+  if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+  endif
+" }
+
 " General {
   set background=dark
   syntax on
