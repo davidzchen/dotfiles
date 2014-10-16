@@ -5,6 +5,7 @@ source $HOME/lib/sh/paths.sh
 
 source $HOME/lib/zsh/antigen.zsh
 antigen bundles <<EOK
+  zsh-users/zsh-history-substring-search
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions
 EOK
