@@ -4,8 +4,12 @@ source $HOME/lib/sh/aliases.sh
 source $HOME/lib/sh/paths.sh
 
 source $HOME/lib/zsh/antigen.zsh
+
+DISABLE_AUTO_TITLE=true
+
+antigen use oh-my-zsh
+antigen bundle history-substring-search
 antigen bundles <<EOK
-  zsh-users/zsh-history-substring-search
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions
 EOK
