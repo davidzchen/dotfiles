@@ -54,8 +54,14 @@
     set relativenumber
     function! NumberToggle()
       if(&relativenumber == 1)
+        if v:version > 703 || (v:version == 703 && has('patch1115'))
+          set norelativenumber
+        end
         set number
       else
+        if v:version > 703 || (v:version == 703 && has ('patch1115'))
+          set nonumber
+        end
         set relativenumber
       endif
     endfunc
