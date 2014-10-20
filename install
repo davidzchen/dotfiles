@@ -6,7 +6,7 @@ CURR_DIR=`pwd`
 
 installdot() {
   local install=$CURR_DIR/$1
-  echo "Install $install"
+  echo "==> install .$1"
 
   if [ ! -e $BACK_DIR ]; then
     echo "$BACK_DIR does not exist!"
@@ -32,15 +32,28 @@ if [ ! -d $BACK_DIR ]; then
 fi
 
 cd lib
+echo "==> install base16-shell"
 git clone https://github.com/chriskempson/base16-shell.git base16-shell
 cd ..
 
 cd share
+echo "==> install base16-gnome-terminal"
 git clone https://github.com/chriskempson/base16-gnome-terminal.git
+echo "==> install base16-xresources"
 git clone https://github.com/chriskempson/base16-xresources.git
+echo "==> install base16-textmate"
 git clone https://github.com/chriskempson/base16-textmate.git
+echo "==> install base16-iterm2"
 git clone https://github.com/chriskempson/base16-iterm2.git
+echo "==> install powerline-fonts"
 git clone https://github.com/Lokaltog/powerline-fonts.git
+cd ..
+
+echo "==> install vundle"
+cd vim
+mkdir -p bundle && cd bundle
+git clone https://github.com/gmarik/Vundle.vim
+cd ..
 cd ..
 
 installdot Xresources
