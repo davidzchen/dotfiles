@@ -8,7 +8,7 @@ if [ -x /usr/local/bin/brew ]; then
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
-export PATH="/opt/bin:/opt/local/bin:$HOME/bin:$HOME/local/bin:$PATH"
+export PATH="/opt/bin:/opt/local/bin:$HOME/.bin:$HOME/local/bin:$PATH"
 
 if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME=`/usr/libexec/java_home`

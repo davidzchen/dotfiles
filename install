@@ -14,17 +14,17 @@ installdot() {
   fi
 
   if [ -e $BACK_DIR/$1 ]; then
-    if [ ! -L $DEST_DIR/$1 ]; then
-      echo "Warning: $1 exists in $BACK_DIR but is not a symlink in $DEST_DIR."
+    if [ ! -L $DEST_DIR/.$1 ]; then
+      echo "Warning: .$1 exists in $BACK_DIR but is not a symlink in $DEST_DIR."
     fi
     return
   fi
 
-  if [ -e $DEST_DIR/$1 ]; then
-    mv $DEST_DIR/$1 $BACK_DIR
+  if [ -e $DEST_DIR/.$1 ]; then
+    mv $DEST_DIR/.$1 $BACK_DIR
   fi
 
-  ln -s $install $DEST_DIR/$1
+  ln -s $install $DEST_DIR/.$1
 }
 
 if [ ! -d $BACK_DIR ]; then
@@ -43,18 +43,18 @@ git clone https://github.com/chriskempson/base16-iterm2.git
 git clone https://github.com/Lokaltog/powerline-fonts.git
 cd ..
 
-installdot .Xresources
-installdot .bashrc
-installdot .gdbinit
-installdot .gitignore_global
-installdot .inputrc
-installdot .rcrc
-installdot .tmux.conf
-installdot .vim
-installdot .vimrc
-installdot .vimrc.bundles
-installdot .vimrc.more
-installdot .zshrc
+installdot Xresources
+installdot bashrc
+installdot gdbinit
+installdot gitignore_global
+installdot inputrc
+installdot rcrc
+installdot tmux.conf
+installdot vim
+installdot vimrc
+installdot vimrc.bundles
+installdot vimrc.more
+installdot zshrc
 installdot bin
 installdot etc
 installdot lib
