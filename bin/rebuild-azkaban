@@ -1,6 +1,0 @@
-#!/bin/sh
-
-azkaban solo stop && \
-	ant clean package && \
-	setup-azkaban && \
-	azkaban solo start
