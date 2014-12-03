@@ -67,6 +67,7 @@
     Plugin 'scrooloose/nerdtree.git'
     Plugin 'scrooloose/syntastic.git'
     Plugin 'kien/rainbow_parentheses.vim'
+    Plugin 'jceb/vim-orgmode.git'
 
     " On OS X, Exuberant CTags must be installed:
     " brew install ctags-exuberant
