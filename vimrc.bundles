@@ -43,6 +43,7 @@
     Plugin 'tomswartz07/vim-todo.git'
     Plugin 'jimenezrick/vimerl.git'
     Plugin 'edkolev/erlang-motions.vim'
+    Plugin 'justinmk/vim-syntax-extra'
   " }
 
   " Color schemes {
