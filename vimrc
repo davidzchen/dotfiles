@@ -113,6 +113,8 @@
   set laststatus=2
   set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
   set foldenable
+  set visualbell
+  set wildmenu
 " }
 
 " Formatting {
