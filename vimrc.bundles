@@ -71,11 +71,13 @@
     Plugin 'jceb/vim-orgmode.git'
     Plugin 'reedes/vim-wordy.git'
     Plugin 'tpope/vim-speeddating'
-
     " On OS X, Exuberant CTags must be installed:
     " brew install ctags-exuberant
     Plugin 'majutsushi/tagbar.git'
     Plugin 'airblade/vim-gitgutter.git'
+    if !filereadable(expand('~/.custom_ycm'))
+      Bundle 'Valloric/YouCompleteMe'
+    endif
   " }
 " }
 
