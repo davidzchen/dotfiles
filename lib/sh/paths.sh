@@ -12,7 +12,7 @@ case $(uname -s) in
     fi
     ;;
   "Darwin")
-    export GOROOT=/usr/local/Cellar/go/1.3.1/libexec
+    export GOROOT=/usr/local/Cellar/go/1.4/libexec
     ;;
 esac
 export GOPATH=$HOME/go

@@ -44,6 +44,7 @@
     Plugin 'jimenezrick/vimerl.git'
     Plugin 'edkolev/erlang-motions.vim'
     Plugin 'justinmk/vim-syntax-extra'
+    Plugin 'darfink/vim-plist.git'
   " }
 
   " Color schemes {
