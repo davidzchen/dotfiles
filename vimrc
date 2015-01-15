@@ -65,7 +65,7 @@
         set relativenumber
       endif
     endfunc
-    nnoremap <C-k> :call NumberToggle()<cr>
+    nnoremap fk :call NumberToggle()<cr>
 
     au FocusLost * :set number
     au FocusGained * :set relativenumber
