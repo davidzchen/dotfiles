@@ -89,12 +89,13 @@ class TmuxSession:
     tmux session.
     """
     tmux_sessions = {}
-    def tmux_session(name, **kwargs):
+    def tmux_session(**kwargs):
+      name = kwargs['name']
       tmux_sessions[name] = TmuxSession(name, kwargs['windows'], verbose)
 
     tmux_sessions_file_path = os.path.expanduser('~/.tiles')
     if not os.path.exists(tmux_sessions_file_path):
-      print 'No .tmux_sessions file in home directory.'
+      print 'No .tiles file in home directory.'
       sys.exit(0)
 
     tmux_sessions_file = open(os.path.expanduser('~/.tiles')).read()
