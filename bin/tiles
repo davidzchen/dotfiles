@@ -21,10 +21,45 @@ from shlex import split
 from subprocess import Popen, PIPE
 
 USAGE_TEXT = """
-usage: tiles <session-name> [-h|--help] [-v|--verbose]
+usage: tiles <command> [<flags>]
 
-Creates tmux (terminal multiplexer) sessions defined in the ~/.tiles
-configuration file.
+Simple wrapper script for creating and managing tmux (terminal multiplexer)
+sessions.
+
+Possible commands are:
+
+    start - Start a new tmux session.
+    attach - Attach to an existing tmux session.
+    list - List currently running tmux sessions.
+    help - Prints this help text.
+
+Tmux sessions are defined with a .tiles file, which must be in the user's home
+directory. The syntax of the .tiles file is as follows:
+
+    tmux_session(
+        name = "session-name,
+        windows = [],
+    )
+
+The `name` parameter is used to reference the session when invoking this script.
+The `windows` parameter is a list of tuples of [window_name, working_directory].
+For example, the following configuration:
+
+    tmux_session(
+        name = 'work',
+        windows = [
+          ['blog', '~/Projects/blog'],
+          ['hadoop', '~/Projects/hadoop-common']
+        ],
+    )
+
+defines a tmux session named 'work' with two windows.
+"""
+
+START_USAGE_TEXT = """
+usage: tiles start <session-name> [-h|--help] [-v|--verbose]
+
+Creates tmux sessions defined in the ~/.tiles configuration file.
 
     -v --verbose
         Prints each command before it is run.
@@ -50,16 +85,65 @@ For example, the following configuration:
 defines a tmux session named 'work' with two windows. The session can be started
 by invoking:
 
-    $ tiles work
+    $ tiles start work
 
-If a session in .tiles is named 'default', starting this script with no
+If a session in .tiles is named 'default', invoking tiles start with
 arguments starts the default session.
+"""
+
+ATTACH_USAGE_TEXT = """
+usage: tiles attach [<session-name>] [-h|--help] [-v|--verbose]
+
+Attaches to the given tmux session. If no <session-name> is provided, then the
+default tmux session will be attached.
+
+Running this command is equivalent to running:
+
+    $ tmux -2 attach-session <session-name>
+"""
+
+LIST_USAGE_TEXT = """
+usage: tiles list [-h|--help]
+
+Lists available tmux sessions.
+
+Running this command is equivalent to running:
+
+    $ tmux list-sessions
+
 """
 
 DEFAULT_TMUX_SESSION_NAME = 'default'
 
-SHORT_OPTS = 'hv'
-LONG_OPTS = ['help', 'verbose']
+START_SHORT_OPTS = 'hv'
+START_LONG_OPTS = ['help', 'verbose']
+
+ATTACH_SHORT_OPTS = 'hv'
+ATTACH_LONG_OPTS = ['help', 'verbose']
+
+LIST_SHORT_OPTS = 'h'
+LIST_LONG_OPTS = ['help']
+
+class Tmux:
+    @staticmethod
+    def attach_session(session_name, verbose):
+        """
+        Runs: tmux -2 attach-session -t <session-id>
+        """
+        if verbose:
+            print 'tmux -2 attach-session -t %s' % session_name
+
+        proc = Popen(split('tmux -2 attach-session -t %s' % session_name))
+        proc.wait()
+
+    @staticmethod
+    def list_sessions():
+        """
+        Runs: tmux list-sessions
+        """
+
+        proc = Popen(split('tmux list-sessions'))
+        proc.wait()
 
 class TmuxSession:
     name = ''
@@ -70,16 +154,6 @@ class TmuxSession:
         self.name = name
         self.windows = windows
         self.verbose = verbose
-
-    @staticmethod
-    def session_count():
-        """
-        Returns the count of active tmux sessions, which is used as the session
-        ID of the new tmux session to be created.
-        """
-        proc = Popen(split('tmux list-sessions'), stdout = PIPE, stderr = PIPE)
-        out, err = proc.communicate()
-        return len(out.splitlines())
 
     @staticmethod
     def create(tmux_session_name, verbose):
@@ -136,16 +210,6 @@ class TmuxSession:
         proc = Popen(split('tmux select-window -t %s:1' % self.name))
         proc.wait()
 
-    def attach_session(self):
-        """
-        Runs: tmux -2 attach-session -t <session-id>
-        """
-        if self.verbose:
-            print 'tmux -2 attach-session -t %s' % self.name
-
-        proc = Popen(split('tmux -2 attach-session -t %s' % self.name))
-        proc.wait()
-
     def start(self):
         """
         Invokes the tmux commands to start the tmux session.
@@ -155,29 +219,64 @@ class TmuxSession:
             self.new_window(name, os.path.expanduser(directory), i + 1)
 
         self.select_window()
-        self.attach_session()
+        Tmux.attach_session(self.name, self.verbose)
 
-def usage():
-    """
-    Prints usage text.
-    """
-    print USAGE_TEXT
-
-def main():
-    """
-    Main method
-    """
+def list_main():
     try:
-        opts, args = getopt.gnu_getopt(sys.argv[1:], SHORT_OPTS, LONG_OPTS)
+        opts, args = getopt.gnu_getopt(sys.argv[2:], LIST_SHORT_OPTS,
+                                       LIST_LONG_OPTS)
     except getopt.GetoptError as err:
         print str(err)
-        usage()
+        print LIST_USAGE_TEXT
+        sys.exit(os.EX_USAGE)
+
+    for optopt, optarg in opts:
+        if optopt in ['-h', '--help']:
+            print LIST_USAGE_TEXT
+            sys.exit()
+        else:
+            assert False, 'Unknown option: %s' % optopt
+
+    Tmux.list_sessions()
+
+def attach_main():
+    try:
+        opts, args = getopt.gnu_getopt(sys.argv[2:], ATTACH_SHORT_OPTS,
+                                       ATTACH_LONG_OPTS)
+    except getopt.GetoptError as err:
+        print str(err)
+        print ATTACH_USAGE_TEXT
         sys.exit(os.EX_USAGE)
 
     verbose = False
     for optopt, optarg in opts:
         if optopt in ['-h', '--help']:
-            usage()
+            print ATTACH_USAGE_TEXT
+            sys.exit()
+        elif optopt in ['-v', '--verbose']:
+            verbose = True
+        else:
+            assert False, 'Unknown option: %s' % optopt
+
+    tmux_session_name = DEFAULT_TMUX_SESSION_NAME
+    if len(args) == 1:
+        tmux_session_name = args[0]
+
+    Tmux.attach_session(tmux_session_name, verbose)
+
+def start_main():
+    try:
+        opts, args = getopt.gnu_getopt(sys.argv[2:], START_SHORT_OPTS,
+                                       START_LONG_OPTS)
+    except getopt.GetoptError as err:
+        print str(err)
+        print START_USAGE_TEXT
+        sys.exit(os.EX_USAGE)
+
+    verbose = False
+    for optopt, optarg in opts:
+        if optopt in ['-h', '--help']:
+            print START_USAGE_TEXT
             sys.exit()
         elif optopt in ['-v', '--verbose']:
             verbose = True
@@ -190,6 +289,26 @@ def main():
 
     tmux_session = TmuxSession.create(tmux_session_name, verbose)
     tmux_session.start()
+
+def main():
+    """
+    Main method
+    """
+    if len(sys.argv) == 1:
+        print USAGE_TEXT
+        sys.exit(os.EX_USAGE)
+
+    if sys.argv[1] == 'start':
+        start_main()
+    elif sys.argv[1] == 'attach':
+        attach_main()
+    elif sys.argv[1] == 'list':
+        list_main()
+    elif sys.argv[1] in ['-h', '--help', 'help']:
+        print USAGE_TEXT
+    else:
+        print USAGE_TEXT
+        sys.exit(os.EX_USAGE)
 
 if __name__ == '__main__':
     main()
