@@ -62,134 +62,134 @@ SHORT_OPTS = 'hv'
 LONG_OPTS = ['help', 'verbose']
 
 class TmuxSession:
-  name = ''
-  windows = []
-  verbose = False
+    name = ''
+    windows = []
+    verbose = False
 
-  def __init__(self, name, windows, verbose):
-    self.name = name
-    self.windows = windows
-    self.verbose = verbose
+    def __init__(self, name, windows, verbose):
+        self.name = name
+        self.windows = windows
+        self.verbose = verbose
 
-  @staticmethod
-  def session_count():
-    """
-    Returns the count of active tmux sessions, which is used as the session ID
-    of the new tmux session to be created.
-    """
-    proc = Popen(split('tmux list-sessions'), stdout = PIPE, stderr = PIPE)
-    out, err = proc.communicate()
-    return len(out.splitlines())
+    @staticmethod
+    def session_count():
+        """
+        Returns the count of active tmux sessions, which is used as the session
+        ID of the new tmux session to be created.
+        """
+        proc = Popen(split('tmux list-sessions'), stdout = PIPE, stderr = PIPE)
+        out, err = proc.communicate()
+        return len(out.splitlines())
 
-  @staticmethod
-  def create(tmux_session_name, verbose):
-    """
-    Reads the .tiles file in the user's home directory and returns an
-    instance of a TmuxSession object that will be used to start the requested
-    tmux session.
-    """
-    tmux_sessions = {}
-    def tmux_session(**kwargs):
-      name = kwargs['name']
-      tmux_sessions[name] = TmuxSession(name, kwargs['windows'], verbose)
+    @staticmethod
+    def create(tmux_session_name, verbose):
+        """
+        Reads the .tiles file in the user's home directory and returns an
+        instance of a TmuxSession object that will be used to start the
+        requested tmux session.
+        """
+        tmux_sessions = {}
+        def tmux_session(**kwargs):
+            name = kwargs['name']
+            tmux_sessions[name] = TmuxSession(name, kwargs['windows'], verbose)
 
-    tmux_sessions_file_path = os.path.expanduser('~/.tiles')
-    if not os.path.exists(tmux_sessions_file_path):
-      print 'No .tiles file in home directory.'
-      sys.exit(0)
+        tmux_sessions_file_path = os.path.expanduser('~/.tiles')
+        if not os.path.exists(tmux_sessions_file_path):
+            print 'No .tiles file in home directory.'
+            sys.exit(0)
 
-    tmux_sessions_file = open(os.path.expanduser('~/.tiles')).read()
-    exec(tmux_sessions_file) in locals()
-    return tmux_sessions[tmux_session_name]
+        tmux_sessions_file = open(os.path.expanduser('~/.tiles')).read()
+        exec(tmux_sessions_file) in locals()
+        return tmux_sessions[tmux_session_name]
 
-  def new_session(self):
-    """
-    Runs: tmux new-session -d -s <session-id>
-    """
-    if self.verbose:
-      print 'tmux new-session -d -s %s' % self.name
+    def new_session(self):
+        """
+        Runs: tmux new-session -d -s <session-id>
+        """
+        if self.verbose:
+            print 'tmux new-session -d -s %s' % self.name
 
-    proc = Popen(split('tmux new-session -d -s %s' % self.name))
-    proc.wait()
+        proc = Popen(split('tmux new-session -d -s %s' % self.name))
+        proc.wait()
 
-  def new_window(self, name, directory, window_id):
-    """
-    Runs: tmux new-window -c <working-directory> \
-        -t <session-id>:<window-index> \
-        -n '<window-name>'
-    """
-    if self.verbose:
-      print ('tmux new-window -c %s -t %s:%d -n \'%s\'' %
-          (directory, self.name, window_id, name))
+    def new_window(self, name, directory, window_id):
+        """
+        Runs: tmux new-window -c <working-directory> \
+                  -t <session-id>:<window-index> \
+                  -n '<window-name>'
+        """
+        if self.verbose:
+            print ('tmux new-window -c %s -t %s:%d -n \'%s\'' %
+                    (directory, self.name, window_id, name))
 
-    proc = Popen(split('tmux new-window -c %s -t %s:%d -n \'%s\'' %
-        (directory, self.name, window_id, name)))
-    proc.wait()
+        proc = Popen(split('tmux new-window -c %s -t %s:%d -n \'%s\'' %
+                (directory, self.name, window_id, name)))
+        proc.wait()
 
-  def select_window(self):
-    """
-    Runs: tmux select-window -t <session-id>:1
-    """
-    if self.verbose:
-      print 'tmux select-window -t %s:1' % self.name
+    def select_window(self):
+        """
+        Runs: tmux select-window -t <session-id>:1
+        """
+        if self.verbose:
+            print 'tmux select-window -t %s:1' % self.name
 
-    proc = Popen(split('tmux select-window -t %s:1' % self.name))
-    proc.wait()
+        proc = Popen(split('tmux select-window -t %s:1' % self.name))
+        proc.wait()
 
-  def attach_session(self):
-    """
-    Runs: tmux -2 attach-session -t <session-id>
-    """
-    if self.verbose:
-      print 'tmux -2 attach-session -t %s' % self.name
+    def attach_session(self):
+        """
+        Runs: tmux -2 attach-session -t <session-id>
+        """
+        if self.verbose:
+            print 'tmux -2 attach-session -t %s' % self.name
 
-    proc = Popen(split('tmux -2 attach-session -t %s' % self.name))
-    proc.wait()
+        proc = Popen(split('tmux -2 attach-session -t %s' % self.name))
+        proc.wait()
 
-  def start(self):
-    """
-    Invokes the tmux commands to start the tmux session.
-    """
-    self.new_session()
-    for i, (name, directory) in enumerate(self.windows):
-      self.new_window(name, os.path.expanduser(directory), i + 1)
+    def start(self):
+        """
+        Invokes the tmux commands to start the tmux session.
+        """
+        self.new_session()
+        for i, (name, directory) in enumerate(self.windows):
+            self.new_window(name, os.path.expanduser(directory), i + 1)
 
-    self.select_window()
-    self.attach_session()
+        self.select_window()
+        self.attach_session()
 
 def usage():
-  """
-  Prints usage text.
-  """
-  print USAGE_TEXT
+    """
+    Prints usage text.
+    """
+    print USAGE_TEXT
 
 def main():
-  """
-  Main method
-  """
-  try:
-    opts, args = getopt.gnu_getopt(sys.argv[1:], SHORT_OPTS, LONG_OPTS)
-  except getopt.GetoptError as err:
-    print str(err)
-    usage()
-    sys.exit(os.EX_USAGE)
+    """
+    Main method
+    """
+    try:
+        opts, args = getopt.gnu_getopt(sys.argv[1:], SHORT_OPTS, LONG_OPTS)
+    except getopt.GetoptError as err:
+        print str(err)
+        usage()
+        sys.exit(os.EX_USAGE)
 
-  verbose = False
-  for optopt, optarg in opts:
-    if optopt in ['-h', '--help']:
-      usage()
-      sys.exit()
-    elif optopt in ['-v', '--verbose']:
-      verbose = True
-    else:
-      assert False, 'Unknown option: %s' % optopt
+    verbose = False
+    for optopt, optarg in opts:
+        if optopt in ['-h', '--help']:
+            usage()
+            sys.exit()
+        elif optopt in ['-v', '--verbose']:
+            verbose = True
+        else:
+            assert False, 'Unknown option: %s' % optopt
 
-  tmux_session_name = DEFAULT_TMUX_SESSION_NAME
-  if len(args) == 1:
-    tmux_session_name = args[0]
+    tmux_session_name = DEFAULT_TMUX_SESSION_NAME
+    if len(args) == 1:
+        tmux_session_name = args[0]
 
-  tmux_session = TmuxSession.create(tmux_session_name, verbose)
-  tmux_session.start()
+    tmux_session = TmuxSession.create(tmux_session_name, verbose)
+    tmux_session.start()
 
 if __name__ == '__main__':
-  main()
+    main()
