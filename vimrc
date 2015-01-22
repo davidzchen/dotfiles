@@ -73,6 +73,9 @@
     autocmd InsertEnter * :set number
     autocmd InsertLeave * :set relativenumber
 
+    " Automatically equalize splits when window is resized.
+    autocmd VimResized * wincmd =
+
     if has("autocmd") && has('GUI_GTK')
       au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
       au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
