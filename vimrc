@@ -171,7 +171,6 @@
     " Tmuxline custom preset
     let g:tmuxline_preset = {
       \'a':    '#S',
-      \'b':    '#W',
       \'win':  '#I #W',
       \'cwin': '#I #W',
       \'x':    ['%Y-%m-%d', '%H:%M'],
