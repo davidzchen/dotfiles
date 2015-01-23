@@ -150,10 +150,19 @@
   nnoremap tl :tabnext<CR>
   nnoremap tn :tabnew<CR>
 
+  " Navigation among splits.
   nnoremap <C-h> <C-w><C-h>
   nnoremap <C-j> <C-w><C-j>
   nnoremap <C-k> <C-w><C-k>
   nnoremap <C-l> <C-w><C-l>
+
+  " More natural movement between lines, especially with wrapped text.
+  nnoremap j gj
+  nnoremap k gk
+
+  " Quickly move to the beginning or end of a line.
+  nnoremap H ^
+  nnoremap L $
 " }
 
 " Plugins {
