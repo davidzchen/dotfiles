@@ -28,10 +28,10 @@ sessions.
 
 Possible commands are:
 
-    start - Start a new tmux session.
+    start  - Start a new tmux session.
     attach - Attach to an existing tmux session.
-    list - List currently running tmux sessions.
-    help - Prints this help text.
+    ls     - List currently running tmux sessions.
+    help   - Prints this help text.
 
 Tmux sessions are defined with a .tiles file, which must be in the user's home
 directory. The syntax of the .tiles file is as follows:
@@ -102,8 +102,8 @@ Running this command is equivalent to running:
     $ tmux -2 attach-session <session-name>
 """
 
-LIST_USAGE_TEXT = """
-usage: tiles list [-h|--help]
+LS_USAGE_TEXT = """
+usage: tiles ls [-h|--help]
 
 Lists available tmux sessions.
 
@@ -121,8 +121,8 @@ START_LONG_OPTS = ['help', 'verbose']
 ATTACH_SHORT_OPTS = 'hv'
 ATTACH_LONG_OPTS = ['help', 'verbose']
 
-LIST_SHORT_OPTS = 'h'
-LIST_LONG_OPTS = ['help']
+LS_SHORT_OPTS = 'h'
+LS_LONG_OPTS = ['help']
 
 class Tmux:
     @staticmethod
@@ -221,18 +221,18 @@ class TmuxSession:
         self.select_window()
         Tmux.attach_session(self.name, self.verbose)
 
-def list_main():
+def ls_main():
     try:
-        opts, args = getopt.gnu_getopt(sys.argv[2:], LIST_SHORT_OPTS,
-                                       LIST_LONG_OPTS)
+        opts, args = getopt.gnu_getopt(sys.argv[2:], LS_SHORT_OPTS,
+                                       LS_LONG_OPTS)
     except getopt.GetoptError as err:
         print str(err)
-        print LIST_USAGE_TEXT
+        print LS_USAGE_TEXT
         sys.exit(os.EX_USAGE)
 
     for optopt, optarg in opts:
         if optopt in ['-h', '--help']:
-            print LIST_USAGE_TEXT
+            print LS_USAGE_TEXT
             sys.exit()
         else:
             assert False, 'Unknown option: %s' % optopt
@@ -302,8 +302,8 @@ def main():
         start_main()
     elif sys.argv[1] == 'attach':
         attach_main()
-    elif sys.argv[1] == 'list':
-        list_main()
+    elif sys.argv[1] == 'ls':
+        ls_main()
     elif sys.argv[1] in ['-h', '--help', 'help']:
         print USAGE_TEXT
     else:
