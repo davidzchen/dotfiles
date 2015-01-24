@@ -166,17 +166,17 @@
 " }
 
 " Plugins {
-  " MarkMultiple {
+  " adinapoli/vim-markmultiple {
     " Set C-m to be MarkMultiple trigger
     let g:mark_multiple_trigger = "<C-m>"
   " }
 
-  " vim-indent-guides {
+  " nathanaelkane/vim-indent-guides {
     hi IndentGuidesOdd ctermbg=black
     hi IndentGuidesEven ctermbg=darkgrey
   " }
 
-  " Tmuxline {
+  " edkolev/tmuxline.vim {
     " Tmuxline custom preset
     let g:tmuxline_preset = {
       \'a':    '#S',
@@ -187,24 +187,24 @@
       \'z':    '#h'}
   " }
 
-  " NERDTree {
+  " scrooloose/nerdtree {
     map <C-n> :NERDTreeToggle<CR>
   " }
 
-  " Tagbar {
+  " majutsushi/tagbar {
     nmap <F8> :TagbarToggle<CR>
   " }
 
-  " Airline {
+  " bling/vim-airline {
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
   " }
 
-  " Gitgutter {
+  " airblade/vim-gitgutter {
     highlight clear SignColumn
   " }
 
-  " Syntastic {
+  " scrooloose/syntastic {
     " Passive mode for checker by default since it is not always working correclty
     " in Java projects. Use Ctrl+w E to run the checker.
     let g:syntastic_mode_map = {
@@ -214,7 +214,7 @@
     nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
   " }
 
-  " Rainbow Parentheses {
+  " kien/rainbow_parentheses.vim {
     let g:rbpt_colorpairs = [
         \ ['brown',       'RoyalBlue3'],
         \ ['Darkblue',    'SeaGreen3'],
