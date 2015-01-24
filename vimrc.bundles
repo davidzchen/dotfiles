@@ -82,6 +82,7 @@
     if !filereadable(expand('~/.custom_ycm'))
       Plugin 'Valloric/YouCompleteMe'
     endif
+    Plugin 'vim-scripts/DrawIt'
   " }
 " }
 
