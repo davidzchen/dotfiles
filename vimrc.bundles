@@ -45,6 +45,7 @@
     Plugin 'edkolev/erlang-motions.vim'
     Plugin 'justinmk/vim-syntax-extra'
     Plugin 'darfink/vim-plist.git'
+    Plugin 'exu/pgsql.vim'
   " }
 
   " Color schemes {

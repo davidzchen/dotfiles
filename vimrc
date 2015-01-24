@@ -239,6 +239,11 @@
     au Syntax * RainbowParenthesesLoadSquare
     au Syntax * RainbowParenthesesLoadBraces
   " }
+
+  " exu/pgsql.vim {
+    " Tells sql.vim to use the pgsql dialect by default.
+    let g:sql_type_default = 'pgsql'
+  " }
 " }
 
 " Local vimrc {
