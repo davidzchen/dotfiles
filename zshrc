@@ -13,7 +13,7 @@ antigen bundles <<EOK
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions
 EOK
-antigen theme S1cK94/minimal minimal-path-git-host
+antigen theme davidzchen/minimal minimal-path-git-host
 antigen apply
 
 source $HOME/.lib/sh/man-colors.sh

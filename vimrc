@@ -142,6 +142,7 @@
   autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
   autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
   autocmd FileType erlang setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+  autocmd FileType org setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 " }
 
 " Key (re)Mappings {
