@@ -33,7 +33,7 @@ fi
 
 cd lib
 echo "==> install base16-shell"
-git clone https://github.com/chriskempson/base16-shell.git base16-shell
+git clone https://github.com/chriskempson/base16-shell.git
 cd ..
 
 cd share

@@ -13,6 +13,7 @@ antigen bundles <<EOK
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions
 EOK
+antigen theme S1cK94/minimal minimal-path-git-host
 antigen apply
 
 source $HOME/.lib/sh/man-colors.sh
@@ -23,7 +24,6 @@ case $TERM in
     source $HOME/.lib/sh/colors.sh
     source $HOME/.lib/sh/mvn-color.sh
     source $HOME/.lib/base16-shell/base16-ocean.dark.sh
-    source $HOME/.lib/promptline/airline.sh
     ;;
 esac
 
