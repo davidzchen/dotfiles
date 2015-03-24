@@ -22,7 +22,6 @@ syn region  pbasciiFoldCurly  start=":\s*{" end="}" transparent fold
 
 setlocal foldmethod=syntax
 setlocal foldtext=getline(v:foldstart)
-setlocal synmaxcol=80
 
 if version >= 508 || !exists("did_proto_syn_inits")
   if version < 508
