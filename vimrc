@@ -133,12 +133,12 @@
   set tabstop=2       " An indentation every 2 columns
   set softtabstop=2   " Let backspace delete indent
 
-  autocmd BufNewFile,BufRead .tiles,.repos,REPOS,BUILD setf python
+  autocmd BufNewFile,BufRead .tiles,.repos,REPOS,BUILD,*.BUILD,WORKSPACE,*.WORKSPACE,*.bzl setf python
   autocmd BufNewFile,BufRead *.flex setf jflex
   autocmd BufNewFile,BufRead *.scaml setf haml
   autocmd BufNewFile,BufRead *.gyp,*.gypi,*.json setf javascript
   autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl,*.app.src setf erlang
-  autocmd BufNewFile,BufRead *.pb setf protoascii
+  autocmd BufNewFile,BufRead *.pb,CROSSTOOL setf protoascii
   autocmd FileType fish compiler fish setlocal textwidth=79
   autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
   autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab

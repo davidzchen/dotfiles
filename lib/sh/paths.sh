@@ -13,6 +13,10 @@ case $(uname -s) in
     ;;
   "Darwin")
     export GOROOT=/usr/local/Cellar/go/1.4/libexec
+    if [ -f /usr/libexec/java_home ]; then
+      export JAVA_HOME=`/usr/libexec/java_home`
+      export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
+    fi
     ;;
 esac
 export GOPATH=$HOME/go
