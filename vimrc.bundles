@@ -70,7 +70,6 @@
     Plugin 'edkolev/promptline.vim'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
-    Plugin 'kien/rainbow_parentheses.vim'
     Plugin 'jceb/vim-orgmode'
     Plugin 'reedes/vim-wordy'
     Plugin 'tpope/vim-speeddating'
