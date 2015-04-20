@@ -18,11 +18,6 @@ syn match   pbasciiFloat      /\<-\?\d*\(\.\d*\)\?/
 syn region  pbasciiComment    start="#" skip="\\$" end="$" keepend contains=@pbCommentGrp
 syn region  pbasciiString     start=/"/ skip=/\\"/ end=/"/
 
-syn region  pbasciiFoldCurly  start=":\s*{" end="}" transparent fold
-
-setlocal foldmethod=syntax
-setlocal foldtext=getline(v:foldstart)
-
 if version >= 508 || !exists("did_proto_syn_inits")
   if version < 508
     let did_proto_syn_inits = 1

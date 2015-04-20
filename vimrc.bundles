@@ -84,6 +84,7 @@
     endif
     Plugin 'vim-scripts/DrawIt'
     Plugin 'vim-scripts/SyntaxRange'
+    Plugin 'luochen1990/rainbow'
   " }
 " }
 
