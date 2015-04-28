@@ -35,6 +35,8 @@ if version >= 508 || !exists("did_proto_syn_inits")
   HiLink pbasciiBool    Boolean
 
   HiLink pbasciiExtension Keyword
+
+  delcommand HiLink
 endif
 
 let b:current_syntax = "protoascii"

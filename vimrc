@@ -46,7 +46,7 @@
 " }
 
 " General {
-  if env_background == 'dark'
+  if env_background != 'light'
     set background=dark
   endif
   syntax on
