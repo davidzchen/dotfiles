@@ -1,6 +1,10 @@
 " Personalized vimrc. Layout based on spf-13.
 
 " Environment {
+  " Environment variables {
+    let env_background=$KZ_BACKGROUND
+    let env_base16_scheme=$KZ_BASE16
+  " }
   " Identify platform {
     silent function! OSX()
       return has('macunix')
@@ -42,7 +46,9 @@
 " }
 
 " General {
-  set background=dark
+  if env_background == 'dark'
+    set background=dark
+  endif
   syntax on
   filetype plugin indent on
   set clipboard=unnamed
