@@ -17,6 +17,9 @@ case $(uname -s) in
       export JAVA_HOME=`/usr/libexec/java_home`
       export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
     fi
+    if [ -d $HOME/Library/Haskell/bin ]; then
+      export PATH=$HOME/Library/Haskell/bin:$PATH
+    fi
     ;;
 esac
 export GOPATH=$HOME/go
