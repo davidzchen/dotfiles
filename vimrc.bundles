@@ -47,6 +47,7 @@
     Plugin 'darfink/vim-plist'
     Plugin 'exu/pgsql.vim'
     Plugin 'davidzchen/vim-bazel'
+    Plugin 'elixir-lang/vim-elixir'
   " }
 
   " Color schemes {
@@ -85,6 +86,7 @@
     Plugin 'vim-scripts/DrawIt'
     Plugin 'vim-scripts/SyntaxRange'
     Plugin 'luochen1990/rainbow'
+    Plugin 'unblevable/quick-scope'
   " }
 " }
 
