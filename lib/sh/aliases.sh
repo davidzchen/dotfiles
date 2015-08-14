@@ -16,5 +16,6 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias va="vim -u ~/.vimrc.more"
+alias em="emacs"
 
 alias please='sudo $(history -p \!\!)'

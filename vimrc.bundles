@@ -46,7 +46,7 @@
     Plugin 'justinmk/vim-syntax-extra'
     Plugin 'darfink/vim-plist'
     Plugin 'exu/pgsql.vim'
-    Plugin 'davidzchen/vim-bazel'
+    Plugin 'google/vim-ft-bzl'
     Plugin 'elixir-lang/vim-elixir'
   " }
 
