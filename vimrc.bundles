@@ -6,6 +6,10 @@
 " }
 
 " Bundles {
+  " Vundle {
+    Plugin 'VundleVim/Vundle.vim'
+  " }
+
   " Syntaxes {
     Plugin 'vim-scripts/jade.vim'
     Plugin 'pbrisbin/html-template-syntax'
@@ -48,6 +52,7 @@
     Plugin 'exu/pgsql.vim'
     Plugin 'google/vim-ft-bzl'
     Plugin 'elixir-lang/vim-elixir'
+    Plugin 'tmux-plugins/vim-tmux'
   " }
 
   " Color schemes {

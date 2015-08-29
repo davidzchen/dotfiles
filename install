@@ -1,11 +1,11 @@
 #!/bin/sh
 
-DEST_DIR=$HOME
-BACK_DIR=$DEST_DIR/.dotfiles.bak
-CURR_DIR=`pwd`
+readonly DEST_DIR=$HOME
+readonly BACK_DIR=$DEST_DIR/.dotfiles.bak
+readonly OWD=`pwd`
 
 installdot() {
-  local install=$CURR_DIR/$1
+  local install=$OWD/$1
   echo "==> install .$1"
 
   if [ ! -e $BACK_DIR ]; then
@@ -31,30 +31,33 @@ if [ ! -d $BACK_DIR ]; then
   mkdir -p $BACK_DIR
 fi
 
-cd lib
 echo "==> install base16-shell"
-git clone https://github.com/chriskempson/base16-shell.git
-cd ..
+git clone https://github.com/chriskempson/base16-shell.git \
+    lib/base16-shell
 
-cd share
 echo "==> install base16-gnome-terminal"
-git clone https://github.com/chriskempson/base16-gnome-terminal.git
+git clone https://github.com/chriskempson/base16-gnome-terminal.git \
+    share/base16-gnome-terminal
 echo "==> install base16-xresources"
-git clone https://github.com/chriskempson/base16-xresources.git
+git clone https://github.com/chriskempson/base16-xresources.git \
+    share/base16-xresources
 echo "==> install base16-textmate"
-git clone https://github.com/chriskempson/base16-textmate.git
+git clone https://github.com/chriskempson/base16-textmate.git \
+    share/base16-textmate
 echo "==> install base16-iterm2"
-git clone https://github.com/chriskempson/base16-iterm2.git
+git clone https://github.com/chriskempson/base16-iterm2.git \
+    share/base16-iterm2
 echo "==> install powerline-fonts"
-git clone https://github.com/Lokaltog/powerline-fonts.git
-cd ..
+git clone https://github.com/Lokaltog/powerline-fonts.git \
+    share/powerline-fonts
 
 echo "==> install vundle"
-cd vim
-mkdir -p bundle && cd bundle
-git clone https://github.com/gmarik/Vundle.vim
-cd ..
-cd ..
+mkdir -p vim/bundle
+git clone https://github.com/gmarik/Vundle.vim vim/bundle/Vundle
+
+echo "==> install tpm"
+mkdir -p tmux/plugins
+git clone git clone https://github.com/tmux-plugins/tpm tmux/plugins/tpm
 
 installdot Xresources
 installdot bashrc
@@ -63,6 +66,7 @@ installdot gitignore_global
 installdot inputrc
 installdot rcrc
 installdot tmux.conf
+installdot tmux
 installdot vim
 installdot vimrc
 installdot vimrc.bundles
