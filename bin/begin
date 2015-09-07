@@ -2,6 +2,11 @@
 
 FORTUNE_BIN=`which fortune 2> /dev/null`
 COWSAY_BIN=`which cowsay 2> /dev/null`
+ARCHEY_BIN=`which archey 2> /dev/null`
+
+if [ -x "$ARCHEY_BIN" ]; then
+  archey --color
+fi
 
 if [ -x "$FORTUNE_BIN" ]; then
   if [ -f ~/.dzc/fortunes/one ]; then
