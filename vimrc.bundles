@@ -53,6 +53,7 @@
     Plugin 'google/vim-ft-bzl'
     Plugin 'elixir-lang/vim-elixir'
     Plugin 'tmux-plugins/vim-tmux'
+    Plugin 'OrangeT/vim-csharp'
   " }
 
   " Color schemes {
