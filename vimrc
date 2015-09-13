@@ -140,6 +140,7 @@
   set softtabstop=2   " Let backspace delete indent
 
   autocmd BufNewFile,BufRead .tiles,.repos,REPOS setf python
+  autocmd BufNewFile,BufRead *.BUILD,*.WORKSPACE,BUILD.bazel setf bzl
   autocmd BufNewFile,BufRead *.flex setf jflex
   autocmd BufNewFile,BufRead *.scaml setf haml
   autocmd BufNewFile,BufRead *.gyp,*.gypi,*.json setf javascript
