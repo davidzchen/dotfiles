@@ -54,6 +54,11 @@
     Plugin 'elixir-lang/vim-elixir'
     Plugin 'tmux-plugins/vim-tmux'
     Plugin 'OrangeT/vim-csharp'
+    Plugin 'jdonaldson/vaxe'
+    Plugin 'idris-hackers/idris-vim'
+    Plugin 'JuliaLang/julia-vim'
+    Plugin 'lambdatoast/elm.vim'
+    Plugin 'brandonbloom/vim-factor'
   " }
 
   " Color schemes {
