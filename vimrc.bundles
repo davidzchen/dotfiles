@@ -59,6 +59,7 @@
     Plugin 'JuliaLang/julia-vim'
     Plugin 'lambdatoast/elm.vim'
     Plugin 'brandonbloom/vim-factor'
+    Plugin 'vim-scripts/clearsilver'
   " }
 
   " Color schemes {
