@@ -147,7 +147,6 @@
   autocmd BufNewFile,BufRead *.gyp,*.gypi,*.json setf javascript
   autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl,*.app.src setf erlang
   autocmd BufNewFile,BufRead *.pb,CROSSTOOL setf protoascii
-  autocmd BufNewFile,BufRead *.jsonnet setf jsonnet
   autocmd BufNewFile,BufRead *.cson setf coffee
   autocmd FileType fish compiler fish setlocal textwidth=79
   autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab

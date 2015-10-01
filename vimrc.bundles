@@ -60,6 +60,7 @@
     Plugin 'lambdatoast/elm.vim'
     Plugin 'brandonbloom/vim-factor'
     Plugin 'vim-scripts/clearsilver'
+    Plugin 'google/vim-jsonnet'
   " }
 
   " Color schemes {
