@@ -100,6 +100,7 @@
     Plugin 'vim-scripts/SyntaxRange'
     Plugin 'luochen1990/rainbow'
     Plugin 'unblevable/quick-scope'
+    Plugin 'tmux-plugins/vim-tmux-focus-events'
   " }
 " }
 
