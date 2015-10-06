@@ -9,9 +9,9 @@ if [ -x "$ARCHEY_BIN" ]; then
 fi
 
 if [ -x "$FORTUNE_BIN" ]; then
-  if [ -f ~/.dzc/fortunes/one ]; then
+  if [ -f ~/.share/fortune/one ]; then
     echo ""
-    echo -e "`fortune ~/.dzc/fortunes/one`"
+    echo -e "`fortune ~/.share/fortune/one`"
     echo ""
   elif [ -x "$COWSAY_BIN" ]; then
     fortune | cowsay
