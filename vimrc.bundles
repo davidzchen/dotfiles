@@ -101,6 +101,8 @@
     Plugin 'luochen1990/rainbow'
     Plugin 'unblevable/quick-scope'
     Plugin 'tmux-plugins/vim-tmux-focus-events'
+    Plugin 'junegunn/goyo.vim'
+    Plugin 'amix/vim-zenroom2'
   " }
 " }
 
