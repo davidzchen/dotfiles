@@ -61,6 +61,8 @@
     Plugin 'brandonbloom/vim-factor'
     Plugin 'vim-scripts/clearsilver'
     Plugin 'google/vim-jsonnet'
+    Plugin 'keith/swift.vim'
+
   " }
 
   " Color schemes {
@@ -78,7 +80,8 @@
     Plugin 'ntpeters/vim-better-whitespace'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'edkolev/tmuxline.vim'
-    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     Plugin 'dag/vim-fish'
     Plugin 'kien/ctrlp.vim'
     Plugin 'edkolev/promptline.vim'
