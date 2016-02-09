@@ -65,6 +65,7 @@ git clone --recursive https://github.com/syl20bnr/spacemacs emacs.d
 installdot Xresources
 installdot bashrc
 installdot gdbinit
+installdot gitconfig
 installdot gitignore_global
 installdot inputrc
 installdot rcrc
