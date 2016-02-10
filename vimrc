@@ -1,5 +1,12 @@
 " Personalized vimrc. Layout based on spf-13.
 
+function! HighlightTooLongLines()
+  highlight def link RightMargin Error
+  if &textwidth != 0
+    exec ('match RightMargin /\%>' . &textwidth . 'v.\+/')
+  endif
+endfunction
+
 " Environment {
   " Environment variables {
     let env_background=$KZ_BACKGROUND
@@ -101,6 +108,11 @@
     if v:version >= 703
       set colorcolumn=80
     endif
+
+    augroup highlight_toolong
+      au!
+      au FileType,BufEnter * call HighlightTooLongLines()
+    augroup END
   " }
 
   set cursorline
