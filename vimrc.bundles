@@ -62,7 +62,7 @@
     Plugin 'vim-scripts/clearsilver'
     Plugin 'google/vim-jsonnet'
     Plugin 'keith/swift.vim'
-
+    Plugin 'Glench/Vim-Jinja2-Syntax'
   " }
 
   " Color schemes {
