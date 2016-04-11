@@ -169,6 +169,7 @@ endfunction
   autocmd FileType markdown setlocal textwidth=80
   if v:version > 703
     autocmd FileType java setlocal colorcolumn=100
+    autocmd FileType rust setlocal colorcolumn=100
   endif
 " }
 

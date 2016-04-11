@@ -107,6 +107,12 @@
     Plugin 'junegunn/goyo.vim'
     Plugin 'amix/vim-zenroom2'
   " }
+
+  " Custom bundles {
+    if filereadable(expand("~/.vimrc.bundles.local"))
+      source ~/.vimrc.bundles.local
+    endif
+  " }
 " }
 
 " Finish Bundle Setup {
