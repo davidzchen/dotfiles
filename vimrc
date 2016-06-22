@@ -51,7 +51,7 @@ endfunction
 " General {
   syntax on
   filetype plugin indent on
-  set clipboard=unnamed
+  "set clipboard=unnamed
   set backspace=indent,eol,start
 " }
 
@@ -90,7 +90,10 @@ endfunction
   " }
 
   " Color scheme {
-    colorscheme base16-ocean
+    if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+    endif
   " }
 
   " Color column {
