@@ -8,10 +8,6 @@ function! HighlightTooLongLines()
 endfunction
 
 " Environment {
-  " Environment variables {
-    let env_background=$KZ_BACKGROUND
-    let env_base16_scheme=$KZ_BASE16
-  " }
   " Identify platform {
     silent function! OSX()
       return has('macunix')
@@ -53,9 +49,6 @@ endfunction
 " }
 
 " General {
-  if env_background != 'light'
-    set background=dark
-  endif
   syntax on
   filetype plugin indent on
   set clipboard=unnamed
@@ -97,7 +90,6 @@ endfunction
   " }
 
   " Color scheme {
-    let base16colorspace=256
     colorscheme base16-ocean
   " }
 
