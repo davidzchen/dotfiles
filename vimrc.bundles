@@ -44,7 +44,6 @@
     Plugin 'tpope/vim-haml'
     Plugin 'jrozner/vim-antlr'
     Plugin 'cespare/vim-toml'
-    Plugin 'tomswartz07/vim-todo'
     Plugin 'jimenezrick/vimerl'
     Plugin 'edkolev/erlang-motions.vim'
     Plugin 'justinmk/vim-syntax-extra'
@@ -63,6 +62,8 @@
     Plugin 'google/vim-jsonnet'
     Plugin 'keith/swift.vim'
     Plugin 'Glench/Vim-Jinja2-Syntax'
+    Plugin 'stephpy/vim-yaml'
+    Plugin 'vim-scripts/SWIG-syntax'
   " }
 
   " Color schemes {
