@@ -57,7 +57,7 @@ endfunction
 
 " Vim UI {
   " Line Numbers {
-    set relativenumber
+    set number
     function! NumberToggle()
       if(&relativenumber == 1)
         if v:version > 703 || (v:version == 703 && has('patch1115'))
@@ -72,12 +72,6 @@ endfunction
       endif
     endfunc
     nnoremap fk :call NumberToggle()<cr>
-
-    au FocusLost * :set number
-    au FocusGained * :set relativenumber
-
-    autocmd InsertEnter * :set number
-    autocmd InsertLeave * :set relativenumber
 
     " Automatically equalize splits when window is resized.
     autocmd VimResized * wincmd =
@@ -166,6 +160,7 @@ endfunction
   if v:version > 703
     autocmd FileType java setlocal colorcolumn=100
     autocmd FileType rust setlocal colorcolumn=100
+    autocmd FileType swift setlocal colorcolumn=100
   endif
 " }
 
