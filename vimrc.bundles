@@ -74,39 +74,38 @@
   " Tools {
     Plugin 'tpope/vim-dispatch'
     Plugin 'sjl/vitality.vim'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'adinapoli/vim-markmultiple'
+    "Plugin 'tpope/vim-fugitive'
+    "Plugin 'adinapoli/vim-markmultiple'
     Plugin 'davidzchen/snipmate.vim'
-    Plugin 'sjl/gundo.vim'
-    Plugin 'ntpeters/vim-better-whitespace'
+    "Plugin 'sjl/gundo.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'edkolev/tmuxline.vim'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'dag/vim-fish'
-    Plugin 'kien/ctrlp.vim'
+    "Plugin 'kien/ctrlp.vim'
     Plugin 'edkolev/promptline.vim'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/syntastic'
+    "Plugin 'scrooloose/nerdtree'
+    "Plugin 'scrooloose/syntastic'
     Plugin 'jceb/vim-orgmode'
     Plugin 'reedes/vim-wordy'
     Plugin 'tpope/vim-speeddating'
     " On OS X, Exuberant CTags must be installed:
     " brew install ctags-exuberant
-    Plugin 'majutsushi/tagbar'
+    "Plugin 'majutsushi/tagbar'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'tpope/vim-surround'
+    "Plugin 'tpope/vim-surround'
     Plugin 'nsf/gocode', {'rtp': 'vim/'}
     if !filereadable(expand('~/.custom_ycm'))
       Plugin 'Valloric/YouCompleteMe'
     endif
-    Plugin 'vim-scripts/DrawIt'
+    "Plugin 'vim-scripts/DrawIt'
     Plugin 'vim-scripts/SyntaxRange'
     Plugin 'luochen1990/rainbow'
     Plugin 'unblevable/quick-scope'
     Plugin 'tmux-plugins/vim-tmux-focus-events'
-    Plugin 'junegunn/goyo.vim'
-    Plugin 'amix/vim-zenroom2'
+    "Plugin 'junegunn/goyo.vim'
+    "Plugin 'amix/vim-zenroom2'
   " }
 
   " Custom bundles {
