@@ -80,3 +80,5 @@ installdot zshrc
 installdot bin
 installdot lib
 installdot share
+installdot yabairc
+installdot skhdrc
