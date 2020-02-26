@@ -42,7 +42,7 @@ if has("autocmd") && has('GUI_GTK')
 endif
 
 " Highlight the line the cursor is on
-set cursorline
+"set cursorline
 
 " Key mappings for tabs.
 nnoremap th :tabprevious<CR>
@@ -85,7 +85,12 @@ nnoremap fk :call NumberToggle()<cr>
 
 " Change color of line numbes
 highlight LineNr ctermfg=8
-colorscheme solarized
+
+" Color scheme
+if (has("termguicolors"))
+  set termguicolors
+endif
+colorscheme spacemacs-theme
 
 set incsearch
 set hlsearch
