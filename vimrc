@@ -86,11 +86,16 @@ nnoremap fk :call NumberToggle()<cr>
 " Change color of line numbes
 highlight LineNr ctermfg=8
 
-" Color scheme
-if (has("termguicolors"))
+" Enable 24-bit colors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme spacemacs-theme
+
+" Color scheme
+set background=dark
+colorscheme citylights
 
 set incsearch
 set hlsearch
