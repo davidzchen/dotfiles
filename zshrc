@@ -26,11 +26,6 @@ case $TERM in
     ;;
 esac
 
-# if statement guards adding these helpers for non-interative shells
-if [ -n "$PS1" ]; then
-  eval "$(~/.lib/base16-shell/profile_helper.sh)"
-fi
-
 if [ -f $HOME/.zshrc_local ]; then
     source $HOME/.zshrc_local
 fi

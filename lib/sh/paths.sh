@@ -2,6 +2,10 @@
 
 export PATH=$HOME/.bin:/usr/local/bin:$PATH
 
+if [ -d $HOME/.opt/depot_tools ]; then
+  export PATH=$HOME/.opt/depot_tools:$PATH
+fi
+
 case $(uname -s) in
   "Linux")
     export GOROOT=/usr/lib/go
@@ -12,7 +16,7 @@ case $(uname -s) in
     fi
     ;;
   "Darwin")
-    export GOROOT=/usr/local/Cellar/go/1.4/libexec
+    export GOROOT=/usr/local/Cellar/go/1.13.6/libexec
     if [ -f /usr/libexec/java_home ]; then
       export JAVA_HOME=`/usr/libexec/java_home`
       export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'

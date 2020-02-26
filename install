@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 readonly DEST_DIR=$HOME
 readonly BACK_DIR=$DEST_DIR/.dotfiles.bak
 readonly OWD=`pwd`
@@ -31,26 +33,6 @@ if [ ! -d $BACK_DIR ]; then
   mkdir -p $BACK_DIR
 fi
 
-echo "==> install base16-shell"
-git clone https://github.com/davidzchen/base16-shell.git \
-    lib/base16-shell
-
-echo "==> install base16-gnome-terminal"
-git clone https://github.com/chriskempson/base16-gnome-terminal.git \
-    share/base16-gnome-terminal
-echo "==> install base16-xresources"
-git clone https://github.com/chriskempson/base16-xresources.git \
-    share/base16-xresources
-echo "==> install base16-textmate"
-git clone https://github.com/chriskempson/base16-textmate.git \
-    share/base16-textmate
-echo "==> install base16-iterm2"
-git clone https://github.com/chriskempson/base16-iterm2.git \
-    share/base16-iterm2
-echo "==> install powerline-fonts"
-git clone https://github.com/Lokaltog/powerline-fonts.git \
-    share/powerline-fonts
-
 echo "==> install vundle"
 mkdir -p vim/bundle
 git clone https://github.com/gmarik/Vundle.vim vim/bundle/Vundle.vim
@@ -61,6 +43,14 @@ git clone https://github.com/tmux-plugins/tpm tmux/plugins/tpm
 
 echo "==> install spacemacs"
 git clone --recursive https://github.com/syl20bnr/spacemacs emacs.d
+
+echo "==> install aosp repo tool"
+curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
+chmod a+x ~/bin/repo
+
+echo "==> install chromium depo_tools"
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
+    opt/depot_tools
 
 installdot Xresources
 installdot bashrc

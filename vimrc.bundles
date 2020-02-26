@@ -68,7 +68,9 @@
 
   " Color schemes {
     Plugin 'altercation/vim-colors-solarized'
-    Plugin 'davidzchen/base16-vim'
+    "Plugin 'davidzchen/base16-vim'
+    Plugin 'saltdotac/citylights.vim'
+    Plugin 'colepeters/spacemacs-theme.vim'
   " }
 
   " Tools {
@@ -106,12 +108,6 @@
     Plugin 'tmux-plugins/vim-tmux-focus-events'
     "Plugin 'junegunn/goyo.vim'
     "Plugin 'amix/vim-zenroom2'
-  " }
-
-  " Custom bundles {
-    if filereadable(expand("~/.vimrc.bundles.local"))
-      source ~/.vimrc.bundles.local
-    endif
   " }
 " }
 

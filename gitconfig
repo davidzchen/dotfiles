@@ -10,7 +10,8 @@
 
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
-	excludesfile = /Users/dzc/.gitignore_global
+  excludesfile = /Users/dzc/.gitignore_global
+  precomposeUnicode = true
 
 [color]
   ui = always
@@ -44,3 +45,6 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+[user]
+  name = David Z. Chen
+  email = david@davidzchen.com
