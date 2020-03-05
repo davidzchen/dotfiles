@@ -1,0 +1,21 @@
+[/]
+allow-bold=true
+background-color='rgb(28,31,39)'
+background-transparency-percent=7
+bold-color='#97979C9CACAC'
+bold-color-same-as-fg=true
+cursor-background-color='rgb(73,98,124)'
+cursor-blink-mode='off'
+cursor-colors-set=true
+cursor-foreground-color='rgb(73,98,124)'
+font='PragmataPro Mono 8'
+foreground-color='rgb(183,197,211)'
+highlight-background-color='rgb(40,70,102)'
+highlight-colors-set=true
+highlight-foreground-color='#'
+palette=['rgb(51,63,74)', 'rgb(217,84,104)', 'rgb(139,212,156)', 'rgb(235,191,131)', 'rgb(83,154,252)', 'rgb(182,45,101)', 'rgb(112,225,232)', 'rgb(113,140,161)', 'rgb(65,80,94)', 'rgb(217,84,104)', 'rgb(139,212,156)', 'rgb(247,218,179)', 'rgb(94,196,255)', 'rgb(182,45,101)', 'rgb(112,225,232)', 'rgb(183,197,211)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=false
+visible-name='City Lights'
