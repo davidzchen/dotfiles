@@ -46,7 +46,7 @@ git clone --recursive https://github.com/syl20bnr/spacemacs emacs.d
 
 echo "==> install aosp repo tool"
 curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
-chmod a+x ~/bin/repo
+chmod a+x bin/repo
 
 echo "==> install chromium depo_tools"
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \

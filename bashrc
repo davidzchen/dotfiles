@@ -24,7 +24,6 @@ case $TERM in
   screen-256color|xterm|xterm-256color)
     source $HOME/.lib/sh/colors.sh
     source $HOME/.lib/sh/mvn-color.sh
-    source $HOME/.lib/promptline/airline.sh
     ;;
 esac
 
