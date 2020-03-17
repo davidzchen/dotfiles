@@ -52,6 +52,11 @@ echo "==> install chromium depo_tools"
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
     opt/depot_tools
 
+echo "==> generate fortunes"
+pushd dots/fortune > /dev/null
+make
+popd > /dev/null
+
 installdot dots
 installdot Xresources
 installdot bashrc
@@ -65,10 +70,8 @@ installdot tmux
 installdot emacs.d
 installdot vim
 installdot vimrc
-installdot vimrc.bundles
 installdot vimrc.more
 installdot zshrc
 installdot bin
-installdot lib
 installdot yabairc
 installdot skhdrc
