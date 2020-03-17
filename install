@@ -52,6 +52,7 @@ echo "==> install chromium depo_tools"
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
     opt/depot_tools
 
+installdot dots
 installdot Xresources
 installdot bashrc
 installdot gdbinit
@@ -69,6 +70,5 @@ installdot vimrc.more
 installdot zshrc
 installdot bin
 installdot lib
-installdot share
 installdot yabairc
 installdot skhdrc

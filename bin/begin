@@ -4,9 +4,9 @@ FORTUNE_BIN=`which fortune 2> /dev/null`
 COWSAY_BIN=`which cowsay 2> /dev/null`
 
 if [ -x "$FORTUNE_BIN" ]; then
-  if [ -f ~/.share/fortune/one ]; then
+  if [ -f ~/.dots/fortune/one ]; then
     echo ""
-    echo -e "`fortune ~/.share/fortune/one`"
+    echo -e "`fortune ~/.dots/fortune/one`"
     echo ""
   elif [ -x "$COWSAY_BIN" ]; then
     fortune | cowsay

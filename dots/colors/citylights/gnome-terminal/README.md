@@ -30,7 +30,7 @@ Using the UUID of the default profile, import `citylights-profile.dconf` as
 follows:
 
 ```sh
-dconf load /org/gnome/terminal/legacy/profiles:/:2104b498-797d-4d04-9a85-e7c29a6b8934/ < .share/gnome-terminal/citylights-profile.dconf
+dconf load /org/gnome/terminal/legacy/profiles:/:2104b498-797d-4d04-9a85-e7c29a6b8934/ < .dots/colors/citylights/gnome-terminal/citylights-profile.dconf
 ```
 
 This command should instantly apply the profile and color scheme to any open

@@ -5,7 +5,7 @@
 ### Re-generating tmuxline
 
 ```vim
-:TmuxlineSnapshot ~/.share/tmux/airline
+:TmuxlineSnapshot ~/.dots/<color-scheme>/tmux/<colors-scheme>
 ```
 
 ### antigen parseargs
