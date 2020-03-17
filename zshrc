@@ -1,9 +1,9 @@
 export EDITOR=vim
 
-source $HOME/.lib/sh/aliases.sh
-source $HOME/.lib/sh/paths.sh
+source $HOME/.dots/sh/aliases.sh
+source $HOME/.dots/sh/paths.sh
 
-source $HOME/.lib/zsh/antigen.zsh
+source $HOME/.dots/zsh/antigen.zsh
 
 DISABLE_AUTO_TITLE=true
 
@@ -16,13 +16,13 @@ EOK
 antigen theme davidzchen/minimal minimal-path-git-user-host
 antigen apply
 
-source $HOME/.lib/sh/man-colors.sh
-source $HOME/.lib/sh/ant-colors.sh
+source $HOME/.dots/sh/man-colors.sh
+source $HOME/.dots/sh/ant-colors.sh
 
 case $TERM in
   screen-256color|xterm|xterm-256color)
-    source $HOME/.lib/sh/colors.sh
-    source $HOME/.lib/sh/mvn-color.sh
+    source $HOME/.dots/sh/colors.sh
+    source $HOME/.dots/sh/mvn-color.sh
     ;;
 esac
 

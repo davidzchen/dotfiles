@@ -1,7 +1,7 @@
 set nocompatible
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.dots/vim/bundles.vim"))
+  source ~/.dots/vim/bundles.vim
 endif
 
 " Terminal settings

@@ -15,15 +15,15 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-source $HOME/.lib/sh/aliases.sh
-source $HOME/.lib/sh/paths.sh
-source $HOME/.lib/sh/ant-colors.sh
-source $HOME/.lib/sh/man-colors.sh
+source $HOME/.dots/sh/aliases.sh
+source $HOME/.dots/sh/paths.sh
+source $HOME/.dots/sh/ant-colors.sh
+source $HOME/.dots/sh/man-colors.sh
 
 case $TERM in
   screen-256color|xterm|xterm-256color)
-    source $HOME/.lib/sh/colors.sh
-    source $HOME/.lib/sh/mvn-color.sh
+    source $HOME/.dots/sh/colors.sh
+    source $HOME/.dots/sh/mvn-color.sh
     ;;
 esac
 
