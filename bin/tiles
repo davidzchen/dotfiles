@@ -20,6 +20,8 @@ import getopt
 from shlex import split
 from subprocess import Popen, PIPE
 
+TILES_FILE = '~/.tiles'
+
 USAGE_TEXT = """
 usage: tiles <command> [<flags>]
 
@@ -48,8 +50,8 @@ For example, the following configuration:
     tmux_session(
         name = 'work',
         windows = [
-          ['blog', '~/Projects/blog'],
-          ['hadoop', '~/Projects/hadoop-common']
+            ['blog', '~/Projects/blog'],
+            ['bazel', '~/Projects/bazelbuild/bazel'],
         ],
     )
 
@@ -78,9 +80,10 @@ For example, the following configuration:
 
     tmux_session('work',
         windows = [
-          ['blog', '~/Projects/blog'],
-          ['hadoop', '~/Projects/hadoop-common']
-        ])
+            ['blog', '~/Projects/blog'],
+            ['bazel', '~/Projects/bazelbuild/bazel'],
+        ],
+    )
 
 defines a tmux session named 'work' with two windows. The session can be started
 by invoking:
@@ -167,13 +170,17 @@ class TmuxSession:
             name = kwargs['name']
             tmux_sessions[name] = TmuxSession(name, kwargs['windows'], verbose)
 
-        tmux_sessions_file_path = os.path.expanduser('~/.tiles')
+        tmux_sessions_file_path = os.path.expanduser(TILES_FILE)
         if not os.path.exists(tmux_sessions_file_path):
             print 'No .tiles file in home directory.'
-            sys.exit(0)
+            sys.exit(os.EX_NOTFOUND)
 
-        tmux_sessions_file = open(os.path.expanduser('~/.tiles')).read()
+        tmux_sessions_file = open(os.path.expanduser(TILES_FILE)).read()
         exec(tmux_sessions_file) in locals()
+        if not tmux_session_name in tmux_sessions:
+            print('%s: tmux session %s not found'
+                  % (TILES_FILE, tmux_session_name))
+            sys.exit(os.EX_CONFIG)
         return tmux_sessions[tmux_session_name]
 
     def new_session(self):
@@ -252,7 +259,7 @@ def attach_main():
     for optopt, optarg in opts:
         if optopt in ['-h', '--help']:
             print ATTACH_USAGE_TEXT
-            sys.exit()
+            sys.exit(os.EX_OK)
         elif optopt in ['-v', '--verbose']:
             verbose = True
         else:
