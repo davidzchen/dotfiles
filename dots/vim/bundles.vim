@@ -16,7 +16,7 @@
     Plugin 'davidzchen/Syntax-for-Fasta'
     Plugin 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
     Plugin 'tpope/vim-markdown'
-    Plugin 'rainux/vim-vala'
+    Plugin 'arrufat/vala.vim'
     Plugin 'guns/vim-clojure-static'
     Plugin 'vim-scripts/Io-programming-language-syntax'
     Plugin 'juvenn/mustache.vim'
@@ -64,6 +64,7 @@
     Plugin 'Glench/Vim-Jinja2-Syntax'
     Plugin 'stephpy/vim-yaml'
     Plugin 'vim-scripts/SWIG-syntax'
+    Plugin 'matze/vim-meson'
   " }
 
   " Color schemes {
