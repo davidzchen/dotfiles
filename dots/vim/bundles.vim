@@ -11,9 +11,14 @@
   " }
 
   " Syntaxes {
+    Plugin 'chlorophyllin/avro-vim'
+    Plugin 'chlorophyllin/pig.vim'
+    Plugin 'chlorophyllin/rc.vim'
+    Plugin 'chlorophyllin/Syntax-for-Fasta'
+    Plugin 'chlorophyllin/hive.vim'
+    Plugin 'chlorophyllin/jproperties.vim'
     Plugin 'vim-scripts/jade.vim'
     Plugin 'pbrisbin/html-template-syntax'
-    Plugin 'davidzchen/Syntax-for-Fasta'
     Plugin 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
     Plugin 'tpope/vim-markdown'
     Plugin 'arrufat/vala.vim'
@@ -25,11 +30,6 @@
     Plugin 'timcharper/textile.vim'
     Plugin 'ksauzz/thrift.vim'
     Plugin 'uarun/vim-protobuf'
-    Plugin 'davidzchen/avro-vim'
-    Plugin 'davidzchen/pig.vim'
-    Plugin 'davidzchen/hive.vim'
-    Plugin 'davidzchen/rc.vim'
-    Plugin 'davidzchen/jproperties.vim'
     Plugin 'lepture/vim-velocity'
     Plugin 'jimmyhchan/dustjs.vim'
     Plugin 'groenewege/vim-less'
@@ -68,18 +68,18 @@
   " }
 
   " Color schemes {
+    "Plugin 'chlorophyllin/base16-vim'
     Plugin 'altercation/vim-colors-solarized'
-    "Plugin 'davidzchen/base16-vim'
     Plugin 'saltdotac/citylights.vim'
     Plugin 'colepeters/spacemacs-theme.vim'
   " }
 
   " Tools {
+    Plugin 'chlorophyllin/snipmate.vim'
     Plugin 'tpope/vim-dispatch'
     Plugin 'sjl/vitality.vim'
     "Plugin 'tpope/vim-fugitive'
     "Plugin 'adinapoli/vim-markmultiple'
-    Plugin 'davidzchen/snipmate.vim'
     "Plugin 'sjl/gundo.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'edkolev/tmuxline.vim'
