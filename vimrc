@@ -41,6 +41,14 @@ if has("autocmd") && has('GUI_GTK')
   au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 endif
 
+" Add :Trimws command for clearing trailing whitespace.
+function! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfunction
+command! Trimws call TrimWhitespace()
+
 " Highlight the line the cursor is on
 "set cursorline
 

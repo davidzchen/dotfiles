@@ -70,7 +70,7 @@
   " Color schemes {
     "Plugin 'chlorophyllin/base16-vim'
     Plugin 'altercation/vim-colors-solarized'
-    Plugin 'saltdotac/citylights.vim'
+    Plugin 'chlorophyllin/citylights.vim'
     Plugin 'colepeters/spacemacs-theme.vim'
   " }
 
