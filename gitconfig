@@ -20,7 +20,7 @@
   d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 [core]
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=2 -RFX
   excludesfile = /Users/dzc/.gitignore_global
   precomposeUnicode = true
 
@@ -56,6 +56,7 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+
 [user]
   name = David Z. Chen
-  email = david@davidzchen.com
+  email = mail@davidzchen.com

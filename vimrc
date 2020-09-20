@@ -146,6 +146,7 @@ autocmd BufNewFile,BufRead *.pb,CROSSTOOL setf protoascii
 autocmd BufNewFile,BufRead *.cson setf coffee
 autocmd BufNewFile,BufRead *.i setf swig
 autocmd BufNewFile,BufRead *.desktop setf dosini
+autocmd BufNewFile,BufRead gitconfig setf gitconfig
 autocmd FileType fish compiler fish setlocal textwidth=79
 autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab

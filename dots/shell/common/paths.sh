@@ -1,29 +1,51 @@
 #!/bin/sh
+# =============================================================================
+# Configures $PATHs and path-related variables
+# -----------------------------------------------------------------------------
 
+# Basics
 export PATH=$HOME/.bin:/usr/local/bin:$PATH
 
+# Chrome Depot Tools
 if [ -d $HOME/.opt/depot_tools ]; then
   export PATH=$HOME/.opt/depot_tools:$PATH
 fi
 
+# Go
+export GOPATH=$HOME/go
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+# Platform-specific
 case $(uname -s) in
   "Linux")
+    # Go
     export GOROOT=/usr/lib/go
+
+    # Linuxbrew installed to home directory
     if [ -d $HOME/.linuxbrew ]; then
       export PATH=$HOME/.linuxbrew/bin:$PATH
       export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
       export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
     fi
     ;;
+
   "Darwin")
-    export GOROOT=/usr/local/Cellar/go/1.13.6/libexec
+    # Go
+    export GOROOT="$(brew --prefix golang)/libexec"
+
+    # Java
     if [ -f /usr/libexec/java_home ]; then
       export JAVA_HOME=`/usr/libexec/java_home`
       export JAVA_TOOL_OPTIONS='-Djava.awt.headless=true'
     fi
+
+    # Haskell
     if [ -d $HOME/Library/Haskell/bin ]; then
-      export PATH=$HOME/Library/Haskell/bin:$PATH
+      export PATH=$PATH:$HOME/Library/Haskell/bin
     fi
+
+    # Mono
+    #
     # If Mono is installed, put the Commands directory at the end of $PATH.
     # Because a number of commands in the Mono distribution overlap with those
     # installed on the system, this way, the system version of the commands
@@ -33,5 +55,3 @@ case $(uname -s) in
     fi
     ;;
 esac
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
