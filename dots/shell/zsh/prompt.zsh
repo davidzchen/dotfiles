@@ -13,10 +13,22 @@ case $DOTS_PROMPT in
     ;;
 
   "dra-minimal")
-    PS1=" \[\033[1;36m\]\w >\[\033[1;34m\]>\[\033[0m\] "
+    PROMPT=" %F{cyan}%1~ >%F{blue}>%{$reset_color%} "
     ;;
 
   "dra-complex")
-    PS1="\n \[\033[0;34m\]┌─────(\[\033[1;35m\]\u\[\033[0;34m\])─────(\[\033[1;32m\]\w\[\033[0;34m\]) \n └> \[\033[1;36m\]\$ \[\033[0m\]"
+    NEWLINE=$'\n'
+    PROMPT="${NEWLINE} %F{blue}┌─────(%F{magenta}%n%F{blue})─────(%F{green}%1~%F{blue}) ${NEWLINE} └> %F{cyan}\$ %{$reset_color%}"
     ;;
+
+  "dra-powerline")
+    NEWLINE=$'\n'
+    OS_ICON=''
+    PS1="${NEWLINE} %F{blue}╭─────%F{red}%F{black}%K{red} $OS_ICON %n %{$reset_color%}%k%F{red}%F{blue}─────%F{green}%F{black}%K{green} %1~ %{$reset_color%}%k%F{green} ${NEWLINE} %F{blue}╰❯%F{cyan} \$ %{$reset_color%}"
+    ;;
+
+  "dra-powerlevel10k")
+    NEWLINE=$'\n'
+    OS_ICON=''
+    PS1="${NEWLINE} %F{blue}╭─%F{red}%F{black}%K{red} $OS_ICON %n %F{red}%K{blue}%F{black} %1~ %k%F{blue} ${NEWLINE} %F{blue}╰❯%F{cyan} \$ ${reset_color}"
 esac
