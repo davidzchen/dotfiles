@@ -85,7 +85,12 @@ function install_pkgs {
       cowsay \
       fortune \
       fonts-powerline \
-      fonts-firacode
+      fonts-firacode \
+      ttf-mscorefonts-installer \
+      scrot \
+      urxvt \
+      emacs \
+      silversearcher-ag \
 }
 
 function github_ssh_key {

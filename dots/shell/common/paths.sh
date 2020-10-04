@@ -13,13 +13,13 @@ fi
 
 # Go
 export GOPATH=$HOME/go
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # Platform-specific
 case $(uname -s) in
   "Linux")
     # Go
     export GOROOT=/usr/lib/go
+    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
     # Linuxbrew installed to home directory
     if [ -d $HOME/.linuxbrew ]; then
@@ -32,6 +32,7 @@ case $(uname -s) in
   "Darwin")
     # Go
     export GOROOT="$(brew --prefix golang)/libexec"
+    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
     # Java
     if [ -f /usr/libexec/java_home ]; then

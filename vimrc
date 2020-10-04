@@ -150,7 +150,7 @@ autocmd BufNewFile,BufRead gitconfig setf gitconfig
 autocmd FileType fish compiler fish setlocal textwidth=79
 autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
-autocmd FileType python setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd FileType python setlocal noet shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType erlang setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType org setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType markdown setlocal textwidth=80
