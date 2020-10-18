@@ -3,7 +3,7 @@
 # Configures bash shell prompt
 # -----------------------------------------------------------------------------
 
-DOTS_PROMPT="starship"
+DOTS_PROMPT="dra-powerline"
 
 case $DOTS_PROMPT in
   "starship")
