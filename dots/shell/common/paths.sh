@@ -4,11 +4,14 @@
 # -----------------------------------------------------------------------------
 
 # Basics
-export PATH=$HOME/.bin:/usr/local/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Chrome Depot Tools
 if [ -d $HOME/.opt/depot_tools ]; then
   export PATH=$HOME/.opt/depot_tools:$PATH
+fi
+if [ -d $HOME/.cargo/bin ]; then
+  export PATH=$HOME/.cargo/bin:$PATH
 fi
 
 # Go

@@ -2,6 +2,8 @@
 # zsh shell init
 # -----------------------------------------------------------------------------
 
+DOTS_PROMPT="minimal-user-host"
+
 source "$HOME/.dots/shell/common/aliases.sh"
 source "$HOME/.dots/shell/common/paths.sh"
 source "$HOME/.dots/shell/common/functions.sh"
@@ -20,7 +22,19 @@ antigen bundles <<EOK
   zsh-users/zsh-completions
   zsh-users/zsh-autosuggestions
 EOK
-# antigen theme chlorophyllin/minimal minimal-path-git-user-host
+
+case $DOTS_PROMPT in
+  "minimal-user-host")
+    antigen theme chlorophyllin/minimal minimal-user-host
+    ;;
+  "minimal-path-git-user-host")
+    antigen theme chlorophyllin/minimal minimal-path-git-user-host
+    ;;
+  *)
+    antigen theme chlorophyllin/minimal minimal
+    ;;
+esac
+
 antigen apply
 
 # Local zshrc
