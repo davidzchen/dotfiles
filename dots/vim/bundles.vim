@@ -68,7 +68,8 @@
   " }
 
   " Color schemes {
-    "Plugin 'chlorophyllin/base16-vim'
+    Plugin 'chlorophyllin/base16-vim'
+    Plugin 'dylanaraps/wal.vim'
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'chlorophyllin/citylights.vim'
     Plugin 'colepeters/spacemacs-theme.vim'

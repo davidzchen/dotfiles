@@ -3,11 +3,11 @@
 set -e
 
 readonly DEST_DIR=$HOME
-readonly BACK_DIR=$DEST_DIR/.dotfiles.bak
-readonly OWD=`pwd`
+readonly BACK_DIR=$DEST_DIR/.dotfiles-backup
+readonly PWD=`pwd`
 
-installdot() {
-  local install=$OWD/$1
+function installdot {
+  local install=$PWD/$1
   echo "==> install .$1"
 
   if [ ! -e $BACK_DIR ]; then
@@ -29,53 +29,71 @@ installdot() {
   ln -s $install $DEST_DIR/.$1
 }
 
-if [ ! -d $BACK_DIR ]; then
-  mkdir -p $BACK_DIR
-fi
+function init {
+  if [ ! -d $BACK_DIR ]; then
+    mkdir -p $BACK_DIR
+  fi
+}
 
-echo "==> install vundle"
-mkdir -p vim/bundle
-git clone https://github.com/gmarik/Vundle.vim vim/bundle/Vundle.vim
+function install_thirdparty {
+  echo "==> install vundle"
+  mkdir -p vim/bundle
+  git clone https://github.com/gmarik/Vundle.vim vim/bundle/Vundle.vim
 
-echo "==> install tpm"
-mkdir -p tmux/plugins
-git clone https://github.com/tmux-plugins/tpm tmux/plugins/tpm
+  echo "==> install tpm"
+  mkdir -p tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm tmux/plugins/tpm
 
-echo "==> install spacemacs"
-git clone --recursive https://github.com/syl20bnr/spacemacs emacs.d
+  echo "==> install spacemacs"
+  git clone --recursive https://github.com/syl20bnr/spacemacs emacs.d
 
-echo "==> install aosp repo tool"
-curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
-chmod a+x bin/repo
+  echo "==> install aosp repo tool"
+  curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
+  chmod a+x bin/repo
 
-echo "==> install chromium depo_tools"
-git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
-    opt/depot_tools
+  echo "==> install chromium depo_tools"
+  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
+      opt/depot_tools
 
-echo "==> generate fortunes"
-pushd dots/fortune > /dev/null
-make
-popd > /dev/null
+  echo "==> Install citylights vscode theme"
+  git clone https://github.com/Yummygum/city-lights-syntax-vsc.git ~/.vscode/extensions/city-lights-theme
+  git clone https://github.com/Yummygum/city-lights-icons-vsc.git ~/.vscode/extensions/city-lights-icons
 
-echo "==> Install citylights vscode theme"
-git clone https://github.com/Yummygum/city-lights-syntax-vsc.git ~/.vscode/extensions/city-lights-theme
-git clone https://github.com/Yummygum/city-lights-icons-vsc.git ~/.vscode/extensions/city-lights-icons
+  echo "==> Install wal"
+  git clone https://github.com/dylanaraps/wal.git dots/pkg
+}
 
-installdot dots
-installdot Xresources
-installdot bashrc
-installdot gdbinit
-installdot gitconfig
-installdot gitignore_global
-installdot inputrc
-installdot rcrc
-installdot tmux.conf
-installdot tmux
-installdot emacs.d
-installdot vim
-installdot vimrc
-installdot vimrc.more
-installdot zshrc
-installdot bin
-installdot yabairc
-installdot skhdrc
+function gen_fortunes {
+  echo "==> generate fortunes"
+  pushd dots/fortune > /dev/null
+  make
+  popd > /dev/null
+}
+
+function install_dots {
+  installdot dots
+  installdot Xresources
+  installdot bashrc
+  installdot gdbinit
+  installdot gitconfig
+  installdot gitignore_global
+  installdot inputrc
+  installdot rcrc
+  installdot tmux.conf
+  installdot tmux
+  installdot emacs.d
+  installdot vim
+  installdot vimrc
+  installdot vimrc.more
+  installdot zshrc
+  installdot bin
+}
+
+function main {
+  init
+  install_thirdparty
+  gen_fortunes
+  install_dots
+}
+
+main

@@ -17,6 +17,10 @@ fi
 # Go
 export GOPATH=$HOME/go
 
+if [ -d $HOME/.dots/pkg/wal ]; then
+  export PATH=$PATH:$HOME/.dots/pkg/wal
+fi
+
 # Platform-specific
 case $(uname -s) in
   "Linux")

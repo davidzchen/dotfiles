@@ -95,15 +95,17 @@ nnoremap fk :call NumberToggle()<cr>
 highlight LineNr ctermfg=8
 
 " Enable 24-bit colors
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+" N.B. Disabled currently because the wal vim and airline themes are based on
+" the terminal's ANSI colors, which requiers 16-bit colors.
+"if exists('+termguicolors')
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"  set termguicolors
+"endif
 
 " Color scheme
 set background=dark
-colorscheme citylights
+colorscheme wal
 
 set incsearch
 set hlsearch
@@ -195,7 +197,7 @@ endif
   " bling/vim-airline {
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
-    let g:airline_theme='base16'
+    let g:airline_theme='wal'
   " }
 
   " airblade/vim-gitgutter {
