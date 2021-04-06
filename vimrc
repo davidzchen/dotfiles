@@ -156,11 +156,13 @@ autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandt
 autocmd FileType python setlocal noet shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType erlang setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType org setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd FileType vala setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType markdown setlocal textwidth=80
 if v:version > 703
   autocmd FileType java setlocal colorcolumn=100
   autocmd FileType rust setlocal colorcolumn=100
   autocmd FileType swift setlocal colorcolumn=100
+  autocmd FileType vala setlocal colorcolumn=90
 endif
 
 " Plugin-specific
