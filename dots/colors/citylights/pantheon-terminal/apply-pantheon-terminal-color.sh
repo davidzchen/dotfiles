@@ -11,7 +11,7 @@ readonly MAGENTA="#B62D65"    # magenta  terminal_color_5
 readonly CYAN="#008B94"       # cyan     terminal_color_6
 readonly WHITE="#718CA1"      # white    terminal_color_7
 
-readonly BR_BLACK="#333F4A"   # bright black    terminal_color_8
+readonly BR_BLACK="#53616e"   # bright black    terminal_color_8
 readonly BR_RED="#D95468"     # bright red      terminal_color_9
 readonly BR_GREEN="#8BD49C"   # bright green    terminal_color_10
 readonly BR_ORANGE="#EBBF83"  # bright orange   terminal_color_11
