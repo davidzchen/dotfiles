@@ -6,6 +6,7 @@ endif
 
 " Terminal settings
 set encoding=utf-8
+set fileencoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set ttyfast
