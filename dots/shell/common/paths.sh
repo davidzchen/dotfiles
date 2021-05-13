@@ -37,6 +37,9 @@ case $(uname -s) in
     ;;
 
   "Darwin")
+    # Macports
+    export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
     # Go
     export GOROOT="$(brew --prefix golang)/libexec"
     export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

@@ -26,7 +26,7 @@
     Plugin 'vim-scripts/Io-programming-language-syntax'
     Plugin 'juvenn/mustache.vim'
     Plugin 'jvoorhis/coq.vim'
-    Plugin 'fatih/vim-go'
+    "Plugin 'fatih/vim-go'
     Plugin 'timcharper/textile.vim'
     Plugin 'ksauzz/thrift.vim'
     Plugin 'uarun/vim-protobuf'
