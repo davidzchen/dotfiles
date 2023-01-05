@@ -16,14 +16,19 @@ function iw_wireless_device() {
 }
 
 function iw_wifi_strength() {
-  iw dev $(get_wireless_device) link | grep signal | cut -d'-' -f 2 | awk '{print $1}'
+  iw dev $(get_wireless_device) link \
+    | grep signal \
+    | cut -d'-' -f 2 \
+    | awk '{print $1}'
 }
 
 function iw_wifi_ssid() {
   if command -v iwgetid > /dev/null 2>&1; then
     iwgetid -r
   else
-    iw dev $(get_wireless_device) link | grep 'SSID' | awk '{print $2}'
+    iw dev $(get_wireless_device) link \
+      | grep 'SSID' \
+      | awk '{print $2}'
   fi
 }
 
@@ -38,7 +43,9 @@ function airport_wifi_strength() {
 }
 
 function airport_wifi_ssid() {
-  airport_status | grep -e '\bSSID:\B' | awk '{for(i=n;i<=NF;i++)$(i-(n-1))=$i;NF=NF-(n-1);print $0}' n=2
+  airport_status \
+    | grep -e '\bSSID:\B' \
+    | awk '{for(i=n;i<=NF;i++)$(i-(n-1))=$i;NF=NF-(n-1);print $0}' n=2
 }
 
 readonly ICON_OFF="⚋ "

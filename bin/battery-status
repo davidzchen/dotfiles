@@ -5,30 +5,29 @@
 # TODO(dzc): Remove this once tmux-battery works. It is likely that there is the
 # same issue that prevents tmux-wifi from working.
 
-readonly BATTERY_FULL=""
-readonly BATTERY_90=""
-readonly BATTERY_80=""
-readonly BATTERY_70=""
-readonly BATTERY_60=""
-readonly BATTERY_50=""
-readonly BATTERY_40=""
-readonly BATTERY_30=""
-readonly BATTERY_20=""
-readonly BATTERY_10=""
-readonly BATTERY_EMPTY=""
+# -----------------------------------------------------------------------------
+# Battery icons
 
+readonly BATTERY_FULL=""
+readonly BATTERY_5=""
+readonly BATTERY_4=""
+readonly BATTERY_3=""
+readonly BATTERY_2=""
+readonly BATTERY_1=""
+
+readonly BATTERY_EMPTY=""
 readonly BATTERY_UNKNOWN=""
 readonly BATTERY_ERROR=""
-readonly BATTERY_CHARGING_FULL=""
 
-# These do not divide 100 evenly, so we just number them.
-readonly BATTERY_CHARGING_7=""
-readonly BATTERY_CHARGING_6=""
-readonly BATTERY_CHARGING_5=""
+readonly BATTERY_CHARGING_FULL=""
+readonly BATTERY_CHARGING_5=""
 readonly BATTERY_CHARGING_4=""
 readonly BATTERY_CHARGING_3=""
 readonly BATTERY_CHARGING_2=""
 readonly BATTERY_CHARGING_1=""
+
+# -----------------------------------------------------------------------------
+# Linux battery status logic
 
 function linux_get_bat() {
   local bat_full="$1"
@@ -55,6 +54,9 @@ function linux_battery_status() {
   linux_get_bat "${BAT_FULL}" "${BAT_NOW}"
 }
 
+# -----------------------------------------------------------------------------
+# FreeBSD battery status logic
+
 function freebsd_get_bat() {
   sysctl -n hw.acpi.battery.life
 }
@@ -78,6 +80,9 @@ function freebsd_battery_status() {
       ;;
   esac
 }
+
+# -----------------------------------------------------------------------------
+# Darwin battery status logic
 
 function darwin_battery_status() {
   # 1. Dump the I/O Kit Registry for AppleSmartBattery.
@@ -125,32 +130,39 @@ function darwin_battery_status() {
   local charge=0
   if [[ -n "$max_capacity" && -n $current_capacity ]]; then
     charge=$(( 100 * $current_capacity / $max_capacity ))
-    if [[ $charge -le 3 ]]; then
-      echo "${BATTERY_EMPTY} ${charge}"
-    elif [[ $charge -le 10 ]]; then
-      echo "${BATTERY_10} ${charge}"
-    elif [[ $charge -le 20 ]]; then
-      echo "${BATTERY_20} ${charge}"
-    elif [[ $charge -le 30 ]]; then
-      echo "${BATTERY_30} ${charge}"
-    elif [[ $charge -le 40 ]]; then
-      echo "${BATTERY_40} ${charge}"
-    elif [[ $charge -le 50 ]]; then
-      echo "${BATTERY_50} ${charge}"
-    elif [[ $charge -le 60 ]]; then
-      echo "${BATTERY_60} ${charge}"
-    elif [[ $charge -le 70 ]]; then
-      echo "${BATTERY_70} ${charge}"
-    elif [[ $charge -le 80 ]]; then
-      echo "${BATTERY_80} ${charge}"
-    elif [[ $charge -le 90 ]]; then
-      echo "${BATTERY_90} ${charge}"
+    if [[ "${external_connected}" == "Yes" ]]; then
+      if [[ $charge -le 20 ]]; then
+        echo "${BATTERY_CHARGING_1} ${charge}"
+      elif [[ $charge -le 40 ]]; then
+        echo "${BATTERY_CHARGING_2} ${charge}"
+      elif [[ $charge -le 50 ]]; then
+        echo "${BATTERY_CHARGING_3} ${charge}"
+      elif [[ $charge -le 60 ]]; then
+        echo "${BATTERY_CHARGING_4} ${charge}"
+      else  # [[ $charge -le 80 ]]; then
+        echo "${BATTERY_CHARGING_5} ${charge}"
+      fi
+    else
+      if [[ $charge -le 3 ]]; then
+        echo "${BATTERY_EMPTY} ${charge}"
+      elif [[ $charge -le 20 ]]; then
+        echo "${BATTERY_1} ${charge}"
+      elif [[ $charge -le 40 ]]; then
+        echo "${BATTERY_2} ${charge}"
+      elif [[ $charge -le 50 ]]; then
+        echo "${BATTERY_3} ${charge}"
+      elif [[ $charge -le 60 ]]; then
+        echo "${BATTERY_4} ${charge}"
+      else  # [[ $charge -le 80 ]]; then
+        echo "${BATTERY_5} ${charge}"
+      fi
     fi
   fi
 }
 
-# Do with grep and awk unless too hard
-#
+# -----------------------------------------------------------------------------
+# Main
+
 # TODO(dzc): Re-enable Linux and FreeBSD after making the corresponding changes
 # as those for Darwin (getting rid of the separate charging/discharging
 # subcommands)
