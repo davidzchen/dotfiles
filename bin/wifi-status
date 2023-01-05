@@ -1,0 +1,115 @@
+#!/bin/bash
+# Script to be used with tmux to display wifi status but can also be used as
+# a standalone script.
+#
+# This uses the code from github.com/gmoe/tmux-wifi and was created as a
+# workaround since for some reason, the interpolations from the plugin did not
+# work.
+
+# Functions for getting wifi status on Linux using iw.
+#
+# Note, iw isn't a stable interface so this scraping may not work with all
+# versions
+
+function iw_wireless_device() {
+  iw dev | awk '$1=="Interface"{print $2}'
+}
+
+function iw_wifi_strength() {
+  iw dev $(get_wireless_device) link | grep signal | cut -d'-' -f 2 | awk '{print $1}'
+}
+
+function iw_wifi_ssid() {
+  if command -v iwgetid > /dev/null 2>&1; then
+    iwgetid -r
+  else
+    iw dev $(get_wireless_device) link | grep 'SSID' | awk '{print $2}'
+  fi
+}
+
+# Functions for getting wifi status on macOS using the airport utility.
+
+function airport_status() {
+  /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I
+}
+
+function airport_wifi_strength() {
+  airport_status | grep -e "CtlRSSI" | awk -F '-' '{print $2}'
+}
+
+function airport_wifi_ssid() {
+  airport_status | grep -e '\bSSID:\B' | awk '{for(i=n;i<=NF;i++)$(i-(n-1))=$i;NF=NF-(n-1);print $0}' n=2
+}
+
+readonly ICON_OFF="⚋ "
+readonly ICON_1="⚊ "
+readonly ICON_2="⚍ "
+readonly ICON_3="⚌ "
+readonly ICON_4="☱ "
+readonly ICON_5="☰ "
+
+function wifi_strength_icon() {
+  local os="$1"
+  local strength=0
+  case "$os" in
+    "Darwin")
+      strength="$(airport_wifi_strength)"
+      ;;
+    "Linux")
+      strength="$(iw_wifi_strength)"
+      ;;
+  esac
+
+  if [[ -z "$strength" ]]; then
+    printf "${ICON_OFF}"
+  elif [[ $strength < 50 ]]; then
+    printf "${ICON_5}"
+  elif [[ $strength < 60 ]]; then
+    printf "$ICON_4"
+  elif [[ $strength < 70 ]]; then
+    printf "$ICON_3"
+  elif [[ $strength < 80 ]]; then
+    printf "${ICON_2}"
+  elif [[ $strength < 90 ]]; then
+    printf "${ICON_1}"
+  fi
+}
+
+function wifi_ssid() {
+  case "$os" in
+    "Darwin")
+      airport_wifi_ssid
+      ;;
+    "Linux")
+      iw_wifi_ssid
+      ;;
+  esac
+}
+
+function wifi_strength() {
+  case "$os" in
+    "Darwin")
+      airport_wifi_strength
+      ;;
+    "Linux")
+      iw_wifi_strength
+      ;;
+  esac
+}
+
+function main() {
+  local os="$(uname -s)"
+  case "$1" in
+    "icon")
+      wifi_strength_icon "${os}"
+      ;;
+    "strength")
+      wifi_strength "${os}"
+      ;;
+    "ssid")
+      wifi_ssid "${os}"
+      ;;
+  esac
+}
+
+main $@

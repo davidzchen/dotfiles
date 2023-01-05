@@ -30,10 +30,10 @@ endfunction
 if v:version >= 703
   set colorcolumn=80
 endif
-augroup highlight_toolong
-  au!
-  au FileType,BufEnter * call HighlightTooLongLines()
-augroup END
+"augroup highlight_toolong
+"  au!
+"  au FileType,BufEnter * call HighlightTooLongLines()
+"augroup END
 
 " Change cursor depending on if the active cursor is in the window.
 if has("autocmd") && has('GUI_GTK')
@@ -185,7 +185,7 @@ endif
       \'win':  '#I #W',
       \'cwin': '#I #W',
       \'x':    ['%Y-%m-%d', '%H:%M'],
-      \'y':    '#(battery Charging; battery Discharging)',
+      \'y':    ['#(battery-status)', '#(wifi-status ssid) #(wifi-status icon)'],
       \'z':    '#h'}
   " }
 

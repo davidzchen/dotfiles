@@ -1,0 +1,184 @@
+#!/bin/bash
+# This script can be used to get the system battery status that is used by
+# my tmuxline setup.
+#
+# TODO(dzc): Remove this once tmux-battery works. It is likely that there is the
+# same issue that prevents tmux-wifi from working.
+
+readonly BATTERY_FULL=""
+readonly BATTERY_90=""
+readonly BATTERY_80=""
+readonly BATTERY_70=""
+readonly BATTERY_60=""
+readonly BATTERY_50=""
+readonly BATTERY_40=""
+readonly BATTERY_30=""
+readonly BATTERY_20=""
+readonly BATTERY_10=""
+readonly BATTERY_EMPTY=""
+
+readonly BATTERY_UNKNOWN=""
+readonly BATTERY_ERROR=""
+readonly BATTERY_CHARGING_FULL=""
+
+# These do not divide 100 evenly, so we just number them.
+readonly BATTERY_CHARGING_7=""
+readonly BATTERY_CHARGING_6=""
+readonly BATTERY_CHARGING_5=""
+readonly BATTERY_CHARGING_4=""
+readonly BATTERY_CHARGING_3=""
+readonly BATTERY_CHARGING_2=""
+readonly BATTERY_CHARGING_1=""
+
+function linux_get_bat() {
+  local bat_full="$1"
+  local bat_now="$2"
+  bf=$(cat $bat_full)
+  bn=$(cat $bat_now)
+  echo $(( 100 * $bn / $bf ))
+}
+
+function linux_battery_status() {
+  BATPATH=${BATPATH:-/sys/class/power_supply/BAT0}
+  STATUS=$BATPATH/status
+  [ "$1" = `cat $STATUS` ] || [ "$1" = "" ] || return 0
+  if [ -f "$BATPATH/energy_full" ]; then
+    naming="energy"
+  elif [ -f "$BATPATH/charge_full" ]; then
+    naming="charge"
+  elif [ -f "$BATPATH/capacity" ]; then
+    cat "$BATPATH/capacity"
+    return 0
+  fi
+  BAT_FULL=$BATPATH/${naming}_full
+  BAT_NOW=$BATPATH/${naming}_now
+  linux_get_bat "${BAT_FULL}" "${BAT_NOW}"
+}
+
+function freebsd_get_bat() {
+  sysctl -n hw.acpi.battery.life
+}
+
+function freebsd_battery_status() {
+  local cmd="$1"
+  STATUS=`sysctl -n hw.acpi.battery.state`
+  case "$cmd" in
+    "discharging")
+      if [ $STATUS -eq 1 ]; then
+        freebsd_get_bat
+      fi
+      ;;
+    "charging")
+      if [ $STATUS -eq 2 ]; then
+        freebsd_get_bat
+      fi
+      ;;
+    "")
+      freebsd_get_bat
+      ;;
+  esac
+}
+
+function darwin_battery_status() {
+  # 1. Dump the I/O Kit Registry for AppleSmartBattery.
+  # 2. Match the lines containing the key-value pairs under
+  #    AppleSmartBatteryManager -> AppleSmartBattery.
+  # 3. Transform these lines, in the form of `"Key" = Value` into lines in the
+  #    form of `Key Value`.
+  # 4. Sort the lines in lexigraphical order.
+  # 5. Extract the necessary information.
+  local data=$(ioreg -c AppleSmartBattery -w0 \
+      | grep -o '"[^"]*" = [^ ]*' \
+      | sed -e 's/= //g' -e 's/"//g' \
+      | sort \
+      | grep "^MaxCapacity\|^CurrentCapacity\|^ExternalConnected\|^FullyCharged")
+
+  local max_capacity=""
+  local current_capacity=""
+  local external_connected=""
+  local fully_charged=""
+  while read key value; do
+    case $key in
+      "MaxCapacity")
+        max_capacity="${value}";;
+      "CurrentCapacity")
+        current_capacity="${value}"
+        ;;
+      "ExternalConnected")
+        external_connected="${value}"
+        ;;
+      "FullyCharged")
+        fully_charged="${value}"
+        ;;
+    esac
+  done <<< "${data}"
+
+  if [[ "${fully_charged}" == "Yes" ]]; then
+    if [[ "${external_connected}" == "Yes" ]]; then
+      echo "${BATTERY_CHARGING_FULL}"
+    else
+      echo "${BATTERY_FULL}"
+    fi
+    exit
+  fi
+
+  local charge=0
+  if [[ -n "$max_capacity" && -n $current_capacity ]]; then
+    charge=$(( 100 * $current_capacity / $max_capacity ))
+    if [[ $charge -le 3 ]]; then
+      echo "${BATTERY_EMPTY} ${charge}"
+    elif [[ $charge -le 10 ]]; then
+      echo "${BATTERY_10} ${charge}"
+    elif [[ $charge -le 20 ]]; then
+      echo "${BATTERY_20} ${charge}"
+    elif [[ $charge -le 30 ]]; then
+      echo "${BATTERY_30} ${charge}"
+    elif [[ $charge -le 40 ]]; then
+      echo "${BATTERY_40} ${charge}"
+    elif [[ $charge -le 50 ]]; then
+      echo "${BATTERY_50} ${charge}"
+    elif [[ $charge -le 60 ]]; then
+      echo "${BATTERY_60} ${charge}"
+    elif [[ $charge -le 70 ]]; then
+      echo "${BATTERY_70} ${charge}"
+    elif [[ $charge -le 80 ]]; then
+      echo "${BATTERY_80} ${charge}"
+    elif [[ $charge -le 90 ]]; then
+      echo "${BATTERY_90} ${charge}"
+    fi
+  fi
+}
+
+# Do with grep and awk unless too hard
+#
+# TODO(dzc): Re-enable Linux and FreeBSD after making the corresponding changes
+# as those for Darwin (getting rid of the separate charging/discharging
+# subcommands)
+function battery_status() {
+  case $(uname -s) in
+    "Linux")
+      #linux_battery_status "$1"
+      echo "${BATTERY_ERROR} not supported"
+      ;;
+
+    "FreeBSD")
+      #freebsd_battery_status "$1"
+      echo "${BATTERY_ERROR} not supported"
+      ;;
+
+    "Darwin")
+      darwin_battery_status "$1"
+      ;;
+  esac
+}
+
+function main() {
+  local batt_status="$(battery_status "$1")"
+  if [ -z "$batt_status" ]; then
+    echo "${BATTERY_ERROR}"
+  else
+    echo ${batt_status}%
+  fi
+}
+
+main "$@"

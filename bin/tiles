@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright 2014 David Z. Chen
 #
@@ -134,7 +134,7 @@ class Tmux:
         Runs: tmux -2 attach-session -t <session-id>
         """
         if verbose:
-            print 'tmux -2 attach-session -t %s' % session_name
+            print('tmux -2 attach-session -t %s' % session_name)
 
         proc = Popen(split('tmux -2 attach-session -t %s' % session_name))
         proc.wait()
@@ -172,7 +172,7 @@ class TmuxSession:
 
         tmux_sessions_file_path = os.path.expanduser(TILES_FILE)
         if not os.path.exists(tmux_sessions_file_path):
-            print 'No .tiles file in home directory.'
+            print('No .tiles file in home directory.')
             sys.exit(os.EX_NOTFOUND)
 
         tmux_sessions_file = open(os.path.expanduser(TILES_FILE)).read()
@@ -188,7 +188,7 @@ class TmuxSession:
         Runs: tmux new-session -d -s <session-id>
         """
         if self.verbose:
-            print 'tmux new-session -d -s %s' % self.name
+            print('tmux new-session -d -s %s' % self.name)
 
         proc = Popen(split('tmux new-session -d -s %s' % self.name))
         proc.wait()
@@ -200,8 +200,8 @@ class TmuxSession:
                   -n '<window-name>'
         """
         if self.verbose:
-            print ('tmux new-window -c %s -t %s:%d -n \'%s\'' %
-                    (directory, self.name, window_id, name))
+            print(('tmux new-window -c %s -t %s:%d -n \'%s\'' %
+                    (directory, self.name, window_id, name)))
 
         proc = Popen(split('tmux new-window -c %s -t %s:%d -n \'%s\'' %
                 (directory, self.name, window_id, name)))
@@ -212,7 +212,7 @@ class TmuxSession:
         Runs: tmux select-window -t <session-id>:1
         """
         if self.verbose:
-            print 'tmux select-window -t %s:1' % self.name
+            print('tmux select-window -t %s:1' % self.name)
 
         proc = Popen(split('tmux select-window -t %s:1' % self.name))
         proc.wait()
@@ -233,13 +233,13 @@ def ls_main():
         opts, args = getopt.gnu_getopt(sys.argv[2:], LS_SHORT_OPTS,
                                        LS_LONG_OPTS)
     except getopt.GetoptError as err:
-        print str(err)
-        print LS_USAGE_TEXT
+        print(str(err))
+        print(LS_USAGE_TEXT)
         sys.exit(os.EX_USAGE)
 
     for optopt, optarg in opts:
         if optopt in ['-h', '--help']:
-            print LS_USAGE_TEXT
+            print(LS_USAGE_TEXT)
             sys.exit()
         else:
             assert False, 'Unknown option: %s' % optopt
@@ -251,14 +251,14 @@ def attach_main():
         opts, args = getopt.gnu_getopt(sys.argv[2:], ATTACH_SHORT_OPTS,
                                        ATTACH_LONG_OPTS)
     except getopt.GetoptError as err:
-        print str(err)
-        print ATTACH_USAGE_TEXT
+        print(str(err))
+        print(ATTACH_USAGE_TEXT)
         sys.exit(os.EX_USAGE)
 
     verbose = False
     for optopt, optarg in opts:
         if optopt in ['-h', '--help']:
-            print ATTACH_USAGE_TEXT
+            print(ATTACH_USAGE_TEXT)
             sys.exit(os.EX_OK)
         elif optopt in ['-v', '--verbose']:
             verbose = True
@@ -276,14 +276,14 @@ def start_main():
         opts, args = getopt.gnu_getopt(sys.argv[2:], START_SHORT_OPTS,
                                        START_LONG_OPTS)
     except getopt.GetoptError as err:
-        print str(err)
-        print START_USAGE_TEXT
+        print(str(err))
+        print(START_USAGE_TEXT)
         sys.exit(os.EX_USAGE)
 
     verbose = False
     for optopt, optarg in opts:
         if optopt in ['-h', '--help']:
-            print START_USAGE_TEXT
+            print(START_USAGE_TEXT)
             sys.exit()
         elif optopt in ['-v', '--verbose']:
             verbose = True
@@ -302,7 +302,7 @@ def main():
     Main method
     """
     if len(sys.argv) == 1:
-        print USAGE_TEXT
+        print(USAGE_TEXT)
         sys.exit(os.EX_USAGE)
 
     if sys.argv[1] == 'start':
@@ -312,9 +312,9 @@ def main():
     elif sys.argv[1] == 'ls':
         ls_main()
     elif sys.argv[1] in ['-h', '--help', 'help']:
-        print USAGE_TEXT
+        print(USAGE_TEXT)
     else:
-        print USAGE_TEXT
+        print(USAGE_TEXT)
         sys.exit(os.EX_USAGE)
 
 if __name__ == '__main__':

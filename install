@@ -38,28 +38,36 @@ function init {
 function install_thirdparty {
   echo "==> install vundle"
   mkdir -p vim/bundle
+  rm -rf vim/bundle/Vundle.vim
   git clone https://github.com/gmarik/Vundle.vim vim/bundle/Vundle.vim
 
   echo "==> install tpm"
   mkdir -p tmux/plugins
+  rm -rf tmux/plugins/tpm
   git clone https://github.com/tmux-plugins/tpm tmux/plugins/tpm
 
   echo "==> install spacemacs"
+  rm -rf emacs.d
   git clone --recursive https://github.com/syl20bnr/spacemacs emacs.d
 
   echo "==> install aosp repo tool"
+  rm -rf bin/repo
   curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
   chmod a+x bin/repo
 
   echo "==> install chromium depo_tools"
+  rm -rf opt/depot_tools
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
       opt/depot_tools
 
   echo "==> Install citylights vscode theme"
+  rm -rf ~/.vscode/extensions/city-lights-theme
+  rm -rf ~/.vscode/extensions/city-lights-icons
   git clone https://github.com/Yummygum/city-lights-syntax-vsc.git ~/.vscode/extensions/city-lights-theme
   git clone https://github.com/Yummygum/city-lights-icons-vsc.git ~/.vscode/extensions/city-lights-icons
 
   echo "==> Install wal"
+  rm -rf dots/pkg
   git clone https://github.com/dylanaraps/wal.git dots/pkg
 }
 
@@ -92,7 +100,7 @@ function install_dots {
 function main {
   init
   install_thirdparty
-  gen_fortunes
+  #gen_fortunes
   install_dots
 }
 
