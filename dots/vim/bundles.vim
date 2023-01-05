@@ -83,7 +83,6 @@
     "Plugin 'adinapoli/vim-markmultiple'
     "Plugin 'sjl/gundo.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'edkolev/tmuxline.vim'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'dag/vim-fish'

@@ -178,17 +178,6 @@ endif
     hi IndentGuidesEven ctermbg=darkgrey
   " }
 
-  " edkolev/tmuxline.vim {
-    " Tmuxline custom preset
-    let g:tmuxline_preset = {
-      \'a':    '#S',
-      \'win':  '#I #W',
-      \'cwin': '#I #W',
-      \'x':    ['%Y-%m-%d', '%H:%M'],
-      \'y':    ['#(battery-status)', '#(wifi-status ssid) #(wifi-status icon)'],
-      \'z':    '#h'}
-  " }
-
   " scrooloose/nerdtree {
     map <C-n> :NERDTreeToggle<CR>
   " }
