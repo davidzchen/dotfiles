@@ -131,30 +131,34 @@ function darwin_battery_status() {
   if [[ -n "$max_capacity" && -n $current_capacity ]]; then
     charge=$(( 100 * $current_capacity / $max_capacity ))
     if [[ "${external_connected}" == "Yes" ]]; then
-      if [[ $charge -le 20 ]]; then
+      if (( $charge <= 20 )); then
         echo "${BATTERY_CHARGING_1} ${charge}"
-      elif [[ $charge -le 40 ]]; then
+      elif (( $charge <= 40 )); then
         echo "${BATTERY_CHARGING_2} ${charge}"
-      elif [[ $charge -le 50 ]]; then
+      elif (( $charge <= 50 )); then
         echo "${BATTERY_CHARGING_3} ${charge}"
-      elif [[ $charge -le 60 ]]; then
+      elif (( $charge <= 60 )); then
         echo "${BATTERY_CHARGING_4} ${charge}"
-      else  # [[ $charge -le 80 ]]; then
+      elif (( $charge <= 80 )); then
         echo "${BATTERY_CHARGING_5} ${charge}"
+      else  # (( $charge <= 100 )); then
+        echo "${BATTERY_CHARGING_FULL} ${charge}"
       fi
     else
-      if [[ $charge -le 3 ]]; then
+      if (( $charge <= 3 )); then
         echo "${BATTERY_EMPTY} ${charge}"
-      elif [[ $charge -le 20 ]]; then
+      elif (( $charge <= 20 )); then
         echo "${BATTERY_1} ${charge}"
-      elif [[ $charge -le 40 ]]; then
+      elif (( $charge <= 40 )); then
         echo "${BATTERY_2} ${charge}"
-      elif [[ $charge -le 50 ]]; then
+      elif (( $charge <= 50 )); then
         echo "${BATTERY_3} ${charge}"
-      elif [[ $charge -le 60 ]]; then
+      elif (( $charge <= 60 )); then
         echo "${BATTERY_4} ${charge}"
-      else  # [[ $charge -le 80 ]]; then
+      elif (( $charge <= 80 )); then
         echo "${BATTERY_5} ${charge}"
+      else  # (( $charge <= 100 )); then
+        echo "${BATTERY_FULL} ${charge}"
       fi
     fi
   fi
