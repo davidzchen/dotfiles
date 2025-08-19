@@ -139,8 +139,10 @@ set tabstop=2       " An indentation every 2 columns
 set softtabstop=2   " Let backspace delete indent
 
 autocmd BUfNewFile,BufRead BUILD.bazel,*.BUILD,*.WORKSPACE setf bzl
-autocmd BufNewFile,BufRead .tiles,.repos,REPOS setf python
+autocmd BufNewFile,BufRead .tiles,.repos,REPOS setf bzl
 autocmd BufNewFile,BufRead *.BUILD,*.WORKSPACE,BUILD.bazel setf bzl
+autocmd BufNewFile,BufRead *.inc setf cpp
+autocmd BufNewFile,BufRead *.mm setf objc
 autocmd BufNewFile,BufRead *.flex setf jflex
 autocmd BufNewFile,BufRead *.scaml setf haml
 autocmd BufNewFile,BufRead *.gyp,*.gypi,*.json setf javascript
@@ -153,8 +155,11 @@ autocmd BufNewFile,BufRead gitconfig setf gitconfig
 autocmd BufNewFile,BufRead Kbuild setf make
 autocmd FileType fish compiler fish setlocal textwidth=79
 autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
+autocmd FileType go setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab colorcolumn=80
+autocmd FileType bzl setlocal noet shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType python setlocal noet shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd FileType swift setlocal noet shiftwidth=2 tabstop=2 softtabstop=2 expandtab colorcolumn=100
+autocmd FileType swift setlocal colorcolumn=100
 autocmd FileType erlang setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType org setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd FileType vala setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
