@@ -1,0 +1,11 @@
+macos-titlebar-style=transparent
+
+cursor-style = block
+cursor-style-blink = false
+
+font-family = "PragmataPro Liga"
+font-size = 12
+
+theme = city-lights
+background-opacity = 0.9
+background-blur = true
